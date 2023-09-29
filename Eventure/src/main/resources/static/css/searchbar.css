@@ -16,7 +16,7 @@ body {
   display: inline-block;
   position: relative;
   border-radius: 2.5em;
-  margin-right:400px;
+  margin-right:200px;
 }
 .search-box input[type=text] {
   font-family: inherit;

@@ -4,7 +4,10 @@ import com.LTUC.Eventure.models.AppUser;
 import com.LTUC.Eventure.repositories.AppUserJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -26,14 +29,17 @@ public class SignUpAndLoginController {
     PasswordEncoder passwordEncoder;
     @Autowired
     private HttpServletRequest request;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
 
     @GetMapping("/signup")
     public String signUpPage(Model model){return "signUpAndLogin";}
     @PostMapping("/signup")
     public RedirectView createUser(String username, String email, String password, String country, String interests, String dateOfBirth,String image, Model model){
-        AppUser existingUser = appUserJPA.findByEmail(email);
+        AppUser existingUser = appUserJPA.findByUsername(username);
         if(existingUser!=null){
-            model.addAttribute("errorMessage2", "User with this email already exists.");
+            model.addAttribute("errorMessage2", "User with this username already exists.");
             return new RedirectView("/signup");
         }else {
             AppUser user = new AppUser();
@@ -56,7 +62,7 @@ public class SignUpAndLoginController {
             appUserJPA.save(user);
             authWithHttpServletRequest(username,password);
         }
-        return new RedirectView("/");
+        return new RedirectView("/home");
     }
     public void authWithHttpServletRequest(String username, String password){
         try {
@@ -72,26 +78,24 @@ public class SignUpAndLoginController {
     }
 
     @PostMapping("/login")
-    public String login( RedirectAttributes redir, String username, String password) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
-            return "redirect:/";
-        } else{
+    public String login(RedirectAttributes redir, String username, String password) {
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+        try {
+            Authentication auth = authenticationManager.authenticate(authToken);
+            SecurityContextHolder.getContext().setAuthentication(auth);
+            return "redirect:/home";
+        } catch (AuthenticationException e) {
             redir.addFlashAttribute("errorMessage", "Invalid email or password");
             return "redirect:/login";
         }
     }
 
-    private boolean authenticateUser(String username, String password,Principal p) {
-         AppUser user = appUserJPA.findByUsername(username);
-         if (p.getName() == user.getUsername() && user.getPassword().equals(password)) {
-             return true;
-         }
-         return false;
-    }
 
-    @GetMapping("/logout")
-    public String getLogoutPage(){
-        return "signUpAndLogin";
-    }
+//    private boolean authenticateUser(String username, String password,Principal p) {
+//         AppUser user = appUserJPA.findByUsername(username);
+//         if (p.getName() == user.getUsername() && user.getPassword().equals(password)) {
+//             return true;
+//         }
+//         return false;
+//    }
 }

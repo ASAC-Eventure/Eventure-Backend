@@ -2,15 +2,19 @@ const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 const interestsInput = document.getElementById('interestsInput');
+const signupForm = document.getElementById('signup-form');
+const loginForm = document.getElementById('login-form');
 
 const selectedInterests = new Set();
 
 signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
+    signupForm.setAttribute("action", "/signup");
 });
 
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
+    loginForm.setAttribute("action", "/login");
 });
 
 const interestBoxes = document.querySelectorAll('.interest-box');

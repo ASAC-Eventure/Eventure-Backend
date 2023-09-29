@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="/css/aboutUs.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/searchbar.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
     <title>About Us</title>
 </head>
 
 <body>
 <section class="about">
+    <div th:replace="fragments/headerAfter :: header"></div>
     <h1>About Us</h1>
     <div class="about-info">
         <div class="about-img">
-            <img src="/css/images/logo.jpeg" alt="Eventure">
+            <img src="/images/logo.jpeg" alt="Eventure">
         </div>
         <div>
             <p>Welcome to our event booking platform, your one-stop destination for discovering and reserving exciting events! With our user-friendly website,
@@ -34,7 +38,7 @@
         <!-- Card 1 -->
         <div class="card">
             <div class="card-img">
-                <img src="/css/images/reneh.jpg" alt="Reneh's Picture">
+                <img src="/images/reneh.jpg" alt="Reneh's Picture">
             </div>
             <div class="card-info">
                 <h2 class="card-name">Reneh Al-Madanat</h2>
@@ -48,7 +52,7 @@
         <!-- Card 2 -->
         <div class="card">
             <div class="card-img">
-                <img src="/css/images/aws.jpg" alt="Aws's Picture">
+                <img src="/images/aws.jpg" alt="Aws's Picture">
             </div>
             <div class="card-info">
                 <h2 class="card-name">Aws Al-Omari</h2>
@@ -61,7 +65,7 @@
         <!-- Card 3 -->
         <div class="card">
             <div class="card-img">
-                <img src="/css/images/balqees.jpeg" alt="Balqees's Picture">
+                <img src="/images/balqees.jpeg" alt="Balqees's Picture">
             </div>
             <div class="card-info">
                 <h2 class="card-name">Balqees Al-Qudah</h2>
@@ -75,7 +79,7 @@
         <!-- Card 4 -->
         <div class="card">
             <div class="card-img">
-                <img src="/css/images/saif.jpeg" alt="Saif's Picture">
+                <img src="/images/saif.jpeg" alt="Saif's Picture">
             </div>
             <div class="card-info">
                 <h2 class="card-name">Saif Yahya</h2>
@@ -89,7 +93,7 @@
         <!-- Card 5 -->
         <div class="card">
             <div class="card-img">
-                <img src="/css/images/haya.jpg" alt="Haya's Picture">
+                <img src="/images/haya.jpg" alt="Haya's Picture">
             </div>
             <div class="card-info">
                 <h2 class="card-name">Haya Hasan</h2>
@@ -101,5 +105,6 @@
         </div>
     </div>
 </section>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
