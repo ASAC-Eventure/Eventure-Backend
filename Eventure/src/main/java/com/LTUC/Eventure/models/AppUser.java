@@ -1,35 +1,61 @@
 package com.LTUC.Eventure.models;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.security.PrivateKey;
 import java.time.LocalDate;
+import java.util.Collection;
 
 @Entity
-public class AppUser {
+public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
+    private Long id;
     private String username;
+    private String email;
     private String password;
     private String country;
     private String interests;
     private String image;
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
 
         // constructors
     public AppUser() {
     }
 
-    public AppUser(String username, String password, String country, String interests, String image, LocalDate dateOfBirth) {
+    public AppUser(String username,String email, String password, String country,String image, String interests, String dateOfBirth) {
         this.username = username;
+        this.email = email;
         this.password = password;
         this.country = country;
+        this.image=image;
         this.interests = interests;
-        this.image = image;
         this.dateOfBirth = dateOfBirth;
+    }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
         // getters
     public Long getId() {
@@ -38,6 +64,10 @@ public class AppUser {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getPassword() {
@@ -56,13 +86,17 @@ public class AppUser {
         return image;
     }
 
-    public LocalDate getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
             //  setters
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPassword(String password) {
@@ -77,11 +111,11 @@ public class AppUser {
         this.interests = interests;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setImage(String image) {
+        this.image = image;
     }
 }
