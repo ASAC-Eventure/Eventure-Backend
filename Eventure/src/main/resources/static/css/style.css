@@ -52,9 +52,9 @@ header {
     margin-top:15px;
     margin-left:400px; /////////
 }
-a {
-margin-left: 80px;
-}
+/*a {
+margin-left: 20px;
+}*/
 
 
 .navbar img {
@@ -111,7 +111,7 @@ ul.navbar {
     background-color: white;
     overflow: hidden;
     margin-left: auto;
-    background-color: yellow
+    /*background-color: yellow*/
 }
 
 ul.navbar li a:hover {

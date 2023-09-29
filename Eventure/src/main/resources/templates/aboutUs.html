@@ -13,14 +13,14 @@
 </head>
 
 <body>
-<section class="about">
     <div th:replace="fragments/headerAfter :: header"></div>
     <h1>About Us</h1>
-    <div class="about-info">
-        <div class="about-img">
+    <section  class="about">
+    <div class="about-container">
+        <div class="about-image">
             <img src="/images/logo.jpeg" alt="Eventure">
         </div>
-        <div>
+        <div class="about-text">
             <p>Welcome to our event booking platform, your one-stop destination for discovering and reserving exciting events! With our user-friendly website,
                 you can effortlessly explore a wide range of events, from concerts to festivals. We offer a seamless and convenient experience,
                 allowing you to browse event details, view dates, and access ticketing information with ease. Whether you're a music enthusiast,
@@ -31,8 +31,9 @@
     </div>
 </section>
 
+
 <section class="team">
-    <h1>Meet Our Team</h1>
+    <h1>Meet <span class="our-team">Our Team</span></h1>
     <div class="team-cards">
 
         <!-- Card 1 -->
@@ -44,8 +45,10 @@
                 <h2 class="card-name">Reneh Al-Madanat</h2>
                 <p class="card-role">Java Developer</p>
                 <p class="card-email">renehm2001@gmail.com</p>
+                <div class="social-icons-container">
                 <a href="#" class="social-icon github-icon"><i class="fab fa-github"></i></a>
                 <a href="#" class="social-icon linkedin-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
         </div>
 
@@ -58,8 +61,10 @@
                 <h2 class="card-name">Aws Al-Omari</h2>
                 <p class="card-role">Java Developer</p>
                 <p class="card-email">awsalomari11469@gmail.com</p>
+                <div class="social-icons-container">
                 <a href="#" class="social-icon github-icon"><i class="fab fa-github"></i></a>
                 <a href="#" class="social-icon linkedin-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
         </div>
         <!-- Card 3 -->
@@ -71,8 +76,10 @@
                 <h2 class="card-name">Balqees Al-Qudah</h2>
                 <p class="card-role">Java Developer</p>
                 <p class="card-email">Balqeesalqudah97@gmail.com</p>
+                <div class="social-icons-container">
                 <a href="#" class="social-icon github-icon"><i class="fab fa-github"></i></a>
                 <a href="#" class="social-icon linkedin-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
         </div>
 
@@ -85,8 +92,10 @@
                 <h2 class="card-name">Saif Yahya</h2>
                 <p class="card-role">Java Developer</p>
                 <p class="card-email">saifbarakat991@gmail.com</p>
+                <div class="social-icons-container">
                 <a href="#" class="social-icon github-icon"><i class="fab fa-github"></i></a>
                 <a href="#" class="social-icon linkedin-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
         </div>
 
@@ -99,12 +108,15 @@
                 <h2 class="card-name">Haya Hasan</h2>
                 <p class="card-role">Java Developer</p>
                 <p class="card-email">haya.nael01@gmail.com</p>
+                <div class="social-icons-container">
                 <a href="#" class="social-icon github-icon"><i class="fab fa-github"></i></a>
                 <a href="#" class="social-icon linkedin-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
         </div>
     </div>
 </section>
 <div th:replace="fragments/footer :: footer"></div>
+<script src="/css/JS/aboutUs.js"></script>
 </body>
 </html>
