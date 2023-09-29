@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Eventure.iml" filepath="$PROJECT_DIR$/.idea/modules/Eventure.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Eventure.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Eventure.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Eventure.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Eventure.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Eventure-Backend.iml" filepath="$PROJECT_DIR$/.idea/Eventure-Backend.iml" />
     </modules>
   </component>
 </project>
