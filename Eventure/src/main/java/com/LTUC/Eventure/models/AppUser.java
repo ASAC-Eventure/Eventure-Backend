@@ -119,3 +119,4 @@ public class AppUser implements UserDetails {
         this.image = image;
     }
 }
+

@@ -1,28 +1,31 @@
 package com.LTUC.Eventure.controllers;
-
-import com.LTUC.Eventure.models.AppUser;
-import com.LTUC.Eventure.repositories.AppUserJPA;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDate;
 
 @Controller
 public class GeneralControllers {
 
-    @GetMapping("/")
-    public String showIndex(){
+        @GetMapping("/")
+        public String Home(){
             return "index";
         }
 
+    @GetMapping("/home")
+    public String securedHome(){
+        return "indexAfter";
+    }
     @GetMapping("/aboutUs")
     public String aboutUs(){return "aboutUs.html";}
-}
 
+
+    @GetMapping("/terms-conditions")
+         public String termsAndCondintions(){
+         return "T&C.html";
+        }
+
+        @GetMapping("/logout")
+        public RedirectView logOut(){
+            return new RedirectView("/");
+        }
+}

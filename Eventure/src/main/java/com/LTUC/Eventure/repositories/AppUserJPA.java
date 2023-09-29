@@ -8,3 +8,4 @@ public interface AppUserJPA extends JpaRepository<AppUser, Long> {
 
     AppUser findByEmail(String email);
 }
+

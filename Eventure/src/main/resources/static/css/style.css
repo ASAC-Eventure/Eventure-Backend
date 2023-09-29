@@ -1,49 +1,150 @@
-/* Reset some default styles */
-body, h1, h2, ul {
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+
+body {
+    font-family: inherit;
+    background-color:white;
     margin: 0;
-    padding: 0;
+    text-decoration: none;
+    max-height: 100%;
+
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
 }
 
-/* Define global styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-}
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color:white ; //////////// /*behaind navbar*/
+    color: black;
     padding: 10px 0;
-    text-align: center;
+    text-decoration: none;
+
 }
 
-/* Style the logo and navbar */
-.logo {
-    display: inline-block;
-    padding: 10px;
-}
 
-.logo img {
-    max-height: 50px; /* Adjust the height as needed */
-}
 
 .navbar {
     list-style: none;
-    display: inline-block;
-    margin-left: 20px; /* Add some spacing between the logo and navbar links */
+    text-decoration: none;
+    font-family: inherit;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
+
+
 .navbar li {
-    display: inline;
+     margin-right: 20px;
+    font-family: inherit;
+     font-weight: bold;
+     margin-left:20px;
+     display:flex;
+     justify-contents:left;
+}
+
+
+
+.navbar a .right {
+    text-decoration: none;
+    color: black;
+    font-family: inherit;
+    margin-top:15px;
+}
+
+
+
+.navbar img {
+    margin-left:30px;
+    width: 400px;
+    height: 55px;
+    border-radius: 50%;
     margin-right: 20px;
 }
 
-.navbar a {
-    text-decoration: none;
-    color: #fff;
-}
 
-/* Style the "right" class for right-aligned links */
-.right {
+.navbar .right {
     float: right;
 }
+
+
+.clear {
+    clear: both;
+}
+
+  section#home {
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+            margin-bottom: 1000px;
+  }
+
+  section#home img {
+  margin-left:0px;
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  max-height:auto;
+  }
+
+
+/*
+footer {
+  font-family: inherit;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+*/
+
+ul.navbar {
+    list-style-type: none;
+    /*margin: 0;*/
+    padding: 0;
+    background-color: white;
+    overflow: hidden;
+}
+
+ul.navbar li a:hover {
+  background-color: #f0f0f0;
+  text-decoration: none;
+}
+
+
+
+
+/*
+///=============================================
+
+        ul.navbar li {
+            float: left;
+        }
+
+        ul.navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+         .navbar .right {
+                    float: right;
+                }
+
+                  section#home {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            text-align: center;
+
+                        }
+                        //============================================
+*/
+
+
+
