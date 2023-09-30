@@ -50,8 +50,11 @@ header {
     color: black;
     font-family: inherit;
     margin-top:15px;
+    margin-left:400px; /////////
 }
-
+a {
+margin-left: 80px;
+}
 
 
 .navbar img {
@@ -107,6 +110,8 @@ ul.navbar {
     padding: 0;
     background-color: white;
     overflow: hidden;
+    margin-left: auto;
+    background-color: yellow
 }
 
 ul.navbar li a:hover {
