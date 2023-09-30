@@ -1,9 +1,8 @@
 package com.LTUC.Eventure.controllers;
 
-import com.LTUC.Eventure.models.AppUser;
-import com.LTUC.Eventure.repositories.AppUserJPA;
+import com.LTUC.Eventure.entities.AppUserEntity;
+import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,12 +18,11 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
 
 @Controller
 public class SignUpAndLoginController {
     @Autowired
-    AppUserJPA appUserJPA;
+    AppUserJPARepository appUserJPARepository;
     @Autowired
     PasswordEncoder passwordEncoder;
     @Autowired
@@ -37,12 +35,12 @@ public class SignUpAndLoginController {
     public String signUpPage(Model model){return "signUpAndLogin";}
     @PostMapping("/signup")
     public RedirectView createUser(String username, String email, String password, String country, String interests, String dateOfBirth,String image, Model model){
-        AppUser existingUser = appUserJPA.findByUsername(username);
+        AppUserEntity existingUser = appUserJPARepository.findByUsername(username);
         if(existingUser!=null){
             model.addAttribute("errorMessage2", "User with this username already exists.");
             return new RedirectView("/signup");
         }else {
-            AppUser user = new AppUser();
+            AppUserEntity user = new AppUserEntity();
 
             user.setUsername(username);
             user.setEmail(email);
@@ -59,7 +57,7 @@ public class SignUpAndLoginController {
             String encryptedPassword = passwordEncoder.encode(password);
             user.setPassword(encryptedPassword);
 
-            appUserJPA.save(user);
+            appUserJPARepository.save(user);
             authWithHttpServletRequest(username,password);
         }
         return new RedirectView("/home");
@@ -85,17 +83,9 @@ public class SignUpAndLoginController {
             SecurityContextHolder.getContext().setAuthentication(auth);
             return "redirect:/home";
         } catch (AuthenticationException e) {
+            System.out.println("AuthenticationException: " + e.getMessage());
             redir.addFlashAttribute("errorMessage", "Invalid email or password");
             return "redirect:/login";
         }
     }
-
-
-//    private boolean authenticateUser(String username, String password,Principal p) {
-//         AppUser user = appUserJPA.findByUsername(username);
-//         if (p.getName() == user.getUsername() && user.getPassword().equals(password)) {
-//             return true;
-//         }
-//         return false;
-//    }
 }

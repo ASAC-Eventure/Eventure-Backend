@@ -1,22 +1,20 @@
 package com.LTUC.Eventure.config;
 
-import com.LTUC.Eventure.models.AppUser;
-import com.LTUC.Eventure.repositories.AppUserJPA;
+import com.LTUC.Eventure.entities.AppUserEntity;
+import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.io.FilterOutputStream;
-
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    AppUserJPA appUserJPA;
+    AppUserJPARepository appUserJPARepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser user=appUserJPA.findByUsername(username);
+        AppUserEntity user= appUserJPARepository.findByUsername(username);
         if(user==null){
             System.out.println("User Not Found" + username);
             throw new UsernameNotFoundException("User" + username + "Was Not Found");
