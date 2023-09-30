@@ -1,4 +1,4 @@
-package com.LTUC.Eventure.models;
-
-public class AppUser {
-}
+//package com.LTUC.Eventure.models;
+//
+//public class AppUser {
+//}

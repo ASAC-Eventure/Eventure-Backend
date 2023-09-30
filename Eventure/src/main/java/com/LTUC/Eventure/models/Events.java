@@ -1,4 +1,4 @@
-package com.LTUC.Eventure.models;
-
-public class Events {
-}
+//package com.LTUC.Eventure.models;
+//
+//public class Events {
+//}
