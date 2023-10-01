@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class AdminUser {
+public class AdminUserRepository {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +14,10 @@ public class AdminUser {
     private String username;
     private String password;
 
-    public AdminUser() {
+    public AdminUserRepository() {
     }
 
-    public AdminUser(String username, String password) {
+    public AdminUserRepository(String username, String password) {
         this.username = username;
         this.password = password;
     }
