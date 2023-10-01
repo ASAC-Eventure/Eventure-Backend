@@ -1,4 +1,4 @@
-package com.LTUC.Eventure.models.apimodels;
+package com.LTUC.Eventure.models.apiEntities;
 
 import java.util.List;
 
