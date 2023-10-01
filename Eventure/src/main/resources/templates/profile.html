@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/profile.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link rel="stylesheet" th:href="@{/css/searchbar.css}" />
+  <link rel="stylesheet" th:href="@{/css/footer.css}" />
+  <title>Profile</title>
+</head>
+<body>
+<div th:if="${user}" class="profile-container">
+  <div th:replace="fragments/headerAfter :: header"></div>
+  <div class="left-container">
+    <img th:src="${user.image}" alt="Profile Image" class="profile-image">
+    <h1 th:text="${user.username}" class="profile-name"></h1>
+  </div>
+  <div class="right-container">
+    <h2>Profile Information</h2>
+    <div class="line"></div>
+    <p><strong>Date of Birth:</strong> <span th:text="${user.dateOfBirth}"></span></p>
+    <p><strong>Country:</strong> <span th:text="${user.country}"></span></p>
+    <p><strong>Interests:</strong> <span th:text="${user.interests}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+  </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
