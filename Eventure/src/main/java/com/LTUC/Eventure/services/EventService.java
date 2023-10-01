@@ -71,6 +71,7 @@ public class EventService {
                     addressCountryJPARepository.save(event.getLocation().getAddress().getAddressCountry());
                     addressJPARepository.save(event.getLocation().getAddress());
                     locationJPARepository.save(event.getLocation());
+                     event.setPrice(50 + (Math.random() * (250 - 50)));
                     eventsJPARepository.save(event);
                 }
             } else {
