@@ -1,7 +1,7 @@
 package com.LTUC.Eventure.repositories;
 
-import com.LTUC.Eventure.models.AppUser;
+import com.LTUC.Eventure.models.AppUserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AppUserJPA extends JpaRepository<AppUser, Long> {
+public interface AppUserJPARepository extends JpaRepository<AppUserEntity, Long> {
 }

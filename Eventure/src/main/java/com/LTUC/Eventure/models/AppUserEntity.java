@@ -4,11 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.security.PrivateKey;
 import java.time.LocalDate;
 
 @Entity
-public class AppUser {
+public class AppUserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
@@ -20,10 +19,10 @@ public class AppUser {
     private LocalDate dateOfBirth;
 
         // constructors
-    public AppUser() {
+    public AppUserEntity() {
     }
 
-    public AppUser(String username, String password, String country, String interests, String image, LocalDate dateOfBirth) {
+    public AppUserEntity(String username, String password, String country, String interests, String image, LocalDate dateOfBirth) {
         this.username = username;
         this.password = password;
         this.country = country;
