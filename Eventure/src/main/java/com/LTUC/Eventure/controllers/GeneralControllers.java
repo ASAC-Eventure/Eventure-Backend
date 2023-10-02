@@ -35,8 +35,20 @@ EventService eventService;
 
             List<Event> events= theEventJPA.findAll();
             m.addAttribute("events",events);}
-            return "index.html";
+            return "dataRendering.html";
         }
+
+    @GetMapping("/")
+    public String homeBefore() {
+        return "HomeBefore.html";
+    }
+
+    @GetMapping("/home")
+    public String homeAfter( ) {
+        return "HomeAfter.html";
+    }
+
+
 //@GetMapping("/api")
 //    public List<Event> fetchAndSaveEvents() {
 //   return theEventJPA.findByLocation_Address_AddressRegion_Name("North Carolina");

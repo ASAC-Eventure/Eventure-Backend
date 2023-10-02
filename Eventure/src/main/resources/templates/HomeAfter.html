@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <link href="css/searchbar.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="fragments/NavbarAfter :: nav"></div>
+
+<!--    <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0" style="backdrop-filter: blur(5px);-->
+<!--  background-color: rgba(290, 255, 255, .15);font-family:Holtwood One SC">-->
+<!--        <div class="container">-->
+<!--            <a class="navbar-brand" href="#!"><span style="color: #9EDDFF; font-size:30px; ">Event</span>-->
+<!--                <span style="color: #fff; font-size:20px;margin-right: 10px;">ure</span></a>-->
+<!--            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"-->
+<!--                    data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"-->
+<!--                    aria-label="Toggle navigation">-->
+<!--                <i class="fas fa-bars"></i>-->
+<!--            </button>-->
+<!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--                <ul class="navbar-nav me-auto">-->
+<!--                    <form class="search-box"  action="/events">-->
+<!--                        <input type="text" placeholder=" "/>-->
+<!--                        <button type="reset"></button>-->
+<!--                    </form>-->
+
+<!--                    <li class="nav-item" style="margin-left:10px; margin-right:10px">-->
+<!--                        <a class="nav-link" href="#!" style="font-size:13px; color:white">Home</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item" style="margin-left:10px; margin-right:10px">-->
+<!--                        <a class="nav-link" href="#!"style="font-size:13px; color:white">About Us</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item" style="margin-left:10px; margin-right:10px">-->
+<!--                        <a class="nav-link" href="#!" style="font-size:13px; color:white">My Events</a>-->
+<!--                    </li>-->
+<!--&lt;!&ndash;                    <li class="nav-item" style="margin-left:10px; margin-right:10px">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a class="nav-link" href="#!"style="font-size:13px; color:white">Profile</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--                </ul>-->
+
+<!--&lt;!&ndash;                // user profile&ndash;&gt;-->
+<!--                <ul class="navbar-nav d-flex flex-row">-->
+<!--                    <li class="nav-item me-3 me-lg-0">-->
+<!--                        <a class="nav-link" href="#!" style="font-size:18px;color:white">-->
+<!--                            <i class="fa fa-user" ></i>-->
+<!--                        </a>-->
+<!--                    </li>-->
+
+<!--&lt;!&ndash;                    ///// signout/ logout&ndash;&gt;-->
+<!--                    <li class="nav-item me-3 me-lg-0">-->
+<!--                        <a class="nav-link" href="#!">-->
+<!--                            <i class="fa fa-sign-out"  style="color:white"></i>-->
+<!--                        </a>-->
+<!--                    </li>-->
+
+                    <!--                    <li class="nav-item me-3 me-lg-0">-->
+<!--                        <a class="nav-link" href="#!" style="font-size:18px;color:white">-->
+<!--                            <i class="fa fa-user" ></i>-->
+<!--                        </a>-->
+<!--                    </li>-->
+
+<!--                    ///// login-->
+<!--                    <li class="nav-item me-3 me-lg-0">-->
+<!--                        <a class="nav-link" href="#!">-->
+<!--                            <i class="fa fa-sign-in" style="color:white"></i>-->
+<!--                        </a>-->
+<!--                    </li>-->
+
+
+
+                    <!--
+                              <li class="nav-item me-3 me-lg-0">
+                                <a class="nav-link" href="#!">
+                                  <i class="fab fa-twitter"></i>
+                                </a>
+                              </li> -->
+                    <!--           <li class="nav-item me-3 me-lg-0">
+                                <a class="nav-link" href="#!">
+                                  <i class="fab fa-instagram"></i>
+                                </a>
+                              </li> -->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+
+    <section>
+        <div id="intro" class="bg-image vh-100" style="background-size: cover; width: 100%;
+            height: 400px;    background-position: center center; opacity:0.9;
+            background-image: url('https://e0.pxfuel.com/wallpapers/361/167/desktop-wallpaper-concert-high-quality-id-music-concert-background-black.jpg');"></div>
+        <div class="mask" style="background-color: rgba(250, 182, 162, 0.15);"></div>
+    </section>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+<div th:replace="fragments/footer2 :: footer"></div>
+
+</html>
+
+
+

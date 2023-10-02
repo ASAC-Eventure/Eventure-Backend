@@ -1,0 +1,100 @@
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>home</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">-->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+
+<!--    <link href="css/searchbar.css" rel="stylesheet">-->
+
+<!--</head>-->
+<!--&lt;!&ndash;https://image.shutterstock.com/image-photo/colorful-smoke-on-dark-background-260nw-569530480.jpg&ndash;&gt;-->
+<!--<body style=" background-image: url('https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1912&q=80');-->
+<!--            background-size: cover;-->
+<!--            background-position: center center;-->
+<!--            background-attachment: fixed;-->
+<!--            opacity: 0.9;">-->
+<!--<div th:if="${user}" class="profile-container">-->
+<!--    <div th:replace="fragments/NavbarFragemntAfterLogging :: nav"></div>-->
+<!--        <img th:src="${user.image}" alt="Profile Image" class="profile-image">-->
+<!--    </div>-->
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-4" style="margin-left: 25%;-->
+<!--  width: 50%">-->
+<!--            <div class="card user-card">-->
+
+<!--                <div class="card-block">-->
+<!--                    <div class="user-image">-->
+<!--                        <img th:src="${user.image == null ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDn-kRPvlzknEgXcBD9538-DNjkNCmVB0rj6pfWQTIYA&s' : user.image}"-->
+<!--                             class="img-radius"  alt="User-Profile-Image" style="margin-left: 1%;-->
+<!--  padding: 70px 47px 50px 47px;">-->
+
+<!--                        <img th:if="${user.image}==null? "  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDn-kRPvlzknEgXcBD9538-DNjkNCmVB0rj6pfWQTIYA&s" class="img-radius"-->
+<!--                             alt="User-Profile-Image" style="margin-left: 1%;-->
+<!--  padding: 70px 47px 50px 47px;">-->
+<!--                    </div>-->
+<!--                    <h6 class="f-w-600 m-t-25 m-b-10" style="font-size:2rem; text-align: center;"><span th:text="${user.username}"></span></span></h6>-->
+<!--                    <p class="text-muted"  style="text-align: center;"><strong>Born |</strong> <span th:text="${user.dateOfBirth}"></span></p>-->
+<!--                    <hr>-->
+<!--                    <h6 class="f-w-600 m-t-25 m-b-10" style="font-size:2rem; text-align: center;">Alessa Robert</h6>-->
+
+<!--                    &lt;!&ndash;                    <p class="text-muted m-t-15">Activity Level: 87%</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul class="list-unstyled activity-leval">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="active"></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="active"></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="active"></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li></li>&ndash;&gt;-->
+<!--                    </ul>-->
+<!--                    <div class="bg-c-blue counter-block m-t-10 p-20">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-4">-->
+<!--                                <i class="fa fa-comment"></i>-->
+<!--                                <p>1256</p>-->
+<!--                            </div>-->
+<!--                            <div class="col-4">-->
+<!--                                <i class="fa fa-user"></i>-->
+<!--                                <p>8562</p>-->
+<!--                            </div>-->
+<!--                            <div class="col-4">-->
+<!--                                <i class="fa fa-suitcase"></i>-->
+<!--                                <p>189</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <p class="m-t-15 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting-->
+<!--                        industry.</p>-->
+<!--                    <hr>-->
+<!--                    <div class="row justify-content-center user-social-link">-->
+<!--                        <div class="col-auto"><a href="#!"><i class="fa fa-facebook"></i></i></a></div>-->
+<!--                        <div class="col-auto"><a href="#!"><i class="fa fa-twitter "></i></a></div>-->
+<!--                        <div class="col-auto"><a href="#!"><i class="fab fa-instagram"></i></a></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<section>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div id="intro" class="bg-image vh-100" style="background-size: cover; width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 400px;    background-position: center center; opacity:0.9;&ndash;&gt;-->
+<!--&lt;!&ndash;            background-image: url('https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1912&q=80');"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="mask" style="background-color: rgba(250, 182, 162, 0.15);"></div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</section>&ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--&lt;!&ndash;<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta/dist/js/bootstrap.min.js"></script>&ndash;&gt;-->
+
+<!--</body>-->
+<!--</html>-->
+
