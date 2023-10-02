@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign Up and Login Page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="/css/signUpAndLogin.css">
+</head>
+<body>
+<!--<h2>Welcome To Eventure</h2>-->
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form id="signup-form" action="/signup" method="POST">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your email for registration</span>
+			<input type="text" name="username" placeholder="UserName" required />
+			<input type="email" name="email" placeholder="Email" required />
+			<input type="password" name="password" placeholder="Password" required />
+			<input type="text" name="image" placeholder="Profile Picture" />
+			<select  name="country" id="country" required>
+				<option value="" disabled selected>Select your country</option>
+				<option value="USA">United States</option>
+				<option value="Canada">Canada</option>
+				<option value="Jordan">Jordan</option>
+				<option value="Europe">Europe</option>
+				<option value="Asia">Asia</option>
+			</select>
+			<input type="date" name="dateOfBirth" placeholder="Date Of Birth" required />
+			<div class="interests">
+				<label >Interests:</label>
+				<input type="hidden" id="interestsInput" name="interests" required/>
+				<div class="interest-box" name="interests" data-value="Music">Music</div>
+				<div class="interest-box" name="interests" data-value="Festivals">Festivals</div>
+				<div class="interest-box" name="interests" data-value="Parties">Parties</div>
+				<div class="interest-box" name="interests" data-value="Concerts">Concerts</div>
+			</div>
+			<button class="signUpButton">Sign Up</button>
+			<div th:replace="/fragments/loginError :: user-error" ></div>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form id="login-form" action="/login" method="POST">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your account</span>
+			<input type="text" name="username" placeholder="Username" required />
+			<input type="password" name="password" placeholder="Password" required />
+<!--			<a href="#">Forgot your password?</a>-->
+			<button>Sign In</button>
+			<div th:replace="/fragments/loginError :: user-error" ></div>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/css/JS/signup.js"></script>
+</body>
+</html>
