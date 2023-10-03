@@ -1,6 +1,6 @@
 package com.LTUC.Eventure.config;
 
-import com.LTUC.Eventure.models.AppUserEntity;
+import com.LTUC.Eventure.entities.AppUserEntity;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,4 +22,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println("Found User: " +user.getUsername());
         return user;
     }
+
+
 }

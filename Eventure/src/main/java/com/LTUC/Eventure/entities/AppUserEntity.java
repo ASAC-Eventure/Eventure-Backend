@@ -1,6 +1,6 @@
-package com.LTUC.Eventure.models;
+package com.LTUC.Eventure.entities;
 
-import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
+import com.LTUC.Eventure.entities.authenticationEntities.RoleEntity;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,9 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+
 @Setter
 @Getter
 @Builder

@@ -1,2 +1,5 @@
-package com.LTUC.Eventure.Enum;public class Roles {
+package com.LTUC.Eventure.Enum;
+
+public enum Roles {
+    USER,ADMIN
 }

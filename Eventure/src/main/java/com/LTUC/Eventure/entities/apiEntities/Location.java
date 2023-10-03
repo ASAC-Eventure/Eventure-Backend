@@ -1,4 +1,4 @@
-package com.LTUC.Eventure.models.apiEntities;
+package com.LTUC.Eventure.entities.apiEntities;
 
 import lombok.*;
 
