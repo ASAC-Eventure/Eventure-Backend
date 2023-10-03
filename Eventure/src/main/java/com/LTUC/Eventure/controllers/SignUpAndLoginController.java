@@ -6,6 +6,7 @@ import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.RoleJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -42,7 +43,7 @@ public class SignUpAndLoginController {
     @GetMapping("/signup")
     public String signUpPage(Model model){return "signUpAndLogin";}
     @PostMapping("/signup")
-    public RedirectView createUser(String username, String email, String password, String country, String interests, LocalDate dateOfBirth, String image, Model model){
+    public RedirectView createUser(String username, String email, String password, String country, String interests, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth, String image, Model model){
         try {
             AppUserEntity existingUser = appUserJPARepository.findByUsername(username);
             if (existingUser != null) {
@@ -56,7 +57,7 @@ public class SignUpAndLoginController {
             user.setCountry(country);
             user.setInterests(String.join(", ", interests));
             user.setDateOfBirth(dateOfBirth);
-
+            user.setRoles(new RoleEntity(2L));
             if (image == null || image.isEmpty()) {
                 user.setImage("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1214428300?k=6&m=1214428300&s=170667a&w=0&h=hMQs-822xLWFz66z3Xfd8vPog333rNFHU6Q_kc9Sues=");
             } else {

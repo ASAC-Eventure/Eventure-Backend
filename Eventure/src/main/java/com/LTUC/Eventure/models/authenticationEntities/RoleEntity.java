@@ -22,6 +22,11 @@ public class RoleEntity {
     @Enumerated(value = EnumType.STRING)
     private Roles title;
 
+    public RoleEntity(long id) {
+        this.id=id;
+    }
+
+
     public Roles getTitle() {
         return title;
     }
