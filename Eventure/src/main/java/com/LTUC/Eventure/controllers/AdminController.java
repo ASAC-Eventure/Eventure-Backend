@@ -18,11 +18,6 @@ public class AdminController {
     PasswordEncoder passwordEncoder;
 
     HttpServletRequest request;
-
-
-
-
-
     @ResponseBody
     @GetMapping("/adminHome")
     public String retrieveAdminHome(){ return "hi admin home";}

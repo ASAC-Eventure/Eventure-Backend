@@ -2,6 +2,7 @@ package com.LTUC.Eventure.models;
 
 import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -28,21 +29,24 @@ public class AppUserEntity implements UserDetails {
     private String password;
     @Column(name = "country",nullable = false)
     private String country;
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
     @Column(name = "interests")
     private String interests;
     @Column(name = "image")
     private String image;
-    @Column(name = "date_Of_Birth",nullable = false)
+    @Column(name = "date_Of_Birth", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
     @OneToOne
     @JoinColumn(name ="role_id")
     private RoleEntity roles ;
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
     @Override
     public boolean isAccountNonLocked() {
         return true;
