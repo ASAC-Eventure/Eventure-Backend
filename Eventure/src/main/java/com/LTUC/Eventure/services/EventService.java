@@ -1,7 +1,7 @@
 package com.LTUC.Eventure.services;
 
-import com.LTUC.Eventure.entities.apiEntities.Event;
-import com.LTUC.Eventure.entities.apiEntities.Events;
+import com.LTUC.Eventure.models.apiEntities.Event;
+import com.LTUC.Eventure.models.apiEntities.Events;
 import com.LTUC.Eventure.repositories.apiJPARepositories.AddressCountryJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.AddressJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.EventsJPARepository;

@@ -1,8 +1,8 @@
 package com.LTUC.Eventure.controllers;
 
 import com.LTUC.Eventure.Enum.Roles;
-import com.LTUC.Eventure.entities.AppUserEntity;
-import com.LTUC.Eventure.entities.authenticationEntities.RoleEntity;
+import com.LTUC.Eventure.models.AppUserEntity;
+import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.RoleJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;

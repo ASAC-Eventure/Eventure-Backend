@@ -1,6 +1,6 @@
 package com.LTUC.Eventure.repositories;
 
-import com.LTUC.Eventure.entities.authenticationEntities.RoleEntity;
+import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

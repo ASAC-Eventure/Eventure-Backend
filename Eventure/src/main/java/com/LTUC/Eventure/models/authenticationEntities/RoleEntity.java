@@ -1,4 +1,4 @@
-package com.LTUC.Eventure.entities.authenticationEntities;
+package com.LTUC.Eventure.models.authenticationEntities;
 
 
 import com.LTUC.Eventure.Enum.Roles;

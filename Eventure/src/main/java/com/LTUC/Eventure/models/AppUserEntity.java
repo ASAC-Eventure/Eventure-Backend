@@ -1,6 +1,6 @@
-package com.LTUC.Eventure.entities;
+package com.LTUC.Eventure.models;
 
-import com.LTUC.Eventure.entities.authenticationEntities.RoleEntity;
+import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
