@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
@@ -56,30 +53,30 @@ ProfileController {
 //        return new RedirectView("/myProfile");
 //    }
 
-    @PostMapping("/updatep")
-    public String editMyProfile(
-            Principal p,
-            @RequestParam("username") String username,
-            @RequestParam("dateOfBirth") String dateOfBirth,
-            @RequestParam("country") String country,
-            @RequestParam("interests") String interests,
-            @RequestParam("image") String image,
-            @RequestParam("email") String email,
-            RedirectAttributes redirectAttributes) {
-
-        if (p != null && p.getName().equals(username)) {
-            AppUserEntity appUserEntity = appUserJPARepository.findByUsername(username);
-            appUserEntity.setUsername(username);
-            appUserEntity.setDateOfBirth(dateOfBirth);
-            appUserEntity.setCountry(country);
-            appUserEntity.setImage(image);
-            appUserEntity.setInterests(interests);
-            appUserEntity.setEmail(email);
-            appUserJPARepository.save(appUserEntity);
-            redirectAttributes.addFlashAttribute("successMessage", "Profile updated successfully!");
-        } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Cannot edit another user's profile page.");
-        }
-        return "redirect:/profile";
-    }
+//    @PostMapping("/updatep")
+//    public String editMyProfile(
+//            Principal p,
+//            @RequestParam("username") String username,
+//            @RequestParam("dateOfBirth") String dateOfBirth,
+//            @RequestParam("country") String country,
+//            @RequestParam("interests") String interests,
+//            @RequestParam("image") String image,
+//            @RequestParam("email") String email,
+//            RedirectAttributes redirectAttributes) {
+//
+//        if (p != null && p.getName().equals(username)) {
+//            AppUserEntity appUserEntity = appUserJPARepository.findByUsername(username);
+//            appUserEntity.setUsername(username);
+//            appUserEntity.setDateOfBirth(dateOfBirth);
+//            appUserEntity.setCountry(country);
+//            appUserEntity.setImage(image);
+//            appUserEntity.setInterests(interests);
+//            appUserEntity.setEmail(email);
+//            appUserJPARepository.save(appUserEntity);
+//            redirectAttributes.addFlashAttribute("successMessage", "Profile updated successfully!");
+//        } else {
+//            redirectAttributes.addFlashAttribute("errorMessage", "Cannot edit another user's profile page.");
+//        }
+//        return "redirect:/profile";
+//    }
 }

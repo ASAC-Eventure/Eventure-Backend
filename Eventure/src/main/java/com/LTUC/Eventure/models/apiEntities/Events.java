@@ -1,15 +1,12 @@
 package com.LTUC.Eventure.models.apiEntities;
 
-import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import java.util.List;
+@Getter
+@NoArgsConstructor
 public class Events {
     private List<Event> events;
 
-
-    public Events() {
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
 }
