@@ -1,6 +1,13 @@
 package com.LTUC.Eventure.models.apiEntities;
 
+import lombok.*;
+
 import javax.persistence.*;
+@Setter
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Location {
     @Id
@@ -11,31 +18,6 @@ public class Location {
     private String name;
     @OneToOne
     private Address address;
-
-    public Location() {
-    }
-
-    public Location(Address address, String name) {
-        this.address = address;
-        this.name=name;
-    }
-
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @Override
     public String toString() {
