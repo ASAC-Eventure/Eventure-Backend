@@ -1,5 +1,6 @@
 package com.LTUC.Eventure.models;
 
+<<<<<<< HEAD
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.Entity;
@@ -12,6 +13,23 @@ import java.util.Collection;
 public class AppUserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+=======
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
+
+@Entity
+@Data
+@NoArgsConstructor
+public class AppUserEntity implements UserDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
+>>>>>>> origin/reneh-comment
     private Long id;
     private String username;
     private String email;
@@ -20,10 +38,15 @@ public class AppUserEntity implements UserDetails {
     private String interests;
     private String image;
     private String dateOfBirth;
+<<<<<<< HEAD
 
         // constructors
     public AppUserEntity() {
     }
+=======
+    @OneToMany(mappedBy = "user")
+    private List<CommentSectionEntity> commentSection;
+>>>>>>> origin/reneh-comment
 
     public AppUserEntity(String username, String email, String password, String country, String image, String interests, String dateOfBirth) {
         this.username = username;
@@ -35,9 +58,13 @@ public class AppUserEntity implements UserDetails {
         this.dateOfBirth = dateOfBirth;
     }
     @Override
+<<<<<<< HEAD
     public boolean isAccountNonExpired() {
         return true;
     }
+=======
+    public boolean isAccountNonExpired() {return true;}
+>>>>>>> origin/reneh-comment
     @Override
     public boolean isAccountNonLocked() {
         return true;
@@ -54,6 +81,7 @@ public class AppUserEntity implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
+<<<<<<< HEAD
         // getters
     public Long getId() {
         return id;
@@ -115,5 +143,8 @@ public class AppUserEntity implements UserDetails {
     public void setImage(String image) {
         this.image = image;
     }
+=======
+
+>>>>>>> origin/reneh-comment
 }
 

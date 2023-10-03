@@ -16,6 +16,7 @@
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -41,13 +42,544 @@
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
       "image": "https://www.jambase.com/wp-content/uploads/2023/07/unsound-krakow-2023-featured-e1690224777828-1480x832.png"
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Beat Hotel",
+      "startDate": "2023-09-27",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/beat-hotel-2023",
+      "location": {
+        "name": "Hotel Boutique \u0026 Spa Las Mimosas",
+        "address": {
+          "streetAddress": "29 Carrer de Burgos",
+          "addressLocality": "Sant Josep de sa Talaia",
+          "addressCountry": {
+            "name": "Spain"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Ziro Festival of Music",
+      "startDate": "2023-09-27",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/ziro-festival-of-music-2023",
+      "location": {
+        "name": "Ziro Music Festival Venue",
+        "address": {
+          "streetAddress": "",
+          "addressLocality": "Ziro",
+          "addressCountry": {
+            "name": "India"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "A3C Festival",
+      "startDate": "2023-09-27",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/a3c-festival-2023",
+      "location": {
+        "name": "Georgia Railroad Freight Depot",
+        "address": {
+          "streetAddress": "65 Martin Luther King, Jr.",
+          "addressLocality": "Atlanta",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Same Same But Different",
+      "startDate": "2023-09-28",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/same-same-but-different-2023",
+      "location": {
+        "name": "Lake Perris State Recreation Area",
+        "address": {
+          "streetAddress": "17801 Lake Perris Dr",
+          "addressLocality": "Perris",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Trans-Pecos Festival of Music + Love",
+      "startDate": "2023-09-28",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/trans-pecos-festival-of-music-love-2023",
+      "location": {
+        "name": "El Cosmico",
+        "address": {
+          "streetAddress": "802 S Highland Ave",
+          "addressLocality": "Marfa",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Highlands Music Festival",
+      "startDate": "2023-09-28",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/highlands-music-festival-2023",
+      "location": {
+        "name": "Camp Walden",
+        "address": {
+          "streetAddress": "38483 Highway 28",
+          "addressLocality": "Palmer Rapids",
+          "addressCountry": {
+            "name": "Canada"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "First City Music Festival",
+      "startDate": "2023-09-28",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/first-city-music-festival-2023",
+      "location": {
+        "name": "The French Commons",
+        "address": {
+          "streetAddress": "411 Willow St",
+          "addressLocality": "Vincennes",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Gonerfest 20",
+      "startDate": "2023-09-28",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/gonerfest-20-2023",
+      "location": {
+        "name": "Railgarten",
+        "address": {
+          "streetAddress": "2166 Central Ave",
+          "addressLocality": "Memphis",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Folkfaces Fest",
+      "startDate": "2023-09-28",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/folkfaces-fest-2023",
+      "location": {
+        "name": "Cherry Hill Campgrounds",
+        "address": {
+          "streetAddress": "1516 Sumner Rd.",
+          "addressLocality": "Corfu",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Lotus World Music \u0026 Arts Festival",
+      "startDate": "2023-09-28",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/lotus-world-music-arts-festival-2023",
+      "location": {
+        "name": "Lotus World Music \u0026 Arts Festival",
+        "address": {
+          "streetAddress": "",
+          "addressLocality": "Bloomington",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Oceans Calling Festival",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/oceans-calling-festival-2023",
+      "location": {
+        "name": "Ocean City Inlet",
+        "address": {
+          "streetAddress": "809 S Atlantic Ave",
+          "addressLocality": "Ocean City",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Ohana Festival",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/ohana-festival-2023",
+      "location": {
+        "name": "Doheny State Beach",
+        "address": {
+          "streetAddress": "25300 Dana Point Harbor Drive",
+          "addressLocality": "Dana Point",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Mempho Music Festival",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/mempho-music-festival-2023",
+      "location": {
+        "name": "Radians Amphitheater at Memphis Botanic Gardens",
+        "address": {
+          "streetAddress": "750 Cherry Rd",
+          "addressLocality": "Memphis",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Hardly Strictly Bluegrass Festival",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/hardly-strictly-bluegrass-festival-2023",
+      "location": {
+        "name": "Golden Gate Park",
+        "address": {
+          "streetAddress": "Golden Gate Park",
+          "addressLocality": "San Francisco",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Caloundra Music Festival",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/caloundra-music-festival-2023",
+      "location": {
+        "name": "Kings Beach Amphitheatre",
+        "address": {
+          "streetAddress": "De Vene Avenue",
+          "addressLocality": "Kings Beach",
+          "addressCountry": {
+            "name": "Australia"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Wanderer Festival",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/wanderer-festival-2023",
+      "location": {
+        "name": "Pambula Beach",
+        "address": {
+          "streetAddress": "190 Pambula Beach Road",
+          "addressLocality": "Pambula Beach",
+          "addressCountry": {
+            "name": "Australia"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Neptune Festival’s Boardwalk Weekend",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/neptune-festivals-boardwalk-weekend-2023",
+      "location": {
+        "name": "Neptune Park",
+        "address": {
+          "streetAddress": "3001 Atlantic Avenue",
+          "addressLocality": "Virginia Beach",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Sisters Folk Festival",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/sisters-folk-festival-2023",
+      "location": {
+        "name": "Sisters Folk Festival",
+        "address": {
+          "streetAddress": "204 W Adams Ave",
+          "addressLocality": "Sisters",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Annapolis Baygrass Music Festival",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/annapolis-baygrass-music-festival-2023",
+      "location": {
+        "name": "Sandy Point State Park",
+        "address": {
+          "streetAddress": "1100 East College Parkway",
+          "addressLocality": "Annapolis",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Sand Music Festival",
+      "startDate": "2023-09-29",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/sand-music-festival-2023",
+      "location": {
+        "name": "Sunbird Nkopola Lodge",
+        "address": {
+          "streetAddress": "Nkopola Dr",
+          "addressLocality": "Nkopola",
+          "addressCountry": {
+            "name": "Malawi"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Portola",
+      "startDate": "2023-09-30",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/portola-2023",
+      "location": {
+        "name": "Pier 80",
+        "address": {
+          "streetAddress": "Pier 80",
+          "addressLocality": "San Francisco",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "All Things Go Music Festival",
+      "startDate": "2023-09-30",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/all-things-go-music-festival-2023",
+      "location": {
+        "name": "Merriweather Post Pavilion",
+        "address": {
+          "streetAddress": "10475 Little Patuxent Parkway",
+          "addressLocality": "Columbia",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Sound On Sound",
+      "startDate": "2023-09-30",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/sound-on-sound-2023",
+      "location": {
+        "name": "Seaside Park",
+        "address": {
+          "streetAddress": "1 Park Ave.",
+          "addressLocality": "Bridgeport",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Foxfire Music \u0026 Arts Festival",
+      "startDate": "2023-09-30",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/foxfire-music-arts-festival-2023",
+      "location": {
+        "name": "Ashland Riverfront Park",
+        "address": {
+          "streetAddress": "50 15th St",
+          "addressLocality": "Ashland",
+          "addressCountry": {
+            "name": "United States"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Festival Não Existe",
+      "startDate": "2023-09-30",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/festival-nao-existe-2023",
+      "location": {
+        "name": "Fabriketa",
+        "address": {
+          "streetAddress": "81 Rua do Bucolismo",
+          "addressLocality": "Sao Paulo",
+          "addressCountry": {
+            "name": "Brazil"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Festival",
+      "name": "Habitat – Rainbow’s End",
+      "startDate": "2023-09-30",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/festival/habitat-rainbows-end-2023",
+      "location": {
+        "name": "River Oasis",
+        "address": {
+          "streetAddress": "97V6+M3",
+          "addressLocality": "Slanghoek",
+          "addressCountry": {
+            "name": "South Africa"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+>>>>>>> origin/reneh-comment
     },
     {
       "@type": "Concert",
       "name": "Drake at Bridgestone Arena",
+<<<<<<< HEAD
       "startDate": "2023-10-02T19:00:00",
       "endDate": "2023-10-02",
       "url": "https://www.jambase.com/show/drake-bridgestone-arena-20231002",
+=======
+      "startDate": "2023-10-01T19:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/drake-bridgestone-arena-20231001",
+>>>>>>> origin/reneh-comment
       "location": {
         "name": "Bridgestone Arena",
         "address": {
@@ -58,6 +590,7 @@
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -200,11 +733,29 @@
         "address": {
           "streetAddress": "2727 East D Street",
           "addressLocality": "Tacoma",
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Coldplay at The Rose Bowl",
+      "startDate": "2023-10-01T18:30:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/coldplay-the-rose-bowl-20231001",
+      "location": {
+        "name": "The Rose Bowl",
+        "address": {
+          "streetAddress": "1001 Rose Bowl Dr.",
+          "addressLocality": "Pasadena",
+>>>>>>> origin/reneh-comment
           "addressCountry": {
             "name": "United States"
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -242,11 +793,29 @@
         "address": {
           "streetAddress": "800 W. Olympic Blvd., Ste. A245",
           "addressLocality": "Los Angeles",
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Maluma at Smart Financial Centre at Sugar Land",
+      "startDate": "2023-10-01T19:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/maluma-smart-financial-centre-at-sugar-land-20231001",
+      "location": {
+        "name": "Smart Financial Centre at Sugar Land",
+        "address": {
+          "streetAddress": "18111 Lexington Blvd.",
+          "addressLocality": "Sugar Land",
+>>>>>>> origin/reneh-comment
           "addressCountry": {
             "name": "United States"
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -409,12 +978,29 @@
         "name": "The Midland Theatre",
         "address": {
           "streetAddress": "1228 Main",
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Beyoncé at Arrowhead Stadium",
+      "startDate": "2023-10-01",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/beyonc%c3%a9-arrowhead-stadium-20231001",
+      "location": {
+        "name": "Arrowhead Stadium",
+        "address": {
+          "streetAddress": "1 Arrowhead Drive",
+>>>>>>> origin/reneh-comment
           "addressLocality": "Kansas City",
           "addressCountry": {
             "name": "United States"
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -452,11 +1038,29 @@
         "address": {
           "streetAddress": "1508 Gallatin Pike South",
           "addressLocality": "Nashville",
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Beyoncé at Arrowhead Stadium",
+      "startDate": "2023-10-01T19:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/beyonce-arrowhead-stadium-20231001",
+      "location": {
+        "name": "Arrowhead Stadium",
+        "address": {
+          "streetAddress": "1 Arrowhead Drive",
+          "addressLocality": "Kansas City",
+>>>>>>> origin/reneh-comment
           "addressCountry": {
             "name": "United States"
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -473,11 +1077,29 @@
         "address": {
           "streetAddress": "201 41st Street South",
           "addressLocality": "Birmingham",
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Guns N\u0027 Roses at Snapdragon Stadium",
+      "startDate": "2023-10-01T18:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/guns-n-roses-snapdragon-stadium-20231001",
+      "location": {
+        "name": "Snapdragon Stadium",
+        "address": {
+          "streetAddress": "2101 Stadium Way",
+          "addressLocality": "San Diego",
+>>>>>>> origin/reneh-comment
           "addressCountry": {
             "name": "United States"
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -494,11 +1116,49 @@
         "address": {
           "streetAddress": "800 W Olympic Blvd",
           "addressLocality": "Los Angeles",
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "David Guetta at Festival Park Kad?köy",
+      "startDate": "2023-10-01T15:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/david-guetta-festival-park-kadikoy-20231001",
+      "location": {
+        "name": "Festival Park Kad?köy",
+        "address": {
+          "streetAddress": "Cafera?a Mh, R?ht?m Cd. No:1",
+          "addressLocality": "Istanbul",
+          "addressCountry": {
+            "name": "Turkey"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Lady Gaga at Dolby Live at Park MGM",
+      "startDate": "2023-10-01T20:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/lady-gaga-dolby-live-at-park-mgm-20231001",
+      "location": {
+        "name": "Dolby Live at Park MGM",
+        "address": {
+          "streetAddress": "3770 Las Vegas Blvd South",
+          "addressLocality": "Las Vegas",
+>>>>>>> origin/reneh-comment
           "addressCountry": {
             "name": "United States"
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -515,11 +1175,29 @@
         "address": {
           "streetAddress": "1001 Truxtun Ave",
           "addressLocality": "Bakersfield",
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Travis Scott at TD Garden",
+      "startDate": "2023-10-01T19:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/travis-scott-td-garden-20231001",
+      "location": {
+        "name": "TD Garden",
+        "address": {
+          "streetAddress": "100 Legends Way",
+          "addressLocality": "Boston",
+>>>>>>> origin/reneh-comment
           "addressCountry": {
             "name": "United States"
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -599,11 +1277,29 @@
         "address": {
           "streetAddress": "1902 Blake St",
           "addressLocality": "Denver",
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Arctic Monkeys at The Kia Forum",
+      "startDate": "2023-10-01T20:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/arctic-monkeys-the-kia-forum-20231001",
+      "location": {
+        "name": "The Kia Forum",
+        "address": {
+          "streetAddress": "3900 W. Manchester Blvd.",
+          "addressLocality": "Inglewood",
+>>>>>>> origin/reneh-comment
           "addressCountry": {
             "name": "United States"
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -620,11 +1316,69 @@
         "address": {
           "streetAddress": "One Center Court",
           "addressLocality": "Portland",
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "TWICE at Philippine Arena",
+      "startDate": "2023-10-01T19:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/twice-philippine-arena-20231001",
+      "location": {
+        "name": "Philippine Arena",
+        "address": {
+          "streetAddress": "Ciudad de Victoria, Santa Maria",
+          "addressLocality": "Bulacan",
+          "addressCountry": {
+            "name": "Philippines"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Charlie Puth at Etihad Arena",
+      "startDate": "2023-10-01T19:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/charlie-puth-etihad-arena-20231001",
+      "location": {
+        "name": "Etihad Arena",
+        "address": {
+          "streetAddress": "Yas Drive",
+          "addressLocality": "Abu Dhabi",
+          "addressCountry": {
+            "name": "United Arab Emirates"
+          }
+        }
+      },
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Concert",
+      "name": "Shreya Ghoshal at Agganis Arena",
+      "startDate": "2023-10-01T19:00:00",
+      "endDate": "2023-10-01",
+      "url": "https://www.jambase.com/show/shreya-ghoshal-agganis-arena-20231001",
+      "location": {
+        "name": "Agganis Arena",
+        "address": {
+          "streetAddress": "925 Commonwealth Ave",
+          "addressLocality": "Boston",
+>>>>>>> origin/reneh-comment
           "addressCountry": {
             "name": "United States"
           }
         }
       },
+<<<<<<< HEAD
       "price": 0,
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
@@ -839,6 +1593,11 @@
       "isAccessibleForFree": false,
       "priceCurrency": "USD",
       "image": "https://www.jambase.com/wp-content/uploads/2017/02/bonnie-tyler-bonnie-tyler-400a990d-d03d-4a0b-95f5-2bbef177b386_245231_TABLET_LANDSCAPE_16_9-1480x832.jpg"
+=======
+      "price": 0.0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD"
+>>>>>>> origin/reneh-comment
     }
   ]
 }

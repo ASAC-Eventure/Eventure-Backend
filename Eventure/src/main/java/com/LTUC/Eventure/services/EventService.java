@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
+<<<<<<< HEAD
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -24,6 +25,19 @@ public class EventService {
     AddressCountryJPARepository addressCountryJPARepository;
     Events events;
 
+=======
+import java.net.URL;
+import java.net.HttpURLConnection;
+@Service
+public class EventService {
+
+    EventsJPARepository eventsJPARepository;
+
+    LocationJPARepository locationJPARepository;
+
+    AddressJPARepository addressJPARepository;
+
+    AddressCountryJPARepository addressCountryJPARepository;
 
     @Autowired
     public EventService(EventsJPARepository eventsJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository, AddressCountryJPARepository addressCountryJPARepository) {
@@ -53,9 +67,8 @@ public class EventService {
                 events = gson.fromJson(json, Events.class);
             }
             connection.disconnect();
-            save_fromAPI_toDB(events);
-        } catch (IOException e) {
-            // Handle exception (e.g., connection error)
+            save_fromAPI_toDB(events);}
+         catch (IOException e) {
             System.out.println("Error in Making Connection to the API- " + e);
         }
     }
@@ -85,13 +98,17 @@ public class EventService {
         locationJPARepository.deleteAll();
     }
 
-    public void WriteToFile(String path, Events events) {  // for testing
-        try (FileWriter writer = new FileWriter(new File(path))) {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            gson.toJson(events, writer);
 
+            } else
+
+    {
+        System.out.println("Can not read and save.");
+    }
         } catch (IOException e) {
+            // Handle exception (e.g., connection error)
             e.printStackTrace();
         }
     }
+
+
 }
