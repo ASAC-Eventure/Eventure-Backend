@@ -1,24 +1,40 @@
 package com.LTUC.Eventure.controllers;
 
+import com.LTUC.Eventure.models.apiEntities.Event;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.LTUC.Eventure.repositories.apiJPARepositories.EventsJPARepository;
 import com.LTUC.Eventure.services.EventService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.servlet.view.RedirectView;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class GeneralControllers {
     @Autowired
     AppUserJPARepository appUserJPARepository;
+    @Autowired
+    EventsJPARepository eventsJPARepository;
+    @Autowired
+    EventService eventService;
+    @Value("${apiSecretKey}")
+    String myKey;
 
     @GetMapping("/")
-    public String Home() {
+    public String Home(Model m) {
+
+        String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey;
+        eventService.fetchAndSaveEventsFromApi(apiData);
+        List<Event> events = eventsJPARepository.findAll();
+        List<Event> mostRatedEvents = events.stream().limit(10).collect(Collectors.toList());
+        m.addAttribute("mostRatedEvents", mostRatedEvents);
         return "index";
     }
 
@@ -29,8 +45,6 @@ public class GeneralControllers {
 
     @GetMapping("/aboutUs")
     public String aboutUs(Model model) {
-
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
 
@@ -40,17 +54,6 @@ public class GeneralControllers {
             model.addAttribute("isUsernameFound", "yes");
         }
         return "aboutUs.html";
-    }
-
-    @Autowired
-    EventService eventService;
-    String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=357b5a27-55f2-487b-9b1c-83f6ad689c3e&page=1";
-
-    @GetMapping("/testapi")
-    @ResponseBody
-    public String showIndex() {
-        eventService.fetchAndSaveEventsFromApi(apiData);
-        return "Welcome";
     }
 
 

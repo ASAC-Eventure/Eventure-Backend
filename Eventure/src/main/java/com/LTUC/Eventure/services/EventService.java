@@ -13,18 +13,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
-import java.net.URL;
 import java.net.HttpURLConnection;
+import java.net.URL;
+
 @Service
 public class EventService {
-
     EventsJPARepository eventsJPARepository;
-
     LocationJPARepository locationJPARepository;
-
     AddressJPARepository addressJPARepository;
-
     AddressCountryJPARepository addressCountryJPARepository;
+    Events events;
+
 
     @Autowired
     public EventService(EventsJPARepository eventsJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository, AddressCountryJPARepository addressCountryJPARepository) {
@@ -37,21 +36,12 @@ public class EventService {
     @Transactional
     public void fetchAndSaveEventsFromApi(String apiUrl) {
         try {
-            // Open a connection to the API URL
             URL url = new URL(apiUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-            // Set request method (GET in this case)
             connection.setRequestMethod("GET");
-
-            // Get the response code
             int responseCode = connection.getResponseCode();
-
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                // Read and discard the first 10 lines
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-//
-                // Read and process the JSON data
                 Gson gson = new Gson();
                 StringBuilder apiData = new StringBuilder();
                 String line;
@@ -59,31 +49,40 @@ public class EventService {
                     apiData.append(line);
                 }
                 reader.close();
-
-                // Deserialize the JSON data
                 String json = apiData.toString();
-//                Event[] events = gson.fromJson(json, Event[].class);
-                Events events = gson.fromJson(json, Events.class);
-                WriteToFile("C:\\Users\\USER\\newforGradle\\EventureBackend\\Eventure-Backend\\Eventure\\src\\main\\resources\\saif.json.txt", events);
-
-                // Save events to the database
-                for (Event event : events.getEvents()) {
-                    addressCountryJPARepository.save(event.getLocation().getAddress().getAddressCountry());
-                    addressJPARepository.save(event.getLocation().getAddress());
-                    locationJPARepository.save(event.getLocation());
-                    event.setPrice(50 + (Math.random() * (250 - 50)));                  
-                    eventsJPARepository.save(event);
-                }
-            } else {
-                System.out.println("Can not read and save.");
+                events = gson.fromJson(json, Events.class);
             }
-
-            // Close the connection
             connection.disconnect();
+            save_fromAPI_toDB(events);
         } catch (IOException e) {
             // Handle exception (e.g., connection error)
-            e.printStackTrace();
+            System.out.println("Error in Making Connection to the API- " + e);
         }
+    }
+
+    public void save_fromAPI_toDB(Events eventsFromApi) {
+        try {
+            // write to this file for debug only
+            WriteToFile("C:\\Users\\Saify\\IdeaProjects\\Eventure-Backend\\Eventure\\src\\main\\resources\\saif.json.txt", events);
+            clearAllTablesInDB();
+            // Save events to the database
+            for (Event event : eventsFromApi.getEvents()) {
+                addressCountryJPARepository.save(event.getLocation().getAddress().getAddressCountry());
+                addressJPARepository.save(event.getLocation().getAddress());
+                locationJPARepository.save(event.getLocation());
+                event.setPrice((int) (50 + (Math.random() * (250 - 50))));
+                eventsJPARepository.save(event);
+            }
+        } catch (Exception e) {
+            System.out.println("Error in Saving Events to DB- " + e);
+        }
+    }
+
+    public void clearAllTablesInDB() {
+        eventsJPARepository.deleteAll();
+        addressCountryJPARepository.deleteAll();
+        addressJPARepository.deleteAll();
+        locationJPARepository.deleteAll();
     }
 
     public void WriteToFile(String path, Events events) {  // for testing
@@ -95,6 +94,4 @@ public class EventService {
             e.printStackTrace();
         }
     }
-
-
 }
