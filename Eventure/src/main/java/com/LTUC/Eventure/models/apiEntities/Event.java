@@ -2,16 +2,16 @@ package com.LTUC.Eventure.models.apiEntities;
 
 import com.LTUC.Eventure.models.AppUserEntity;
 import lombok.*;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Getter
+@Data
 @NoArgsConstructor
-@Setter
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private Long id;
     private String name;
     private String startDate;
@@ -25,8 +25,7 @@ public class Event {
     @ManyToOne
     private AppUserEntity user;
 
-
-    public Event( String name, String startDate, String endDate, String url, Location location, int price, String image, AppUserEntity user) {
+    public Event(String name, String startDate, String endDate, String url, Location location, int price, String image, AppUserEntity user) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -36,8 +35,5 @@ public class Event {
         this.image = image;
         this.user = user;
     }
-
-
-
 
 }

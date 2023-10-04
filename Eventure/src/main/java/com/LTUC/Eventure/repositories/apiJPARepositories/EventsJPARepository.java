@@ -10,7 +10,8 @@ import java.util.Optional;
 
 public interface EventsJPARepository extends JpaRepository<Event, Long> {
     List<Event> findByLocation_Address_AddressCountry_Name(String name);
+
     Events findByUser_Id(Long Id);
 
-    Optional<Event> findByUserAndName(AppUserEntity user, String eventName);
+    Event findByName(String eventName);
 }
