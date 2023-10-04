@@ -1,43 +1,58 @@
 package com.LTUC.Eventure.models;
 
+import com.LTUC.Eventure.Enum.Roles;
+import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
+import com.LTUC.Eventure.repositories.RoleJPARepository;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Collection;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+@Setter
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Table(name = "eventure_users")
 public class AppUserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "user_name",nullable = false)
     private String username;
+    @Column(name = "email",nullable = false)
     private String email;
+    @Column(name = "password",nullable = false)
     private String password;
+    @Column(name = "country",nullable = false)
     private String country;
-    private String interests;
-    private String image;
-    private String dateOfBirth;
 
-        // constructors
-    public AppUserEntity() {
-    }
-
-    public AppUserEntity(String username, String email, String password, String country, String image, String interests, String dateOfBirth) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.country = country;
-        this.image=image;
-        this.interests = interests;
-        this.dateOfBirth = dateOfBirth;
-    }
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
+
+    @Column(name = "interests")
+    private String interests;
+    @Column(name = "image")
+    private String image;
+    @Column(name = "date_Of_Birth", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateOfBirth;
+
+    @OneToOne
+    @JoinColumn(name ="role_id")
+    private RoleEntity roles ;
+
     @Override
     public boolean isAccountNonLocked() {
         return true;
@@ -52,68 +67,31 @@ public class AppUserEntity implements UserDetails {
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-        // getters
-    public Long getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
+        RoleEntity role= getRoles();
+        List<SimpleGrantedAuthority> authorities= new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role.getTitle().name()));
+        return authorities;
     }
 
-    public String getEmail() {
-        return email;
-    }
+    //    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        RoleEntity role = getRoles();
+//        if (role != null) {
+//            return Collections.singletonList(new SimpleGrantedAuthority(role.getTitle().name()));
+//        }
+//        return Collections.emptyList();
+//    }
 
+
+    @Override
     public String getPassword() {
         return password;
     }
 
-    public String getCountry() {
-        return country;
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public String getInterests() {
-        return interests;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-            //  setters
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setInterests(String interests) {
-        this.interests = interests;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 }
 
