@@ -34,9 +34,6 @@ public class EventsController {
     @Autowired
     AppUserJPARepository appUserRepository;
 
-//    @Autowired
-//    CommentSectionJPARepository commentSectionJPARepository;
-
     @Value("${apiSecretKey}")
     String myKey;
 
