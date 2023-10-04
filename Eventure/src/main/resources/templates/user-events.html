@@ -10,6 +10,14 @@
 
 <div class="container">
     <h1>My Events</h1>
+
+    <div th:if="${successMessageBookedEvent}" class="alert alert-success">
+        <span th:text="${successMessageBookedEvent}"></span>
+    </div>
+    <div th:if="${errorMessageBookedEvent}" class="alert alert-danger">
+        <span th:text="${errorMessageBookedEvent}"></span>
+    </div>
+
     <div class="row">
         <div th:each="event : ${userEvents}" class="col-md-3">
             <div class="card mb-3">

@@ -23,7 +23,6 @@
 			<div th:replace="/fragments/loginError :: user-error1" ></div>
 
 			<input type="email" name="email" placeholder="Email" required />
-			<div th:if="${emailError}" class="error-message">${emailError}</div>
 
 			<input type="password" name="password" placeholder="Password" required />
 			<div th:replace="/fragments/loginError :: user-error2" ></div>

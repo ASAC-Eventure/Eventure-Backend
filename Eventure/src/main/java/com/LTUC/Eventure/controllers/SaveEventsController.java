@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -34,22 +35,20 @@ public class SaveEventsController {
         this.addressJPARepository = addressJPARepository;
     }
 
-    @GetMapping("/myevents")
+    @GetMapping("/myEvents")
     public String userPage(Model model, Principal p) {
         String username = p.getName();
         if (username != null) {
             AppUserEntity user = userJPARepo.findByUsername(username);
-
-            // Assuming you have a method in userJPARepo to fetch events for a user
             List<Event> userEvents = user.getBookedEvents();
-            System.out.println(userEvents);
+//            System.out.println(userEvents);
             model.addAttribute("userEvents", userEvents);
         }
         return "user-events.html";
     }
 
 @PostMapping("/book-event")
-public RedirectView bookEvent(Principal p,
+public RedirectView bookEvent(Principal p, RedirectAttributes redir,
                               @RequestParam String eventName,
                               @RequestParam String eventStartDate,
                               @RequestParam String eventEndDate,
@@ -63,12 +62,9 @@ public RedirectView bookEvent(Principal p,
 
     String username = p.getName();
     if (username != null) {
-        AppUserEntity user = userJPARepo.findByUsername(username);
+            AppUserEntity user = userJPARepo.findByUsername(username);
 
-        // Check if the Location already exists in the database or create a new one
-       // Location location = locationJPARepository.f(eventLocationName);
-//        if (location == null) {
-           Location location = new Location();
+            Location location = new Location();
             location.setName(eventLocationName);
 
             Address address = new Address();
@@ -83,15 +79,22 @@ public RedirectView bookEvent(Principal p,
 
         addressCountryJPARepository.save(addressCountry);
         addressJPARepository.save(address);
-            // Save the Location to the database
-            locationJPARepository.save(location);
-        //}
+        locationJPARepository.save(location);
 
         Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location, (int) (50 + (Math.random() * (250 - 50))), image, user);
+        Event bookedEvent = eventsJPARepo.findByName(eventName);
+        if(bookedEvent==null){
+            eventsJPARepo.save(event);
+            redir.addFlashAttribute("successMessageBookedEvent","Added Successfully!");
+        }else if (!user.getBookedEvents().stream().anyMatch(e->e.getName().equals(eventName))){
+            eventsJPARepo.save(event);
+            redir.addFlashAttribute("successMessageBookedEvent","Added Successfully!");
 
-        eventsJPARepo.save(event);
+        }else{
+            redir.addFlashAttribute("errorMessageBookedEvent","Event Already Booked!");
+        }
     }
-    return new RedirectView("/myevents");
+    return new RedirectView("/myEvents");
 }
 
 }

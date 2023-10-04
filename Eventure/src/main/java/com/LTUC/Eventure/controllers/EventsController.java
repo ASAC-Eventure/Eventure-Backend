@@ -1,9 +1,6 @@
 package com.LTUC.Eventure.controllers;
 
-
-import com.LTUC.Eventure.models.apiEntities.Event;
 import com.LTUC.Eventure.models.apiEntities.Events;
-import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.EventsJPARepository;
 import com.LTUC.Eventure.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,32 +9,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.transaction.Transactional;
-import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Controller
 public class EventsController {
-    private EventsJPARepository eventsJPARepository;
-    private EventService eventService;
-
 
     @Autowired
-    public EventsController(EventsJPARepository eventsJPARepository, EventService eventService) {
-        this.eventsJPARepository = eventsJPARepository;
-        this.eventService = eventService;
-    }
-
+    private EventsJPARepository eventsJPARepository;
+    @Autowired
+    private EventService eventService;
     @Value("${apiSecretKey}")
     String myKey;
-
 
     @GetMapping("/events")
     public String showEvents(@RequestParam(name = "countryName", required = false) String countryName,
@@ -56,7 +39,6 @@ public class EventsController {
             String startDateString = startDate.format(formatter);
             String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey + "&geoCountryIso2=" + countryISO2 +"&eventDateFrom=" + startDateString;
             Events  country_dateEvents=  eventService.fetchAndSaveEventsFromApi(apiData);
-           // List<Event> country_dateEvents = eventsJPARepository.findAll();
             m.addAttribute("events", country_dateEvents.getEvents());
         }
         else if (countryName.length()>0) {
@@ -70,7 +52,7 @@ public class EventsController {
             System.out.println(countryISO2);
             String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey + "&geoCountryIso2=" + countryISO2 ;
             Events countryEvents= eventService.fetchAndSaveEventsFromApi(apiData);
-           // List<Event> countryEvents = eventsJPARepository.findAll();
+
             m.addAttribute("events", countryEvents.getEvents());
         }
        else if (startDate != null) {
@@ -80,10 +62,10 @@ public class EventsController {
             String startDateString = startDate.format(formatter);
             String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey + "&eventDateFrom=" + startDateString;
             Events dateEvents= eventService.fetchAndSaveEventsFromApi(apiData);
-            //List<Event> dateEvents = eventsJPARepository.findAll();
+
             m.addAttribute("events", dateEvents.getEvents());
         }
-        return "events.html";
+        return "searchedEvents.html";
     }
 
 }

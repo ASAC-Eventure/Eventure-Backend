@@ -9,4 +9,6 @@ import java.util.List;
 public interface EventsJPARepository extends JpaRepository<Event, Long> {
     List<Event> findByLocation_Address_AddressCountry_Name(String name);
     Events findByUser_Id(Long Id);
+
+    Event findByName(String eventName);
 }

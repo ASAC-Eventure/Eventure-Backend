@@ -5,7 +5,6 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -23,7 +22,4 @@ public class Location {
         this.address = address;
         this.name=name;
     }
-
-
-
 }
