@@ -115,5 +115,9 @@ public class AppUserEntity implements UserDetails {
     public void setImage(String image) {
         this.image = image;
     }
+
+//    public Collection<Object> getTickets() {
+//        return this.ticket = ticket;
+//    }
 }
 

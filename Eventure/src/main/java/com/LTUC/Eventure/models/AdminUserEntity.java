@@ -13,13 +13,17 @@ public class AdminUserEntity {
     Long id;
     private String username;
     private String password;
+    private String email;
+    private String dateOfBirth;
 
     public AdminUserEntity() {
     }
 
-    public AdminUserEntity(String username, String password) {
+    public AdminUserEntity(String username, String password, String email, String dateOfBirth) {
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Long getId() {
@@ -44,5 +48,21 @@ public class AdminUserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

@@ -1,65 +1,222 @@
-/* Center the big container */
-/*body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-}*/
+body {
+    background-color: #f9f9fa
+}
 
-/* Style the big container */
-/*.profile-container {
-    display: flex;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+.user-card-full {
     overflow: hidden;
-    width:50%;
-    height:auto;
-}*/
-
-/* Style the left container */
-.left-container {
-    padding: 20px;
-    text-align: center;
-    background-color:#FF6969;
 }
 
-.profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    border: none;
+    margin-bottom: 30px;
+    width: auto;
+    margin: auto;
+
 }
 
-.profile-name {
-    font-size: 1.5rem;
-    margin-top: 10px;
+.m-r-0 {
+    margin-right: 0px;
 }
 
-/* Style the right container */
-.right-container {
-    flex-grow: 1;
-    padding: 20px;
-    background-color:white;
+.m-l-0 {
+    margin-left: 0px;
 }
 
-.line {
-    position: absolute;
-    bottom: 0; /* Adjust the distance from the bottom as needed */
-    left: 0; /* Adjust the starting point as needed */
-    width: 50%; /* Adjust the length of the line */
-    height: 2px;
-    background-color: #333;
-    border-bottom: 2px solid #333; /* Adjust the line color and thickness as needed */
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px;
 }
 
-.right-container h2 {
-    font-size: 1.2rem;
+.bg-c-lite-green {
+    background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+    background: linear-gradient(to right, #ee5a6f, #f29263);
+}
+
+.user-profile {
+    padding: 10px 0;
+}
+
+.card-block {
+    padding: 1rem;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 5px;
+}
+
+
+
+h6 {
+    font-size: 14px;
+    width: auto;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+@media only screen and (min-width: 1400px){
+p {
+    font-size: 14px;
+}
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
     margin-bottom: 10px;
 }
 
-.right-container p {
-    font-size: 1rem;
-    margin: 5px 0;
+.text-muted {
+    color: #919aa3 !important;
 }
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: auto;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+    display: inline-block;
+}
+
+.user-card-full .social-link li a {
+    font-size: 20px;
+    margin: 0 0 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.open-button{
+    background-color: white;
+    color: black;
+    border: 2px solid #f44336;
+}
+
+.open-button:hover{
+    background-color: #000000;
+    color: white;
+}
+
+
+.interests {
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+/* Style the interest boxes */
+.interest-box {
+    display: inline-block;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 3px 6px; /* Reduced padding */
+    margin-right: 10px;
+    margin-bottom:10px;
+    font-size: 14px;
+    border-radius: 20px; /* Adjusted border-radius */
+    cursor: pointer;
+}
+/* Change box background color when selected */
+.interest-box.selected {
+    background-color: #007BFF;
+    color: #fff;
+    border-color: #007BFF;
+}
+
+
+ /* Popup form styles */
+        /* Full-page background blur effect */
+                .blur-background {
+                    filter: blur(8px);
+                    -webkit-filter: blur(8px);
+                    position: fixed;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    background: rgba(0, 0, 0, 0.8);
+                    z-index: 1;
+                }
+
+                /* Centered popup form styles */
+                .form-popup {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    border: 3px solid #f1f1f1;
+                    z-index: 2;
+                    padding: auto;
+                    max-width: auto;
+                    width: auto;
+                    text-align: center;
+                    background-color: #FFFFFF;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+
+                /* Full-width buttons inside the form */
+                .form-popup .btn {
+                    border-radius: 20px;
+                    	border: 1px solid #FF4B2B;
+                    	background-color: #FF4B2B;
+                    	color: #FFFFFF;
+                    	font-size: 12px;
+                    	font-weight: bold;
+                    	padding: 12px 45px;
+                    	letter-spacing: 1px;
+                    	text-transform: uppercase;
+                    	transition: transform 80ms ease-in;
+                }

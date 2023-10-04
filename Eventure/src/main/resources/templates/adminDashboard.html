@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Admin Dashboard</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Tickets</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td>
+                <ul>
+                    <li th:each="ticket : ${user.tickets}">
+                        <span th:text="${ticket.paid ? 'Paid' : 'Not Paid'}"></span>
+                        <span th:if="${!ticket.paid}">
+                                    <form th:action="@{/admin/deleteTicket}" method="post">
+                                        <input type="hidden" name="ticketId" th:value="${ticket.id}" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </span>
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Add Bootstrap JS (Optional) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
