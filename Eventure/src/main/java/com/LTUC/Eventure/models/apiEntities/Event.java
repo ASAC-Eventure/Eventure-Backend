@@ -1,6 +1,6 @@
 package com.LTUC.Eventure.models.apiEntities;
 
-import com.LTUC.Eventure.models.CommentSectionEntity;
+//import com.LTUC.Eventure.models.CommentSectionEntity;
 import com.google.gson.annotations.SerializedName;
 import lombok.*;
 
@@ -27,10 +27,7 @@ public class Event {
     private boolean isAccessibleForFree;
     private final String priceCurrency = "USD";
 
-    @OneToMany(mappedBy = "event")
-    private List<CommentSectionEntity> comment;
-
-    public Event(String type, String name, String startDate, String endDate, String url, Location location, int price, String image, boolean isAccessibleForFree, List<CommentSectionEntity> comment) {
+    public Event(String type, String name, String startDate, String endDate, String url, Location location, int price, String image, boolean isAccessibleForFree) {
         this.type = type;
         this.name = name;
         this.startDate = startDate;
@@ -40,7 +37,6 @@ public class Event {
         this.price = price;
         this.image = image;
         this.isAccessibleForFree = isAccessibleForFree;
-        this.comment = comment;
     }
 
     public void setPrice(int price) {

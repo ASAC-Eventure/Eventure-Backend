@@ -20,9 +20,17 @@
 			</div>
 			<span>or use your email for registration</span>
 			<input type="text" name="username" placeholder="UserName" required />
+			<div th:replace="/fragments/loginError :: user-error1" ></div>
+
 			<input type="email" name="email" placeholder="Email" required />
+			<div th:if="${emailError}" class="error-message">${emailError}</div>
+
 			<input type="password" name="password" placeholder="Password" required />
-			<input type="text" name="image" placeholder="Profile Picture" />
+			<div th:replace="/fragments/loginError :: user-error2" ></div>
+
+			<input type="password" name="confirmPassword" placeholder="Confirm Password" required />
+			<div th:replace="/fragments/loginError :: user-error3" ></div>
+
 			<select  name="country" id="country" required>
 				<option value="" disabled selected>Select your country</option>
 				<option value="USA">United States</option>
@@ -31,7 +39,9 @@
 				<option value="Europe">Europe</option>
 				<option value="Asia">Asia</option>
 			</select>
+
 			<input type="date" name="dateOfBirth" placeholder="Date Of Birth" required />
+
 			<div class="interests">
 				<label >Interests:</label>
 				<input type="hidden" id="interestsInput" name="interests" required/>
@@ -41,7 +51,6 @@
 				<div class="interest-box" name="interests" data-value="Concerts">Concerts</div>
 			</div>
 			<button class="signUpButton">Sign Up</button>
-			<div th:replace="/fragments/loginError :: user-error" ></div>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -56,7 +65,7 @@
 			<input type="text" name="username" placeholder="Username" required />
 			<input type="password" name="password" placeholder="Password" required />
 <!--			<a href="#">Forgot your password?</a>-->
-			<button>Sign In</button>
+			<button class="loginButton">Sign In</button>
 			<div th:replace="/fragments/loginError :: user-error" ></div>
 		</form>
 	</div>

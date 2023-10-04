@@ -13,11 +13,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.Base64;
 
 @Controller
 public class SignUpAndLoginController {
@@ -34,10 +38,34 @@ public class SignUpAndLoginController {
     @GetMapping("/signup")
     public String signUpPage(Model model){return "signUpAndLogin";}
     @PostMapping("/signup")
-    public RedirectView createUser(String username, String email, String password, String country, String interests, String dateOfBirth,String image, Model model){
+    public RedirectView createUser(RedirectAttributes redir,String username, String email, String password,String confirmPassword, String country, String interests, String dateOfBirth){
         AppUserEntity existingUser = appUserJPARepository.findByUsername(username);
+
+        if (existingUser!=null && !isPasswordValid(password) && !password.equals(confirmPassword)) {
+            redir.addFlashAttribute("errorMessageUser", "Username already exists.");
+            redir.addFlashAttribute("errorMessagePass", "Must be at least 8 characters and contain at least one uppercase letter.");
+            redir.addFlashAttribute("errorMessageConfirmPass", "Passwords do not match.");
+        }
+        if(existingUser!=null && !isPasswordValid(password)){
+            redir.addFlashAttribute("errorMessageUser", "Username already exists.");
+            redir.addFlashAttribute("errorMessagePass", "Must be at least 8 characters and contain at least one uppercase letter.");
+        }
+        if(existingUser!=null && !password.equals(confirmPassword)){
+            redir.addFlashAttribute("errorMessageUser", "Username already exists.");
+            redir.addFlashAttribute("errorMessageConfirmPass", "Passwords do not match.");
+        }
+        if(!isPasswordValid(password) && !password.equals(confirmPassword)){
+            redir.addFlashAttribute("errorMessagePass", "Must be at least 8 characters and contain at least one uppercase letter.");
+            redir.addFlashAttribute("errorMessageConfirmPass", "Passwords do not match.");
+        }
         if(existingUser!=null){
-            model.addAttribute("errorMessage2", "User with this username already exists.");
+            redir.addFlashAttribute("errorMessageUser", "Username already exists.");
+            return new RedirectView("/signup");
+        }if (!isPasswordValid(password)) {
+            redir.addFlashAttribute("errorMessagePass", "Password must be at least 8 characters long and contain at least one uppercase letter.");
+            return new RedirectView("/signup");
+        } if (!password.equals(confirmPassword)) {
+            redir.addFlashAttribute("errorMessageConfirmPass", "Passwords do not match.");
             return new RedirectView("/signup");
         }else {
             AppUserEntity user = new AppUserEntity();
@@ -48,11 +76,6 @@ public class SignUpAndLoginController {
             user.setInterests(String.join(", ", interests));
             user.setDateOfBirth(dateOfBirth);
 
-            if(image==null|| image.isEmpty()){
-                user.setImage("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1214428300?k=6&m=1214428300&s=170667a&w=0&h=hMQs-822xLWFz66z3Xfd8vPog333rNFHU6Q_kc9Sues=");
-            }else{
-                user.setImage(image);
-            }
 
             String encryptedPassword = passwordEncoder.encode(password);
             user.setPassword(encryptedPassword);
@@ -60,7 +83,7 @@ public class SignUpAndLoginController {
             appUserJPARepository.save(user);
             authWithHttpServletRequest(username,password);
         }
-        return new RedirectView("/home");
+        return new RedirectView("/");
     }
     public void authWithHttpServletRequest(String username, String password){
         try {
@@ -68,6 +91,11 @@ public class SignUpAndLoginController {
         }catch (ServletException e){
             e.printStackTrace();
         }
+    }
+
+    //========= password validation method
+    private boolean isPasswordValid(String password) {
+        return password.length() >= 8 && password.matches(".*[A-Z].*");
     }
 
     @GetMapping("/login")
@@ -81,7 +109,7 @@ public class SignUpAndLoginController {
         try {
             Authentication auth = authenticationManager.authenticate(authToken);
             SecurityContextHolder.getContext().setAuthentication(auth);
-            return "redirect:/home";
+            return "redirect:/";
         } catch (AuthenticationException e) {
             System.out.println("AuthenticationException: " + e.getMessage());
             redir.addFlashAttribute("errorMessage", "Invalid email or password");

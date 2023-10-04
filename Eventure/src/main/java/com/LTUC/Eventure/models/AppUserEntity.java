@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Data
@@ -19,22 +18,19 @@ public class AppUserEntity implements UserDetails {
     private String username;
     private String email;
     private String password;
+    private String confirmPassword;
     private String country;
     private String interests;
-    private String image;
     private String dateOfBirth;
-    @OneToMany(mappedBy = "user")
-    private List<CommentSectionEntity> commentSection;
-
-    public AppUserEntity(String username, String email, String password, String country, String image, String interests, String dateOfBirth) {
+    public AppUserEntity(String username, String email, String password, String country, String interests, String dateOfBirth) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.country = country;
-        this.image=image;
         this.interests = interests;
         this.dateOfBirth = dateOfBirth;
     }
+
     @Override
     public boolean isAccountNonExpired() {return true;}
     @Override

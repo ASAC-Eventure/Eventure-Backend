@@ -5,8 +5,13 @@
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/eventDetails.css" rel="stylesheet">
+<!--    <link rel="stylesheet" th:href="@{/css/style.css}" />-->
+<!--    <link rel="stylesheet" th:href="@{/css/searchbar.css}" />-->
+<!--    <link rel="stylesheet" th:href="@{/css/footer.css}" />-->
+
 </head>
 <body>
+<!--<div th:replace="fragments/headerAfter :: header"></div>-->
 <section  class="container">
     <a th:href="@{/events}" class="back-button"><i class="fas fa-arrow-left"></i> Back</a>
     <h1>Event Details</h1>
@@ -24,7 +29,8 @@
                 <div class="even-date">
                     <i class="fa fa-calendar"></i>
                     <time>
-                        <span th:text="${event.startDate.substring(11, 16)}"></span>
+                        <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
+                        <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}"></span>
                     </time>
                 </div>
                 <div class="even-info">
@@ -42,7 +48,7 @@
 </section>
 
 <!-- Comment Section -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <section class="content-item" id="comments">
     <div class="container">
         <div class="row">
@@ -75,12 +81,13 @@
                             <p th:text="${comment.comment}"></p>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
             </div>
         </div>
     </div>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<!--<div th:replace="fragments/footer :: footer"></div>-->
 </body>
 </html>
