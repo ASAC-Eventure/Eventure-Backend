@@ -1,0 +1,25 @@
+{
+  "events": [
+    {
+      "@type": "Festival",
+      "name": "Soundstorm",
+      "startDate": "2023-12-14",
+      "endDate": "2023-12-16",
+      "url": "https://www.jambase.com/festival/soundstorm-2023",
+      "location": {
+        "name": "Banban",
+        "address": {
+          "streetAddress": "Banban",
+          "addressLocality": "Riyadh",
+          "addressCountry": {
+            "name": "Saudi Arabia"
+          }
+        }
+      },
+      "price": 0,
+      "isAccessibleForFree": false,
+      "priceCurrency": "USD",
+      "image": "https://www.jambase.com/wp-content/uploads/2023/09/sound-storm-2023-featured-e1695750813467-1480x832.png"
+    }
+  ]
+}

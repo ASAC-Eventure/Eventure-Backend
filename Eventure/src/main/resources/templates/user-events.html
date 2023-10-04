@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>My Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container">
+    <h1>My Events</h1>
+    <div class="row">
+        <div th:each="event : ${userEvents}" class="col-md-3">
+            <div class="card mb-3">
+                <img th:src="${event.image}" class="card-img-top" alt="Event Image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${event.name}">Event Title</h5>
+                    <p class="card-text">
+                        <span th:text="${event.startDate}">Start Date</span> to
+                        <span th:text="${event.endDate}">End Date</span>
+                    </p>
+                    <p class="card-text">
+                        Location: <span th:text="${event.location.name}">Location Name</span>
+                        <br/>
+                        Address: <span th:text="${event.location.address.streetAddress}">Street Address</span>,
+                        <span th:text="${event.location.address.addressLocality}">Locality</span>,
+                        <span th:text="${event.location.address.addressCountry.name}">Country</span>
+                    </p>
+                    <a th:href="${event.url}" class="btn btn-primary">Go somewhere</a>
+
+                    <!-- Form with hidden inputs -->
+                    <form action="'/un-book-event/'+${event.id}" method="post">
+                        <button type="submit" class="btn btn-success">Un-Book Event</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,10 +1,9 @@
 package com.LTUC.Eventure.controllers;
 
-//import com.LTUC.Eventure.models.AppUserEntity;
-//import com.LTUC.Eventure.models.CommentSectionEntity;
+
 import com.LTUC.Eventure.models.apiEntities.Event;
+import com.LTUC.Eventure.models.apiEntities.Events;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
-//import com.LTUC.Eventure.repositories.CommentSectionJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.EventsJPARepository;
 import com.LTUC.Eventure.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,58 +25,65 @@ import java.util.stream.Collectors;
 
 @Controller
 public class EventsController {
+    private EventsJPARepository eventsJPARepository;
+    private EventService eventService;
+
 
     @Autowired
-    EventService eventService;
-    @Autowired
-    EventsJPARepository theEventJPA;
-    @Autowired
-    AppUserJPARepository appUserRepository;
+    public EventsController(EventsJPARepository eventsJPARepository, EventService eventService) {
+        this.eventsJPARepository = eventsJPARepository;
+        this.eventService = eventService;
+    }
 
     @Value("${apiSecretKey}")
     String myKey;
 
-        @Transactional
-        @GetMapping("/events")
-        public String showEvents(@RequestParam(required = false) String countryName, @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate, Model m) {
-            if (countryName != null) {
-                String countryISO2 = "";
-                String[] countryNameArr = countryName.toUpperCase().split(" ");
-                if (countryNameArr.length >= 2)
-                    countryISO2 = String.valueOf(countryNameArr[0].charAt(0)) + countryNameArr[1].charAt(0);
-                else
-                    countryISO2 = String.valueOf(countryNameArr[0].charAt(0)) + countryNameArr[0].charAt(1);
-                System.out.println(countryISO2);
-                String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=357b5a27-55f2-487b-9b1c-83f6ad689c3e&geoCountryIso2=" + countryISO2;
-                eventService.fetchAndSaveEventsFromApi(apiData);
 
-                List<Event> countryEvents = theEventJPA.findAll();
-                m.addAttribute("countryEvents", countryEvents);
-            }
-            if (startDate != null) {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                String startDateString = startDate.format(formatter);
-                String apiDataForDate = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey + "&eventDateFrom=" + startDateString;
-                eventService.fetchAndSaveEventsFromApi(apiDataForDate);
-                List<Event> dateEvents = theEventJPA.findAll();
-                m.addAttribute("dateEvents", dateEvents);
-            }else {
-                String apiDataForRandom = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey;
-                eventService.fetchAndSaveEventsFromApi(apiDataForRandom);
-                List<Event> events = theEventJPA.findAll();
-                List<Event> mostRatedEvents = events.stream().limit(10).collect(Collectors.toList());
-                m.addAttribute("mostRatedEvents", mostRatedEvents);
-            }
-            return "events.html";
+    @GetMapping("/events")
+    public String showEvents(@RequestParam(name = "countryName", required = false) String countryName,
+                             @RequestParam(name = "startDate", required = false)
+                             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate, Model m) {
+        if (countryName.length()>0 && startDate !=null){
+            System.out.println("inside both conditions");
+            String countryISO2 = "";
+            String[] countryNameArr = countryName.toUpperCase().trim().split(" ");
+            if (countryNameArr.length >= 2)
+                countryISO2 = String.valueOf(countryNameArr[0].charAt(0)) + countryNameArr[1].charAt(0);
+            else
+                countryISO2 = String.valueOf(countryNameArr[0].charAt(0)) + countryNameArr[0].charAt(1);
+            System.out.println(countryISO2);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String startDateString = startDate.format(formatter);
+            String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey + "&geoCountryIso2=" + countryISO2 +"&eventDateFrom=" + startDateString;
+            Events  country_dateEvents=  eventService.fetchAndSaveEventsFromApi(apiData);
+           // List<Event> country_dateEvents = eventsJPARepository.findAll();
+            m.addAttribute("events", country_dateEvents.getEvents());
         }
+        else if (countryName.length()>0) {
+            System.out.println("inside country condition");
+            String countryISO2 = "";
+            String[] countryNameArr = countryName.toUpperCase().trim().split(" ");
+            if (countryNameArr.length >= 2)
+                countryISO2 = String.valueOf(countryNameArr[0].charAt(0)) + countryNameArr[1].charAt(0);
+            else
+                countryISO2 = String.valueOf(countryNameArr[0].charAt(0)) + countryNameArr[0].charAt(1);
+            System.out.println(countryISO2);
+            String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey + "&geoCountryIso2=" + countryISO2 ;
+            Events countryEvents= eventService.fetchAndSaveEventsFromApi(apiData);
+           // List<Event> countryEvents = eventsJPARepository.findAll();
+            m.addAttribute("events", countryEvents.getEvents());
+        }
+       else if (startDate != null) {
+            System.out.println("inside date condition");
 
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String startDateString = startDate.format(formatter);
+            String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey + "&eventDateFrom=" + startDateString;
+            Events dateEvents= eventService.fetchAndSaveEventsFromApi(apiData);
+            //List<Event> dateEvents = eventsJPARepository.findAll();
+            m.addAttribute("events", dateEvents.getEvents());
+        }
+        return "events.html";
+    }
 
-//    @GetMapping("/eventDetails/{id}")
-//    public String showDetails(@PathVariable Long id, Model model) {
-//        Event event = theEventJPA.findById(id).orElseThrow();
-//        if (event != null) {
-//            model.addAttribute("event", event);
-//        }
-//        return "eventDetails.html";
-//    }
 }

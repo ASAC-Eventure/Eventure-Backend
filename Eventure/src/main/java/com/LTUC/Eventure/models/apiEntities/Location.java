@@ -1,11 +1,11 @@
 package com.LTUC.Eventure.models.apiEntities;
 
+import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
@@ -18,8 +18,12 @@ public class Location {
     private String name;
     @OneToOne
     private Address address;
+
     public Location(Address address, String name) {
         this.address = address;
         this.name=name;
     }
+
+
+
 }

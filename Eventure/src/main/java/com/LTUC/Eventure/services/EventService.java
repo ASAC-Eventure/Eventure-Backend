@@ -11,7 +11,6 @@ import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -24,7 +23,6 @@ public class EventService {
     AddressCountryJPARepository addressCountryJPARepository;
     Events events;
 
-
     @Autowired
     public EventService(EventsJPARepository eventsJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository, AddressCountryJPARepository addressCountryJPARepository) {
         this.eventsJPARepository = eventsJPARepository;
@@ -34,7 +32,7 @@ public class EventService {
     }
 
     @Transactional
-    public void fetchAndSaveEventsFromApi(String apiUrl) {
+    public Events fetchAndSaveEventsFromApi(String apiUrl) {
         try {
             URL url = new URL(apiUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -51,20 +49,25 @@ public class EventService {
                 reader.close();
                 String json = apiData.toString();
                 events = gson.fromJson(json, Events.class);
+                WriteToFile("C:\\Users\\Saify\\IdeaProjects\\Eventure-Backend\\Eventure\\src\\main\\resources\\saif.json.txt", events);
+
             }
             connection.disconnect();
-            save_fromAPI_toDB(events);
-        } catch (IOException e) {
+            //save_fromAPI_toDB(events);
 
+        } catch (IOException e) {
+            // Handle exception (e.g., connection error)
             System.out.println("Error in Making Connection to the API- " + e);
         }
+        return events;
     }
 
     public void save_fromAPI_toDB(Events eventsFromApi) {
         try {
-
+            // write to this file for debug only
             WriteToFile("C:\\Users\\Saify\\IdeaProjects\\Eventure-Backend\\Eventure\\src\\main\\resources\\saif.json.txt", events);
             clearAllTablesInDB();
+            // Save events to the database
             for (Event event : eventsFromApi.getEvents()) {
                 addressCountryJPARepository.save(event.getLocation().getAddress().getAddressCountry());
                 addressJPARepository.save(event.getLocation().getAddress());
@@ -78,13 +81,13 @@ public class EventService {
     }
 
     public void clearAllTablesInDB() {
-        eventsJPARepository.deleteAll();
         addressCountryJPARepository.deleteAll();
         addressJPARepository.deleteAll();
         locationJPARepository.deleteAll();
+        eventsJPARepository.deleteAll();
     }
 
-    public void WriteToFile(String path, Events events) {
+    public void WriteToFile(String path, Events events) {  // for testing
         try (FileWriter writer = new FileWriter(new File(path))) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(events, writer);

@@ -1,11 +1,17 @@
 package com.LTUC.Eventure.models;
 
-import lombok.*;
+import com.LTUC.Eventure.models.apiEntities.Event;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Collection;
+import lombok.*;
+import javax.persistence.*;
+import java.util.List;
+
 
 @Entity
 @Data
@@ -22,6 +28,11 @@ public class AppUserEntity implements UserDetails {
     private String country;
     private String interests;
     private String dateOfBirth;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Event> bookedEvents;
+
+
+//     public AppUserEntity(String username, String email, String password, String country, String image, String interests, String dateOfBirth) {
     public AppUserEntity(String username, String email, String password, String country, String interests, String dateOfBirth) {
         this.username = username;
         this.email = email;
@@ -31,8 +42,15 @@ public class AppUserEntity implements UserDetails {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public List<Event> getBookedEvents() {
+        return bookedEvents;
+    }
+
+
     @Override
-    public boolean isAccountNonExpired() {return true;}
+    public boolean isAccountNonExpired() {
+        return true;
+    }
     @Override
     public boolean isAccountNonLocked() {
         return true;

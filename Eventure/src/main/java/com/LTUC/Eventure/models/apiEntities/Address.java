@@ -1,5 +1,6 @@
 package com.LTUC.Eventure.models.apiEntities;
 
+import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,6 @@ public class Address {
         this.streetAddress = streetAddress;
         this.addressLocality = addressLocality;
     }
+
 
 }

@@ -1,21 +1,18 @@
 package com.LTUC.Eventure.models.apiEntities;
 
-//import com.LTUC.Eventure.models.CommentSectionEntity;
-import com.google.gson.annotations.SerializedName;
+import com.LTUC.Eventure.models.AppUserEntity;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor
+@Setter
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @SerializedName("@type")
-    private String type;
     private String name;
     private String startDate;
     private String endDate;
@@ -23,11 +20,13 @@ public class Event {
     @OneToOne
     private Location location;
     private int price;
-    private String image;
-    private boolean isAccessibleForFree;
     private final String priceCurrency = "USD";
+    private String image;
+    @ManyToOne
+    private AppUserEntity user;
 
-    public Event(String type, String name, String startDate, String endDate, String url, Location location, int price, String image, boolean isAccessibleForFree) {
+
+    public Event( String name, String startDate, String endDate, String url, Location location, int price, String image, AppUserEntity user) {
         this.type = type;
         this.name = name;
         this.startDate = startDate;
@@ -36,10 +35,9 @@ public class Event {
         this.location = location;
         this.price = price;
         this.image = image;
+        this.user = user;
         this.isAccessibleForFree = isAccessibleForFree;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+
 }
