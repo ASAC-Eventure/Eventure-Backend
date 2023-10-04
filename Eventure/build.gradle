@@ -27,10 +27,7 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
-<<<<<<< HEAD
-=======
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
->>>>>>> origin/reneh-comment
 	implementation 'com.google.guava:guava:31.1-jre'
 	implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
 }
