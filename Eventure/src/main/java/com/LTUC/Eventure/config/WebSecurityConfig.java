@@ -26,15 +26,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
+
+//    , "/login", "/signup","/aboutUs","/css/**","/JS/**","/images/**"
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/","/adminHome", "/login", "/signup","/aboutUs","/css/**","/JS/**","/images/**").hasAuthority("ADMIN") // URLs accessible by admin role
-                .antMatchers("/", "/login", "/signup","/aboutUs","/css/**","/JS/**","/images/**").hasAuthority("USER")
-                .antMatchers("/adminHome","/testapi","/", "/login", "/signup", "/aboutUs","/css/**","/JS/**","/images/**").permitAll()
+                .antMatchers("/adminHome","/home").hasAuthority("ADMIN")
+                .antMatchers("/home").hasAuthority("USER")
+                .antMatchers("/testapi","/", "/login", "/signup", "/aboutUs","/css/**","/JS/**","/images/**").permitAll()
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

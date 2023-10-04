@@ -18,6 +18,7 @@ public class RoleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
     @Column(nullable = false,name="role_name")
     @Enumerated(value = EnumType.STRING)
     private Roles title;
@@ -26,10 +27,6 @@ public class RoleEntity {
         this.id=id;
     }
 
-
-    public Roles getTitle() {
-        return title;
-    }
 
     public void setTitle(Roles title) {
         this.title = title;
