@@ -11,5 +11,7 @@
 <nav th:if="${errorMessageConfirmPass}"  th:fragment="user-error3" th:text="${errorMessageConfirmPass}" style="color: red;font-size:11px;"></nav>
 <nav th:if="${errorMessageBookedEvent}"  th:fragment="event-error" th:text="${errorMessageBookedEvent}" style="color: red;font-size:17px;"></nav>
 <nav th:if="${successMessageBookedEvent}"  th:fragment="event-success" th:text="${successMessageBookedEvent}" style="color: blue;font-size:17px;"></nav>
+<nav th:if="${errorMessageSignup}"  th:fragment="signup-error" th:text="${errorMessageSignup}" style="color: red; margin-top: 20px;"></nav>
+
 </body>
 </html>

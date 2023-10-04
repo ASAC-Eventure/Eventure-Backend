@@ -1,5 +1,6 @@
 package com.LTUC.Eventure.models.apiEntities;
 
+
 import java.util.List;
 
 public class Events {

@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -13,15 +14,24 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     private Long id;
+
     private String name;
+
     private String startDate;
+
     private String endDate;
+
     private String url;
+
     @OneToOne
     private Location location;
+
     private int price;
+
     private final String priceCurrency = "USD";
+
     private String image;
+
     @ManyToOne
     private AppUserEntity user;
 
@@ -36,4 +46,14 @@ public class Event {
         this.user = user;
     }
 
+    @Override
+    public String toString() {
+        return "Event{" +
+                "name='" + name + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", url='" + url + '\'' +
+                ", location=" + location +
+                '}';
+    }
 }
