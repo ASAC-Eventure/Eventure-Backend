@@ -1,0 +1,23 @@
+{
+  "events": [
+    {
+      "name": "Maroon 5 at Amman Exhibition Park",
+      "startDate": "2023-11-10T18:00:00",
+      "endDate": "2023-11-10",
+      "url": "https://www.jambase.com/show/maroon-5-amman-exhibition-park-20231110",
+      "location": {
+        "name": "Amman Exhibition Park",
+        "address": {
+          "streetAddress": "Queen Alia Airport Road",
+          "addressLocality": "Amman",
+          "addressCountry": {
+            "name": "Jordan"
+          }
+        }
+      },
+      "price": 0,
+      "priceCurrency": "USD",
+      "image": "https://www.jambase.com/wp-content/uploads/2017/04/maroon-5-maroon-5-f3491cea-b4a8-4bb9-bd89-6ab70de13c5c_204431_TABLET_LANDSCAPE_LARGE_16_9-1480x832.jpg"
+    }
+  ]
+}

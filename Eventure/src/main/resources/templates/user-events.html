@@ -16,9 +16,11 @@
                 <img th:src="${event.image}" class="card-img-top" alt="Event Image">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${event.name}">Event Title</h5>
-                    <p class="card-text">
-                        <span th:text="${event.startDate}">Start Date</span> to
-                        <span th:text="${event.endDate}">End Date</span>
+                    <h5 class="card-title" th:text="'Price: ' + ${event.price + ' ' + event.priceCurrency}">Event Price</h5>                    <p class="card-text">
+                        <span th:text="'Starts from ' + ${event.startDate}">Start Date</span>
+                        <br>
+                        <span th:text="'Ends in ' + ${event.endDate}">End Date</span>
+
                     </p>
                     <p class="card-text">
                         Location: <span th:text="${event.location.name}">Location Name</span>
@@ -29,9 +31,9 @@
                     </p>
                     <a th:href="${event.url}" class="btn btn-primary">Go somewhere</a>
 
-                    <!-- Form with hidden inputs -->
-                    <form action="'/un-book-event/'+${event.id}" method="post">
-                        <button type="submit" class="btn btn-success">Un-Book Event</button>
+                    <form th:action="@{'/unbook-event/'+ ${event.id}}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-success">Cancel Event</button>
                     </form>
 
                 </div>

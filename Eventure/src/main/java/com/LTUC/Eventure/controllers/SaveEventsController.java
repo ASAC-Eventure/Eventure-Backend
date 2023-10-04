@@ -10,13 +10,12 @@ import com.LTUC.Eventure.repositories.apiJPARepositories.LocationJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class SaveEventsController {
@@ -34,7 +33,7 @@ public class SaveEventsController {
         this.addressJPARepository = addressJPARepository;
     }
 
-    @GetMapping("/myevents")
+    @GetMapping("/myEvents")
     public String userPage(Model model, Principal p) {
         String username = p.getName();
         if (username != null) {
@@ -65,9 +64,6 @@ public RedirectView bookEvent(Principal p,
     if (username != null) {
         AppUserEntity user = userJPARepo.findByUsername(username);
 
-        // Check if the Location already exists in the database or create a new one
-       // Location location = locationJPARepository.f(eventLocationName);
-//        if (location == null) {
            Location location = new Location();
             location.setName(eventLocationName);
 
@@ -85,13 +81,23 @@ public RedirectView bookEvent(Principal p,
         addressJPARepository.save(address);
             // Save the Location to the database
             locationJPARepository.save(location);
-        //}
+
 
         Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location, (int) (50 + (Math.random() * (250 - 50))), image, user);
 
         eventsJPARepo.save(event);
     }
-    return new RedirectView("/myevents");
+    return new RedirectView("/myEvents");
 }
+
+    @DeleteMapping("/unbook-event/{id}")
+    public RedirectView deleteEventById(@PathVariable Long id){
+        eventsJPARepo.deleteById(id);
+        return new RedirectView("/myEvents");
+    }
+
+
+
+
 
 }

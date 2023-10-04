@@ -38,7 +38,6 @@ public class GeneralControllers {
         m.addAttribute("mostRatedEvents", mostRatedEvents);
         return "index";
     }
-=======
 
 // @Controller
 // public class GeneralControllers {

@@ -27,7 +27,6 @@ public class Event {
 
 
     public Event( String name, String startDate, String endDate, String url, Location location, int price, String image, AppUserEntity user) {
-        this.type = type;
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -36,8 +35,9 @@ public class Event {
         this.price = price;
         this.image = image;
         this.user = user;
-        this.isAccessibleForFree = isAccessibleForFree;
     }
+
+
 
 
 }
