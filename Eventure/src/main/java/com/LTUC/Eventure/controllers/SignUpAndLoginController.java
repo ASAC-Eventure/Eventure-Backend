@@ -83,6 +83,7 @@ public class SignUpAndLoginController {
         }
     }
 
+
     @GetMapping("/login")
     public String loginPage(Model model) {
         return "signUpAndLogin";
@@ -90,21 +91,27 @@ public class SignUpAndLoginController {
 
     @PostMapping("/login")
     public RedirectView login(RedirectAttributes redir, @RequestParam String username, @RequestParam String password) {
+
         try {
+            authWithHttpServletRequest(username, password);
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
             AppUserEntity userEntity = appUserJPARepository.findByUsername(username);
 
-            if (userEntity == null) {
-                redir.addFlashAttribute("errorMessage", "User not found");
-                return new RedirectView("/login");
+            if (authentication!=null) {
+                RoleEntity role= userEntity.getRoles();
+                if (role.getTitle() == Roles.USER) {
+//                    redir.addFlashAttribute("errorMessage", "User not found");
+                    return new RedirectView("/home");
+                }
+
+
+                if (role.getTitle() == Roles.ADMIN) {
+                    return new RedirectView("/adminHome");
+                }
             }
 
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            return new RedirectView("/login");
 
-            if (isAdmin(userEntity)) {
-                return new RedirectView("/adminHome");
-            }
-
-            return new RedirectView("/home");
         } catch (AuthenticationException e) {
             System.out.println("AuthenticationException: " + e.getMessage());
             redir.addFlashAttribute("errorMessage", "Invalid email or password");
