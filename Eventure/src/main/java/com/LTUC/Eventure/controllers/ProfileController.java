@@ -72,7 +72,7 @@ ProfileController {
             appUserEntity.setUsername(username);
             appUserEntity.setDateOfBirth(dateOfBirth);
             appUserEntity.setCountry(country);
-            appUserEntity.setImage(image);
+//            appUserEntity.setImage(image);
             appUserEntity.setInterests(interests);
             appUserEntity.setEmail(email);
             appUserJPARepository.save(appUserEntity);

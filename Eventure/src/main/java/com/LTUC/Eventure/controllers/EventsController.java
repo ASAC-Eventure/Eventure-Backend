@@ -1,5 +1,6 @@
 package com.LTUC.Eventure.controllers;
 
+
 import com.LTUC.Eventure.models.apiEntities.Event;
 import com.LTUC.Eventure.models.apiEntities.Events;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
@@ -14,18 +15,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.transaction.Transactional;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Controller
 public class EventsController {
     private EventsJPARepository eventsJPARepository;
     private EventService eventService;
-    @Autowired
-    AppUserJPARepository appUserRepository;
 
-    //    @Autowired
-//    CommentSectionJPARepository commentSectionJPARepository;
+
     @Autowired
     public EventsController(EventsJPARepository eventsJPARepository, EventService eventService) {
         this.eventsJPARepository = eventsJPARepository;
@@ -82,7 +85,5 @@ public class EventsController {
         }
         return "events.html";
     }
-
-
 
 }

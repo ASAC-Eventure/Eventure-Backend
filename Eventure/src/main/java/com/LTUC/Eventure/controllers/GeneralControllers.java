@@ -38,11 +38,22 @@ public class GeneralControllers {
         m.addAttribute("mostRatedEvents", mostRatedEvents);
         return "index";
     }
+=======
 
-    @GetMapping("/home")
-    public String securedHome() {
-        return "indexAfter";
-    }
+// @Controller
+// public class GeneralControllers {
+//     @GetMapping("/")
+//     public String home(Model model) {
+//         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//         String username = authentication.getName();
+
+//         if (username.equals("anonymousUser")) {
+//             model.addAttribute("isUsernameFound", "no");
+//         } else {
+//             model.addAttribute("isUsernameFound", "yes");
+//         }
+//         return "index";
+//     }
 
     @GetMapping("/aboutUs")
     public String aboutUs(Model model) {

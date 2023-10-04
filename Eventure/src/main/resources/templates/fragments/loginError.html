@@ -5,7 +5,9 @@
     <title>Error</title>
 </head>
 <body>
-<nav th:if="${errorMessage}"  th:fragment="user-error" th:text="'Error: ' + ${errorMessage}" style="color: red; margin-top: 20px;"></nav>
-<nav th:if="${errorMessage2}"  th:fragment="user-error" th:text="'Error: ' + ${errorMessage2}"></nav>
+<nav th:if="${errorMessage}"  th:fragment="user-error" th:text="${errorMessage}" style="color: red; margin-top: 20px;"></nav>
+<nav th:if="${errorMessageUser}"  th:fragment="user-error1" th:text="${errorMessageUser}" style="color: red;font-size:11px;"></nav>
+<nav th:if="${errorMessagePass}"  th:fragment="user-error2" th:text="${errorMessagePass}" style="color: red;font-size:11px;"></nav>
+<nav th:if="${errorMessageConfirmPass}"  th:fragment="user-error3" th:text="${errorMessageConfirmPass}" style="color: red;font-size:11px;"></nav>
 </body>
 </html>
