@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="">
+<<<<<<< HEAD
+=======
       <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules/Eventure.main.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules/Eventure.test.iml" afterDir="false" />
@@ -115,6 +117,7 @@
       <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/checksums/sha1-checksums.bin" afterDir="false" />
+>>>>>>> de3fd67a32fdefab7e21970064387c0f56b3e430
       <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -123,6 +126,19 @@
       <change beforePath="$PROJECT_DIR$/Eventure/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/file-system.probe" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/Eventure/build/classes/java/main/com/LTUC/Eventure/controllers/GeneralControllers.class" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build/classes/java/main/com/LTUC/Eventure/controllers/GeneralControllers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/build/classes/java/main/com/LTUC/Eventure/services/EventService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build/classes/java/main/com/LTUC/Eventure/services/EventService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/build/resources/main/saif.json.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build/resources/main/saif.json.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/lombok.config" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/lombok.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/GeneralControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/GeneralControllers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SaveEventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SaveEventsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/user-events.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/user-events.html" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/Eventure/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/config/WebSecurityConfig.java" afterDir="false" />
@@ -131,6 +147,7 @@
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/authenticationEntities/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/authenticationEntities/RoleEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/db/migration/V3__InsertIntoEventueUsersTable.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/db/migration/V3__InsertIntoEventueUsersTable.sql" afterDir="false" />
+>>>>>>> de3fd67a32fdefab7e21970064387c0f56b3e430
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +199,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "blq-event-cancel",
+    "last_opened_file_path": "/home/akmz/Desktop/balqees-dev/Mid-Project/Eventure-Backend"
+  }
+}]]></component>
+  <component name="RunManager">
+=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
@@ -203,6 +233,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.EventureApplication">
+>>>>>>> de3fd67a32fdefab7e21970064387c0f56b3e430
     <configuration name="EventureApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.LTUC.Eventure.EventureApplication" />
       <module name="Eventure.main" />

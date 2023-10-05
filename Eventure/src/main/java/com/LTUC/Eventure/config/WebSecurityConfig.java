@@ -28,17 +28,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-//    , "/login", "/signup","/aboutUs","/css/**","/JS/**","/images/**"
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/adminHome","/home").hasAuthority("ADMIN")
-                .antMatchers("/home").hasAuthority("USER")
+                .antMatchers("/adminHome","/").hasAuthority("ADMIN")
+                .antMatchers("/","/myEvents").hasAuthority("USER")
                 .antMatchers("/testapi","/", "/login", "/signup", "/aboutUs","/css/**","/JS/**","/images/**").permitAll()
-
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

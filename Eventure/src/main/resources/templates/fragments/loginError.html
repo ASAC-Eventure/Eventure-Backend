@@ -5,7 +5,13 @@
     <title>Error</title>
 </head>
 <body>
-<nav th:if="${errorMessage}"  th:fragment="user-error" th:text="'Error: ' + ${errorMessage}" style="color: red; margin-top: 20px;"></nav>
-<nav th:if="${errorMessage2}"  th:fragment="user-error" th:text="'Error: ' + ${errorMessage2}"></nav>
+<nav th:if="${errorMessage}"  th:fragment="user-error" th:text="${errorMessage}" style="color: red; margin-top: 20px;"></nav>
+<nav th:if="${errorMessageUser}"  th:fragment="user-error1" th:text="${errorMessageUser}" style="color: red;font-size:11px;"></nav>
+<nav th:if="${errorMessagePass}"  th:fragment="user-error2" th:text="${errorMessagePass}" style="color: red;font-size:11px;"></nav>
+<nav th:if="${errorMessageConfirmPass}"  th:fragment="user-error3" th:text="${errorMessageConfirmPass}" style="color: red;font-size:11px;"></nav>
+<nav th:if="${errorMessageBookedEvent}"  th:fragment="event-error" th:text="${errorMessageBookedEvent}" style="color: red;font-size:17px;"></nav>
+<nav th:if="${successMessageBookedEvent}"  th:fragment="event-success" th:text="${successMessageBookedEvent}" style="color: blue;font-size:17px;"></nav>
+<nav th:if="${errorMessageSignup}"  th:fragment="signup-error" th:text="${errorMessageSignup}" style="color: red; margin-top: 20px;"></nav>
+
 </body>
 </html>

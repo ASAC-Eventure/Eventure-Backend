@@ -13,7 +13,7 @@
 <div th:if="${user}" class="profile-container">
   <div th:replace="fragments/headerAfter :: header"></div>
   <div class="left-container">
-    <img th:src="${user.image}" alt="Profile Image" class="profile-image">
+<!--    <img th:src="${user.image}" alt="Profile Image" class="profile-image">-->
     <h1 th:text="${user.username}" class="profile-name"></h1>
   </div>
   <div class="right-container">
