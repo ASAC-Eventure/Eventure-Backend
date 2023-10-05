@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+</head>
+<body>
+<h2>Edit User Details</h2>
+<form th:action="'/edit/' + ${user.id}" th:method="post">
+    <fieldset>
+        <legend>Edit User Details</legend>
+        <input type="hidden" name="_method" value="PUT">
+        <label for="username">Username</label>
+        <input type="text" th:field="*{user.username}" id="username" placeholder="Username" required/><br/>
+        <label for="email">Email</label>
+        <input type="email" th:field="*{user.email}" id="email" placeholder="Email" required/><br/>
+        <label for="country">Country</label>
+        <input type="text" th:field="*{user.country}" id="country" placeholder="Country" required/><br/>
+        <label for="interests">Interests</label>
+        <input type="text" th:field="*{user.interests}" id="interests" placeholder="Interests"/><br/>
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="date" th:field="*{user.dateOfBirth}" id="dateOfBirth" placeholder="Date of Birth" required/><br/>
+        <input type="submit" value="Update User">
+    </fieldset>
+</form>
+
+</body>
+</html>
