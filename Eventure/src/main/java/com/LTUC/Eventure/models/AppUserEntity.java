@@ -1,5 +1,6 @@
 package com.LTUC.Eventure.models;
 
+import com.LTUC.Eventure.Enum.Roles;
 import com.LTUC.Eventure.models.apiEntities.Event;
 import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
 import lombok.*;
@@ -49,12 +50,13 @@ public class AppUserEntity implements UserDetails {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Event> bookedEvents;
 
     @OneToOne
     @JoinColumn(name = "role_id")
     private RoleEntity roles;
+
 
 
     public AppUserEntity(String username, String email, String password, String country, String interests, LocalDate dateOfBirth) {

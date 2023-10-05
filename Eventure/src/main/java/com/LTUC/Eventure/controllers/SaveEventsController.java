@@ -8,6 +8,7 @@ import com.LTUC.Eventure.repositories.apiJPARepositories.AddressJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.EventsJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.LocationJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,12 +36,17 @@ public class SaveEventsController {
     }
 
     @GetMapping("/myEvents")
+    @PreAuthorize("isAuthenticated()")
     public String userPage(Model model, Principal p) {
+        System.out.println(model);
+        System.out.println(p);
         String username = p.getName();
+        System.out.println(username);
         if (username != null) {
             AppUserEntity user = userJPARepo.findByUsername(username);
             List<Event> userEvents = user.getBookedEvents();
 //            System.out.println(userEvents);
+            System.out.println(userEvents);
             model.addAttribute("userEvents", userEvents);
         }
         return "user-events.html";
