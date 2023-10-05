@@ -1,69 +1,49 @@
 package com.LTUC.Eventure.models.apiEntities;
 
-import com.google.gson.annotations.SerializedName;
+import com.LTUC.Eventure.models.AppUserEntity;
+import lombok.*;
 
 import javax.persistence.*;
 
+
 @Entity
+@Data
+@NoArgsConstructor
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private Long id;
-    @SerializedName("@type")
 
-    private String type;
     private String name;
+
     private String startDate;
+
     private String endDate;
+
     private String url;
+
     @OneToOne
     private Location location;
-    private double price;
-    private boolean isAccessibleForFree;
+
+    private int price;
+
     private final String priceCurrency = "USD";
 
-    // Constructors
-    public Event() {
-    }
+    private String image;
 
+    @ManyToOne
+    private AppUserEntity user;
 
-    public Event(String type, String name, String startDate, String endDate, String url, Location location, double price, boolean isAccessibleForFree) {
-        this.type = type;
+    public Event(String name, String startDate, String endDate, String url, Location location, int price, String image, AppUserEntity user) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.url = url;
         this.location = location;
         this.price = price;
-        this.isAccessibleForFree = isAccessibleForFree;
-
-    }
-
-    // Getters and setters
-
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
+        this.image = image;
+        this.user = user;
     }
 
     @Override
