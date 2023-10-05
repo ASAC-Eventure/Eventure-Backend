@@ -2,7 +2,7 @@ package com.LTUC.Eventure.controllers;
 
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.LTUC.Eventure.services.EventService;
+//import com.LTUC.Eventure.services.EventService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -42,16 +42,16 @@ public class GeneralControllers {
         return "aboutUs.html";
     }
 
-    @Autowired
-    EventService eventService;
-    String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=357b5a27-55f2-487b-9b1c-83f6ad689c3e&page=1";
-
-    @GetMapping("/testapi")
-    @ResponseBody
-    public String showIndex() {
-        eventService.fetchAndSaveEventsFromApi(apiData);
-        return "Welcome";
-    }
+//    @Autowired
+//    EventService eventService;
+//    String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=357b5a27-55f2-487b-9b1c-83f6ad689c3e&page=1";
+//
+//    @GetMapping("/testapi")
+//    @ResponseBody
+//    public String showIndex() {
+//        eventService.fetchAndSaveEventsFromApi(apiData);
+//        return "Welcome";
+//    }
 
 
     @GetMapping("/terms-conditions")
