@@ -64,7 +64,6 @@
 //                String json = apiData.toString();
 ////                Event[] events = gson.fromJson(json, Event[].class);
 //                Events events = gson.fromJson(json, Events.class);
-//                WriteToFile("C:\\Users\\USER\\newforGradle\\EventureBackend\\Eventure-Backend\\Eventure\\src\\main\\resources\\saif.json", events);
 //
 //                // Save events to the database
 //                for (Event event : events.getEvents()) {
