@@ -83,7 +83,7 @@ public class SaveEventsController {
             locationJPARepository.save(location);
 
 
-            Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location, (int) (50 + (Math.random() * (250 - 50))), image, user);
+            Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location, (int) (50 + (Math.random() * (250 - 50))), image, user,"Unpaid");
             Event bookedEvent = eventsJPARepo.findByName(eventName);
             if (bookedEvent == null) {
                 eventsJPARepo.save(event);
@@ -105,5 +105,19 @@ public class SaveEventsController {
         return new RedirectView("/myEvents");
     }
 
+    @GetMapping("/payment")
+    public String paymentPage(@RequestParam Long eventId, Model model) {
+        model.addAttribute("eventId", eventId);
+        return "paymentPage.html";
+    }
 
+    @PostMapping("/payment")
+    public RedirectView paymentMethod(@RequestParam(name = "eventId") Long eventId) {
+        Event event = eventsJPARepo.findById(eventId).orElse(null);
+        if (event != null && "Unpaid".equals(event.getPaymentStatus())) {
+            event.setPaymentStatus("Pending");
+            eventsJPARepo.save(event);
+        }
+        return new RedirectView("/myEvents");
+    }
 }

@@ -44,6 +44,10 @@
                         <button type="submit" class="btn btn-success">Cancel Event</button>
                     </form>
 
+                    <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
+                    <div th:if="${event.paymentStatus == 'Unpaid'}">
+                    <a id="openPaymentModal" th:href="@{/payment?(eventId=${event.id})}" class="btn btn-success">Pay Here</a>
+                    </div>
                 </div>
             </div>
         </div>
