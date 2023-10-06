@@ -5,12 +5,14 @@ import com.LTUC.Eventure.models.AppUserEntity;
 import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.RoleJPARepository;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +25,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -43,12 +44,10 @@ public class SignUpAndLoginController {
 
 
     @GetMapping("/signup")
-    public String signUpPage() {
-        return "signUpAndLogin";
-    }
+    public String signUpPage(){return "signUpAndLogin";}
 
     @PostMapping("/signup")
-    public RedirectView createUser(Model model, RedirectAttributes redir, String username, String email, String password, String confirmPassword, String country, String interests, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth) {
+    public RedirectView createUser(Model model, RedirectAttributes redir,String username, String email, String password,String confirmPassword, String country, String interests,  @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth ) {
         AppUserEntity existingUser = appUserJPARepository.findByUsername(username);
         try {
             if (existingUser != null && !isPasswordValid(password) && !password.equals(confirmPassword)) {
@@ -90,9 +89,10 @@ public class SignUpAndLoginController {
                 String encryptedPassword = passwordEncoder.encode(password);
                 user.setPassword(encryptedPassword);
                 appUserJPARepository.save(user);
-                authWithHttpServletRequest(username, password);
+                authRegisterWithHttpServletRequest(username, password);
+
             }
-            return new RedirectView("/signup");
+            return new RedirectView("/");
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("errorMessageSignup", "Signup failed due to an internal error.");
@@ -100,10 +100,18 @@ public class SignUpAndLoginController {
         }
     }
 
-    public void authWithHttpServletRequest(String username, String password) {
+    //Sign-up authentication
+    public void authRegisterWithHttpServletRequest(String username, String password) {
+        // Create an Authentication object with the user's credentials
+        Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
+
+        // Set the Authentication object in the SecurityContextHolder to authenticate the user
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
+    public void authWithHttpServletRequest(String username, String password){
         try {
-            request.login(username, password);
-        } catch (ServletException e) {
+            request.login(username,password);
+        }catch (ServletException e){
             e.printStackTrace();
         }
     }
@@ -126,8 +134,8 @@ public class SignUpAndLoginController {
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
             AppUserEntity userEntity = appUserJPARepository.findByUsername(username);
 
-            if (authentication != null) {
-                RoleEntity role = userEntity.getRoles();
+            if (authentication!=null) {
+                RoleEntity role= userEntity.getRoles();
                 if (role.getTitle() == Roles.USER) {
                     return new RedirectView("/");
                 }
