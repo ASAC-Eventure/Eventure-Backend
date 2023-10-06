@@ -1,22 +1,22 @@
 /* Center the big container */
-/*body {
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
-}*/
+}
 
 /* Style the big container */
-/*.profile-container {
+.profile-container {
     display: flex;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     width:50%;
     height:auto;
-}*/
+}
 
 /* Style the left container */
 .left-container {
@@ -63,3 +63,4 @@
     font-size: 1rem;
     margin: 5px 0;
 }
+
