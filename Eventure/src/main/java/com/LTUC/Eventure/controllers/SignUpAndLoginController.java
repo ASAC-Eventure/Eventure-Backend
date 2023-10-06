@@ -89,7 +89,7 @@ public class SignUpAndLoginController {
                 String encryptedPassword = passwordEncoder.encode(password);
                 user.setPassword(encryptedPassword);
                 appUserJPARepository.save(user);
-                authWithHttpServletRequest(username, password);
+                authRegisterWithHttpServletRequest(username, password);
 
             }
             return new RedirectView("/");
@@ -100,51 +100,15 @@ public class SignUpAndLoginController {
         }
     }
 
-//    @PostMapping("/signup")
-//    public RedirectView createUser(String username, String email, String password, String country, String interests, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth, String image, Model model){
-//        try {
-//            AppUserEntity existingUser = appUserJPARepository.findByUsername(username);
-//            if (existingUser != null) {
-//                model.addAttribute("errorMessage", "User with this username already exists.");
-//                return new RedirectView("/signup");
-//            }
-//
-//            AppUserEntity user = new AppUserEntity();
-//            user.setUsername(username);
-//            user.setEmail(email);
-//            user.setCountry(country);
-//            user.setInterests(String.join(", ", interests));
-//            user.setDateOfBirth(dateOfBirth);
-//            user.setRoles(new RoleEntity(2L));
-//            if (image == null || image.isEmpty()) {
-//                user.setImage("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1214428300?k=6&m=1214428300&s=170667a&w=0&h=hMQs-822xLWFz66z3Xfd8vPog333rNFHU6Q_kc9Sues=");
-//            } else {
-//                user.setImage(image);
-//            }
-//            String encryptedPassword = passwordEncoder.encode(password);
-//            user.setPassword(encryptedPassword);
-//            appUserJPARepository.save(user);
-//
-//            authWithHttpServletRequest(username, password);
-//
-//            return new RedirectView("/home");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            model.addAttribute("errorMessage", "Signup failed due to an internal error.");
-//            return new RedirectView("/signup");
-//        } }
+    //Sign-up authentication
 
+    public void authRegisterWithHttpServletRequest(String username, String password) {
+        // Create an Authentication object with the user's credentials
+        Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
 
-
-//=======
-
-//            authWithHttpServletRequest(username, password);
-//            return new RedirectView("/home");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            model.addAttribute("errorMessage", "Signup failed due to an internal error.");
-//            return new RedirectView("/signup");
-//        } }
+        // Set the Authentication object in the SecurityContextHolder to authenticate the user
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
     public void authWithHttpServletRequest(String username, String password){
         try {
             request.login(username,password);
