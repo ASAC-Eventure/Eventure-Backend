@@ -84,7 +84,7 @@ public class SaveEventsController {
 
 
             Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location, (int) (50 + (Math.random() * (250 - 50))), image, user,"Unpaid");
-            Event bookedEvent = eventsJPARepo.findByName(eventName);
+            List <Event> bookedEvent =eventsJPARepo.findByName(eventName);
             if (bookedEvent == null) {
                 eventsJPARepo.save(event);
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
@@ -92,7 +92,7 @@ public class SaveEventsController {
                 eventsJPARepo.save(event);
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
 
-            } else {
+            } else if (bookedEvent != null && user.getBookedEvents().stream().anyMatch(e -> e.getName().equals(eventName))) {
                 redir.addFlashAttribute("errorMessageBookedEvent", "Event Already Booked!");
             }
         }
