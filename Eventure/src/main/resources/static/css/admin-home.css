@@ -1,0 +1,187 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.dashboard {
+  flex: 1;
+  padding: 20px;
+}
+
+.section {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* End of sidebar styling */
+
+
+/* Cards styling */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  width: calc(33.33% - 20px);
+  box-shadow: 0px 0px 16px 0px rgba(187, 187, 187, 0.48);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.card-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-info {
+  padding: 10px;
+  text-align: left;
+}
+
+.card-info h2 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
+/* End of cards styling */
+
+/* search forms styling */
+
+.searchBars{
+margin-top:30px;
+}
+
+.userForm{
+margin-bottom:15px;
+ display: inline-block;
+ padding:10px;
+ margin-right: 140px;
+ margin-left: 100px;
+ }
+
+ .eventForm{
+  display: inline-block;
+  padding:10px}
+
+/* end of search forms styling */
+
+/* Sidebar styling */
+.sidebar {
+  background-color: #192f59;
+  color: #fff;
+  padding: 20px;
+  width: 250px;
+  height:100%;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.sidebar img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar form {
+  margin: 0;
+}
+
+.sidebar form input[type="submit"] {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  padding: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  display: block;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  font-size: inherit;
+}
+
+.sidebar form input[type="submit"]:hover {
+  background-color: #59c17a;
+  color: #fff;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  padding: 25px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.sidebar a:hover {
+  background-color: #59c17a;
+}
+/* End of Sidebar styling */
+
