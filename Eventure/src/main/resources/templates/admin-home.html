@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Admin page</title>
 </head>
 <body>
-$END$
+<form action="/booked-admin" method="get">
+  <input type="submit" value="The Booked Events">
+</form>
+<form action="/total-income" method="get">
+  <input type="submit" value="Total Incomes">
+</form>
+<p><strong>Total Incomes:</strong> <span th:text="${totalIncomes}"></span></p>
+<h1>Booked Events</h1>
+<div th:each="event : ${bookedEvents}">
+  <div class="event">
+    <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
+    <h2 th:text="${event.name}"></h2>
+    <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
+    <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+    <p><strong>URL:</strong> <a th:href="${event.url}" th:text="${event.url}"></a></p>
+    <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
+    <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+    <img th:src="${event.image}" alt="Event Image" width="200" height="150"/>
+    <form th:action="@{'/update-event-status/' + ${event.id}}" method="post">
+      <input type="submit" value="Change to Paid" />
+    </form>
+  </div>
+</div>
 </body>
 </html>
