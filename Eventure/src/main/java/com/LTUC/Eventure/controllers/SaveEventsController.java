@@ -40,7 +40,7 @@ public class SaveEventsController {
         if (username != null) {
             AppUserEntity user = userJPARepo.findByUsername(username);
             List<Event> userEvents = user.getBookedEvents();
-//            System.out.println(userEvents);
+
             model.addAttribute("userEvents", userEvents);
         }
         return "user-events.html";
