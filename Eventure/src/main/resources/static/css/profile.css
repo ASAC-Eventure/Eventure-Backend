@@ -1,65 +1,126 @@
-/* Center the big container */
-/*body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-}*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-/* Style the big container */
-/*.profile-container {
-    display: flex;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    width:50%;
-    height:auto;
-}*/
-
-/* Style the left container */
-.left-container {
-    padding: 20px;
-    text-align: center;
-    background-color:#FF6969;
+body {
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  font-family: "Poppins", sans-serif;
 }
 
-.profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
+.profile-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin: 30px;
+  height: 60%;
+}
+.profile-cards .card-p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 700px;
+  height: 400px;
+  position: relative;
+  color: #2d2d2d;
+  background-color: #b2e5e6;
+  letter-spacing: 1px;
+  border: 25px solid #a0cdcf;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.profile-cards .card-p .card-description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  width: auto;
+  height: 100%;
+}
+.profile-cards .card-p .card-description .card-description-title {
+  color: black;
+  font-size: 20px;
+}
+.profile-cards .card-p .card-description .card-description-profession {
+  display: block;
+  font-size: 16px;
+}
+.profile-cards .card-p .card-description .card-description-company {
+  display: block;
+  font-size: 14px;
+}
+.profile-cards .card-p .card-description .card-description-company:hover {
+  text-decoration: underline;
+}
+.profile-cards .card-p .card-description .card-description-social {
+  position: block;
+  bottom: 20px;
+}
+.profile-cards .card-p .card-description .card-description-social .card-description-social-follow {
+  display: block;
+  margin-bottom: 8px;
+  color: #555572;
+  font-size: 14px;
+}
+.profile-cards .card-p .card-description .card-description-social ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.profile-cards .card-p .card-description .card-description-social ul li {
+  list-style-type: none;
+}
+.profile-cards .card-p .card-description .card-description-social ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #121212;
+  border-radius: 50%;
+  box-shadow: 6px 6px 12px #97c3c4, -6px -6px 12px #cdffff;
+  transition: all 0.4s;
+}
+.profile-cards .card-p .card-description .card-description-social ul li a:hover {
+  color: white;
+  transform: translate(0, -7px);
+}
+.profile-cards .card-p .card-description .card-description-social ul li a svg {
+  width: calc(100% - 15px);
+  height: calc(100% - 15px);
+}
+.profile-cards .card-p .card-description .card-description-social ul li:nth-child(1) a:hover {
+  background-color: #1da1f2;
+}
+.profile-cards .card-p .card-description .card-description-social ul li:nth-child(2) a:hover {
+  background-color: #3f729b;
+}
+.profile-cards .card-p .card-description .card-description-social ul li:nth-child(3) a:hover {
+  background-color: #00405d;
+}
+.profile-cards .card-p .card-description .card-description-social ul li:nth-child(4) a:hover {
+  background-color: #0a66c2;
+}
+.profile-cards .card-p .card-image {
+  width: 250px;
+  height: 100%;
+  object-fit: cover;
 }
 
-.profile-name {
-    font-size: 1.5rem;
-    margin-top: 10px;
+.button {
+  background-color:#b2e5e6 ;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
-/* Style the right container */
-.right-container {
-    flex-grow: 1;
-    padding: 20px;
-    background-color:white;
-}
 
-.line {
-    position: absolute;
-    bottom: 0; /* Adjust the distance from the bottom as needed */
-    left: 0; /* Adjust the starting point as needed */
-    width: 50%; /* Adjust the length of the line */
-    height: 2px;
-    background-color: #333;
-    border-bottom: 2px solid #333; /* Adjust the line color and thickness as needed */
-}
-
-.right-container h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.right-container p {
-    font-size: 1rem;
-    margin: 5px 0;
-}

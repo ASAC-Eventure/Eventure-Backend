@@ -25,7 +25,8 @@ public class AddEventController {
         this.addEventJPARepository = addEventJPARepository;
         this.appUserJPARepository = appUserJPARepository;
     }
-
+@GetMapping("/addNewEvent")
+public String addEventData(){return "contact.html";}
     @PostMapping("/addNewEvent")
     public RedirectView addEventData(@RequestParam String name,
                                      @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
@@ -47,7 +48,7 @@ public class AddEventController {
             redir.addFlashAttribute("errorMessageBookedEvent", "Event Already Saved!");
 
         }
-        return new RedirectView("/aboutUs");
+        return new RedirectView("/addNewEvent");
 
     }
 

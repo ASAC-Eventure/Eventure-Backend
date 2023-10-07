@@ -1,28 +1,73 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="/style.css" />
-    <link rel="stylesheet" th:href="@{/css/searchbar.css}" />
-
-
-    <title>Professional Website</title>
-</head>
-<body>
+<!-- header -->
 <header>
+    <!-- header inner -->
+    <div class="header-top">
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="/"><img src="/images/logo.png"  alt=""/></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-9">
 
-    <ul class="navbar">
-        <a href="/"><img src="/images/logoword.jpeg" alt="Logo" /></a>
-        <li th:replace="fragments/searchbar.html"> </li>
-        <li class="right"><a href="/">Home</a></li>
-        <li class="right"><a href="/aboutUs">About Us</a></li>
-        <li class="right"><a href="/login">Sign in</a></li>
-        <li class="right"><a href="/signup">Sign Up</a></li>
+                        <div class="menu-area">
+                            <div class="limit-box">
+                                <nav class="main-menu ">
+                                    <ul class="menu-area-main">
+                                        <li class="active"> <a href="/">Home</a> </li>
+                                        <li><a href="/aboutUs">About</a> </li>
+                                        <li><a href="/events">Events</a></li>
+                                        <li ><a href="/signup">Login/Signup</a> </li>
+                                    </ul>
+                                </nav>
 
-    </ul>
-    <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end header inner -->
+        <section class="slider_section">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-bg">
+                                            <span>Eventure</span>
+                                            <h1>Is Where We Bring You Closer To Your Rhythm</h1>
+                                            <form class="search-box" action="/events" method="GET">
+                                            <fieldset>
+                                                <legend>Explore Events</legend>
+                                                <label for="searchCriteria"></label>
+                                                <input type="text" name="searchCriteria" id="searchCriteria" placeholder="Enter Country or Date (YYYY-MM-DD)">
+                                                <input type="submit" value="Search">
+                                            </fieldset>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </header>
 
-</body>
-</html>

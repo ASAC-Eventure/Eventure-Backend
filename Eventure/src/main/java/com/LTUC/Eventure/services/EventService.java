@@ -18,16 +18,16 @@ import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.stream.Collectors;
+
 @Service
 public class EventService {
     EventsJPARepository eventsJPARepository;
@@ -35,6 +35,8 @@ public class EventService {
     AddressJPARepository addressJPARepository;
     AddressCountryJPARepository addressCountryJPARepository;
     Events events;
+    @Value("${apiSecretKey}")
+    String myKey;
 
     @Autowired
     public EventService(EventsJPARepository eventsJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository, AddressCountryJPARepository addressCountryJPARepository) {
@@ -159,9 +161,6 @@ public class EventService {
 //return events;
 //    }
 
-
-    @Value("${apiSecretKey}")
-    String myKey;
 
     public Events getEvents_By_CountryName_and_startDate(String countryName, LocalDate startDate) {
         String countryISO2 = "";

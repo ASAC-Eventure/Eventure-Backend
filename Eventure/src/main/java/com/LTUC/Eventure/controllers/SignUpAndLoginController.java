@@ -155,5 +155,4 @@ public class SignUpAndLoginController {
         Optional<RoleEntity> adminRole = roleJPARepository.findRoleEntityByTitle(Roles.ADMIN.name());
         return userEntity.getRoles().equals(adminRole.orElse(null));
     }
-
 }
