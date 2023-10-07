@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <style>
+        /* Style for event cards */
+        .event-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            display: inline-block;
+        }
+
+        /* Style for event card headings */
+        .event-card h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        /* Style for event card content */
+        .event-card p {
+            margin: 0;
+            padding: 0;
+        }
+
+          .event-card img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+<!--          button {-->
+
+<!--            border: none;-->
+<!--            padding: 10px 20px;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 16px;-->
+<!--            width: 100%;-->
+<!--        }-->
+
+<!--        button:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
+
+    </style>
+</head>
+<body>
+<h1>Welcome, Admin</h1>
+<h2>Event List</h2>
+<div th:each="event : ${events}" >
+<div  th:if="!${event.isApproved}" class="event-card" >
+
+    <img th:src="${event.imageUrl}" alt="Event Image" />
+
+    <h3 th:text="${event.name}"></h3>
+    <br>
+    <p>Start Date : <span th:text="${event.startDate}"></span></p>
+    <br>
+    <p>End Date : <span th:text="${event.endDate}"></span></p>
+    <br>
+    <p>Event url : <span th:text="${event.eventUrl}"></span></p>
+    <br>
+    <p>Price : <span th:text="${event.price}">  </span> <span th:text="${event.priceCurrency}"> </span></p>
+    <br>
+    <p>Location : <span th:text="${event.location}"></span></p>
+    <br>
+    <p>Street Address: <span th:text="${event.streetAddress}"></span></p>
+
+        <!-- Hidden input for event ID if needed -->
+        <input type="hidden" name="eventId" th:value="${event.id}" />
+
+        <div style="margin-left: 10pc; margin-top: 20px">
+
+            <form th:action="@{'/approve/' + ${event.id}}" method="post">
+                <input type="hidden" name="_method" value="PUT">
+                <button type="submit"  style="background: green" class="btn btn-success">Approve</button>
+            </form>
+            <form th:action="@{'/decline/' + ${event.id}}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit"  style="background: red" class="btn btn-success">Decline</button>
+            </form>
+        </div>
+
+    </th:if>
+</div>
+</div>
+</body>
+</html>

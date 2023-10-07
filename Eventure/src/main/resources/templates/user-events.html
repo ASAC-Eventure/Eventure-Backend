@@ -25,11 +25,11 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${event.name}">Event Title</h5>
                     <h5 class="card-title" th:text="'Price: ' + ${event.price + ' ' + event.priceCurrency}">Event Price</h5>                    <p class="card-text">
-                        <span th:text="'Starts from ' + ${event.startDate}">Start Date</span>
-                        <br>
-                        <span th:text="'Ends in ' + ${event.endDate}">End Date</span>
+                    <span th:text="'Starts from ' + ${event.startDate}">Start Date</span>
+                    <br>
+                    <span th:text="'Ends in ' + ${event.endDate}">End Date</span>
 
-                    </p>
+                </p>
                     <p class="card-text">
                         Location: <span th:text="${event.location.name}">Location Name</span>
                         <br/>
@@ -44,11 +44,40 @@
                         <button type="submit" class="btn btn-success">Cancel Event</button>
                     </form>
 
+                    <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
+                    <div th:if="${event.paymentStatus == 'Unpaid'}">
+                        <a id="openPaymentModal" th:href="@{/payment?(eventId=${event.id})}" class="btn btn-success">Pay Here</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+<div th:each="event : ${approvedEvents}" >
+    <div  th:if="${event.isBooked}" class="event-card" >
+
+        <img th:src="${event.imageUrl}" alt="Event Image" />
+
+        <h3 th:text="${event.name}"></h3>
+        <br>
+        <p>Start Date : <span th:text="${event.startDate}"></span></p>
+        <br>
+        <p>End Date : <span th:text="${event.endDate}"></span></p>
+        <br>
+        <p>Price : <span th:text="${event.price}">  </span> <span th:text="${event.priceCurrency}"> </span></p>
+        <br>
+        <p>Location : <span th:text="${event.location}"></span></p>
+        <br>
+        <p>Street Name: <span th:text="${event.streetAddress}"></span></p>
+
+        </th:if>
+    </div>
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

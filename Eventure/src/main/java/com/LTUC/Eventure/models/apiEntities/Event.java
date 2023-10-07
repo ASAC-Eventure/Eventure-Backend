@@ -2,8 +2,10 @@ package com.LTUC.Eventure.models.apiEntities;
 
 import com.LTUC.Eventure.models.AppUserEntity;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 
 @Entity
@@ -44,6 +46,9 @@ public class Event {
         this.price = price;
         this.image = image;
         this.user = user;
+    }
+
+    public Event(String eventName, String eventStartDate, String eventEndDate, String eventUrl, Location location, int i, String image, AppUserEntity user, String unpaid) {
     }
 
     @Override
