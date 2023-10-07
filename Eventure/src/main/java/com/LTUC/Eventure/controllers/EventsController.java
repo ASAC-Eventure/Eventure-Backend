@@ -65,7 +65,7 @@ public class EventsController {
 
             m.addAttribute("events", dateEvents.getEvents());
         }
-        return "searchedEvents.html";
+        return "Events.html";
     }
 
 }

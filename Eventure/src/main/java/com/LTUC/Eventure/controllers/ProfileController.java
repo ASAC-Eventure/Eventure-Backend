@@ -31,7 +31,6 @@ ProfileController {
         return "profile.html";
     }
 
-    UserDetailsServiceImpl userDetailsService;
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {

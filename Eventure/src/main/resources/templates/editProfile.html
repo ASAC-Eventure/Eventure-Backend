@@ -1,63 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">-->
-<!--<head>-->
-<!--    <link rel="stylesheet" href="../static/css/profile.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="blur-background"></div>-->
-<!--<div class="form-popup" id="myForm">-->
-<!--    <form th:action="'/edit/'+${user.id}" method="post" class="form-container" >-->
-<!--        <input type="hidden" name="_method" value="put">-->
-<!--        <h1>Edit Profile</h1>-->
-<!--        <div class="form-group">-->
-<!--            <label for="username">Username:</label>-->
-<!--            <input type="text" class="form-control" id="username" th:value="${user.username}" >-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label for="dateOfBirth">Date of Birth:</label>-->
-<!--            <input type="date" class="form-control" id="dateOfBirth" th:value="${user.dateOfBirth}" >-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="country" th:value="${user.country}"></label><select name="country" id="country" >-->
-<!--            <option value="" disabled selected>Select your country</option>-->
-<!--            <option value="USA">United States</option>-->
-<!--            <option value="Canada">Canada</option>-->
-<!--            <option value="Jordan">Jordan</option>-->
-<!--            <option value="Europe">Europe</option>-->
-<!--            <option value="Asia">Asia</option>-->
-<!--        </select>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label for="interests">Interests:</label>-->
-<!--            <select id="interests" name="interests" multiple="multiple">-->
-<!--                <option value="Music" th:selected="${user.interests.contains('Music')}">Music</option>-->
-<!--                <option value="Festivals" th:selected="${user.interests.contains('Festivals')}">Festivals</option>-->
-<!--                <option value="Parties" th:selected="${user.interests.contains('Parties')}">Parties</option>-->
-<!--                <option value="Concerts" th:selected="${user.interests.contains('Concerts')}">Concerts</option>-->
-<!--            </select>-->
-<!--        </div>-->
-
-
-<!--        <div class="form-group">-->
-<!--            <label for="email">Email:</label>-->
-<!--            <input type="text" class="form-control" id="email" th:value="${user.email}" >-->
-<!--        </div>-->
-<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
-<!--&lt;!&ndash;            <label for="image">Profile Image URL:</label>&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="text" class="form-control" id="image" th:value="${user.image}" >&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--        <button type="submit" class="btn btn-primary">Save</button>-->
-
-<!--&lt;!&ndash;        <button type="button" class="btn btn-secondary" onclick="closeForm()">Close</button>&ndash;&gt;-->
-<!--    </form>-->
-<!--</div>-->
-<!--<script src="../static/css/JS/editProfile.js"></script>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -69,9 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>User Profile</title>
-    <link rel="stylesheet" href="../static/cssOriginal/profile.css">
+    <link rel="stylesheet" href="../static/css/profile.css">
     <!--  <link rel="stylesheet" href="../static/css/footer.css">-->
-      <link rel="stylesheet" href="../static/cssOriginal/style.css">
+      <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
 <div th:if="${isUsernameFound == 'yes'}">
