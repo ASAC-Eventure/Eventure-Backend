@@ -59,7 +59,7 @@ public class AdminController {
     @GetMapping("/booked-events")                // all booked events + count
     public String getAllBookedEvents(Model m) {
         List<Event> allBookedEvents = eventsJPARepository.findAll();
-        List<AddEventEntity> allAdminBookedEvents=addEventJPARepository.findAll();
+        List<AddEventEntity> allAdminBookedEvents = addEventJPARepository.findAll().stream().filter(e->e.getPaymentStatus()!=null).collect(toList());
 
         if (allBookedEvents == null && allAdminBookedEvents == null) {
             System.out.println("No  events");
@@ -82,7 +82,7 @@ public class AdminController {
             return "admin-home.html";
         }
         List<Event> unpaidEvents = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Unpaid")).collect(toList());
-        List<AddEventEntity> unpaidAdminEvents=allAdminBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Unpaid")).collect(toList());
+        List<AddEventEntity> unpaidAdminEvents=allAdminBookedEvents.stream().filter(e ->e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Unpaid")).collect(toList());
         int total=unpaidAdminEvents.size()+unpaidEvents.size();
         m.addAttribute("unpaidAdminEvents",unpaidAdminEvents);
         m.addAttribute("unpaidEvents", unpaidEvents);
@@ -100,7 +100,7 @@ public class AdminController {
             return "admin-home.html";
         }
         List<Event> pendingEvents = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Pending")).collect(toList());
-        List<AddEventEntity> pendingAdminEvents=allAdminBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Pending")).collect(toList());
+        List<AddEventEntity> pendingAdminEvents=allAdminBookedEvents.stream().filter(e ->e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Pending")).collect(toList());
         int total=pendingAdminEvents.size()+pendingEvents.size();
 
         m.addAttribute("pendingAdminEvents", pendingAdminEvents);
@@ -120,7 +120,7 @@ public class AdminController {
         }
 
         List<Event> paidEvents = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Paid")).collect(toList());
-        List<AddEventEntity> paidAdminEvents = allAdminBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Paid")).collect(toList());
+        List<AddEventEntity> paidAdminEvents = allAdminBookedEvents.stream().filter(e ->e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Paid")).collect(toList());
         int total=paidAdminEvents.size()+paidEvents.size();
 
         m.addAttribute("paidAdminEvents", paidAdminEvents);
@@ -173,30 +173,45 @@ public class AdminController {
             System.out.println("Error in changing event to paid" + e);
             return new RedirectView("/adminHome");
         }
-        return new RedirectView("/pending-events");
+        return new RedirectView("/paid-events");
 
     }
+
+    @PostMapping("/update-eventCreated-status/{eventId}")
+    public RedirectView updateStatus_pending_toPaid_created(@PathVariable Long eventId) {
+        try {
+            AddEventEntity eventRetrieved = null;
+            Optional<AddEventEntity> event = addEventJPARepository.findById(eventId);
+            if (event.isPresent()) {
+                eventRetrieved = event.get();
+                emailSenderService.sendEmail("Hello, Your Event "+eventRetrieved.getName()+" Payment Status is Paid.","Eventure" ,eventRetrieved.getUser().getEmail() );
+                eventRetrieved.setPaymentStatus("Paid");
+                addEventJPARepository.save(eventRetrieved);
+            } else {
+                return new RedirectView("/adminHome");
+            }
+        } catch (Exception e) {
+            System.out.println("Error in changing event to paid" + e);
+            return new RedirectView("/adminHome");
+        }
+        return new RedirectView("/paid-events");
+    }
+
+
 
     @GetMapping("/events-statics")
     public String getEventsMap(Model m) {
         List<Event> allBookedEvents = eventsJPARepository.findAll();
-        List<AddEventEntity> allAdminBookedEvents=addEventJPARepository.findAll();
-
-        if (allBookedEvents == null && allAdminBookedEvents == null) {
-            System.out.println("No  events");
+        if (allBookedEvents == null) {
+            System.out.println("No booked events");
             return "admin-home.html";
         }
+        Map<String,Long> event_countMapAdmin = addEventJPARepository.findAll().stream().filter(e->e.getPaymentStatus()!=null).collect(groupingBy(s -> s.getName(), counting()));;
 
-            Map<String, Long> event_countMap = allBookedEvents.stream()
-                    .collect(groupingBy(s -> s.getName(), counting()));
-
-            Map<String, Long> adminEvent_countMap = allAdminBookedEvents.stream()
+        Map<String, Long> event_countMap = allBookedEvents.stream()
                 .collect(groupingBy(s -> s.getName(), counting()));
-
-        Map<String, Long> mergedMap = new HashMap<>(event_countMap);
-        adminEvent_countMap.forEach((key, value) -> mergedMap.merge(key, value, Long::sum));
-
-        m.addAttribute("eventStatisticsMap", mergedMap);
+        event_countMap.putAll(event_countMapAdmin);
+        m.addAttribute("eventStatisticsMap", event_countMap);
         return "admin-statics.html";
     }
 
@@ -209,7 +224,7 @@ public class AdminController {
         }
         Map<String, Long> user_eventsMap = new HashMap<>();
         for(AppUserEntity user: allUsers){
-            user_eventsMap.put(user.getUsername(), (long) user.getBookedEvents().size());
+            user_eventsMap.put(user.getUsername(), (long) user.getBookedEvents().size()+user.getNewEvents().size());
         }
         m.addAttribute("userStatisticsMap", user_eventsMap);
         return "admin-statics.html";
@@ -226,7 +241,7 @@ public class AdminController {
         }
 
         int totalIncomes = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Paid")).collect(summingInt(e -> e.getPrice()));
-        int adminTotalIncomes = allAdminBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Paid")).collect(summingInt(e -> e.getPrice()));
+        int adminTotalIncomes = allAdminBookedEvents.stream().filter(e ->e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Paid")).collect(summingInt(e -> e.getPrice()));
 
         int total= totalIncomes+adminTotalIncomes;
         m.addAttribute("totalIncomes", total);
@@ -245,7 +260,7 @@ public class AdminController {
     }
 
     @GetMapping("/find-event")
-    public String eventSearch(@RequestParam Long id, String eventName, Model model) {
+    public String eventSearch(String eventName, Model model) {
         if (eventName != null && !eventName.isEmpty()) {
             List<Event> searchedEventList = eventsJPARepository.findByName(eventName);
 //            List<Event> searchedEventUsers = eventsJPARepository.findUserById(id);

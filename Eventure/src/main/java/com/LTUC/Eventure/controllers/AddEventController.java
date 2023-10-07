@@ -27,6 +27,32 @@ public class AddEventController {
     }
 @GetMapping("/addNewEvent")
 public String addEventData(){return "contact.html";}
+
+//    @PostMapping("/addNewEvent")
+//    public RedirectView addEventData(@RequestParam String name,
+//                                     @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+//                                     @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
+//                                     @RequestParam String eventUrl,
+//                                     @RequestParam String imageUrl,
+//                                     @RequestParam String location,
+//                                     @RequestParam String streetAddress,
+//                                     @RequestParam int price,
+//                                     @RequestParam String time,
+//                                     RedirectAttributes redir) {
+//        AddEventEntity newEvent = new AddEventEntity(name, startDate, endDate, eventUrl, location, streetAddress, price, imageUrl, false, false,time);
+//        AddEventEntity existingEvent = addEventJPARepository.findByName(name);
+//
+//        if (existingEvent == null) {
+//            redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
+//            addEventJPARepository.save(newEvent);
+//        } else {
+//            redir.addFlashAttribute("errorMessageBookedEvent", "Event Already Saved!");
+//
+//        }
+//        return new RedirectView("/addNewEvent");
+//
+//    }
+
     @PostMapping("/addNewEvent")
     public RedirectView addEventData(@RequestParam String name,
                                      @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
@@ -38,18 +64,34 @@ public String addEventData(){return "contact.html";}
                                      @RequestParam int price,
                                      @RequestParam String time,
                                      RedirectAttributes redir) {
-        AddEventEntity newEvent = new AddEventEntity(name, startDate, endDate, eventUrl, location, streetAddress, price, imageUrl, false, false,time);
+        LocalDate currentDate = LocalDate.now();
+
+        if (endDate.isBefore(startDate)) {
+            redir.addFlashAttribute("errorMessageEndBeforeStart", "End date cannot be before the start date.");
+            return new RedirectView("/addNewEvent");
+        }
+
+        if (startDate.isBefore(currentDate)) {
+            redir.addFlashAttribute("errorMessageStartDate", "Date cannot be in the past.");
+            return new RedirectView("/addNewEvent");
+        }
+
+        if (endDate.isBefore(currentDate)) {
+            redir.addFlashAttribute("errorMessageEndDate", "Date cannot be in the past.");
+            return new RedirectView("/addNewEvent");
+        }
+
+        AddEventEntity newEvent = new AddEventEntity(name, startDate, endDate, eventUrl, location, streetAddress, price, imageUrl, false, false, time);
         AddEventEntity existingEvent = addEventJPARepository.findByName(name);
 
         if (existingEvent == null) {
-            redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
+            redir.addFlashAttribute("successMessageBookedEvent", "Your event has been submitted and is awaiting admin approval. Thank you for sharing!");
             addEventJPARepository.save(newEvent);
         } else {
             redir.addFlashAttribute("errorMessageBookedEvent", "Event Already Saved!");
-
         }
-        return new RedirectView("/addNewEvent");
 
+        return new RedirectView("/addNewEvent");
     }
 
     @PostMapping("/bookCreatedEvent")
@@ -118,7 +160,7 @@ public String addEventData(){return "contact.html";}
             redir.addFlashAttribute("successMessageBookedEvent", "Event Approved!");
         }
         addEventJPARepository.save(event);
-        return new RedirectView("/adminHome");
+        return new RedirectView("/requested-events");
 
     }
 
@@ -126,7 +168,7 @@ public String addEventData(){return "contact.html";}
     public RedirectView declineEvent(@PathVariable("id") Long id, RedirectAttributes redir) {
         addEventJPARepository.deleteById(id);
         redir.addFlashAttribute("successMessageBookedEvent", "Event Declined!");
-        return new RedirectView("/adminHome");
+        return new RedirectView("/requested-events");
     }
 
     @GetMapping("/approve/{eventId}")
