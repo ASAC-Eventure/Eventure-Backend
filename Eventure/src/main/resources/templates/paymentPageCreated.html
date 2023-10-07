@@ -8,7 +8,7 @@
 <p>Cash On Site</p>
 <p>Must pay before two days from the event </p>
 <p>After that your reservation will be canceled </p>
-<form action="/adminPayment" method="post">
+<form action="/paymentCreated" method="post">
   <input type="hidden" name="eventId" th:value="${eventId}">
   <button type="submit" class="btn btn-success">Confirm</button>
 </form>

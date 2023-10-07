@@ -30,20 +30,15 @@ public class AppUserEntity implements UserDetails {
     private Long id;
 
     @Column(name = "user_name", nullable = false)
-    @NotEmpty(message = "Username is required")
     private String username;
 
     @Column(name = "email", nullable = false)
-    @Email(message = "Invalid email format")
     private String email;
 
     @Column(name = "password", nullable = false)
-    @Size(min = 8, message = "Password must be at least 8 characters long")
-    @Pattern(regexp="^(?=.*[A-Z]).+$", message = "Must include one uppercase letter")
     private String password;
 
     @Column(name = "country", nullable = false)
-    @NotEmpty(message = "Country is required")
     private String country;
 
     @Column(name = "interests")

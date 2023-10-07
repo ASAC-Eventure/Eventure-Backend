@@ -74,15 +74,13 @@
         <p>Location : <span th:text="${event.location}"></span></p>
         <br>
         <p>Street Name: <span th:text="${event.streetAddress}"></span></p>
-
-        <form th:action="@{'/unbook-AdminEvent/'+ ${event.id}}" method="post">
-            <input type="hidden" name="_method" value="PUT">
+        <form th:action="@{'/unbook-eventCreated/'+ ${event.id}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
             <button type="submit" class="btn btn-success">Cancel Event</button>
         </form>
-
         <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
         <div th:if="${event.paymentStatus == 'Unpaid'}">
-            <a th:href="@{/adminPayment?(eventId=${event.id})}" class="btn btn-success">Pay Here</a>
+            <a id="openPaymentModal2" th:href="@{/paymentCreated?(eventId=${event.id})}" class="btn btn-success">Pay Here</a>
         </div>
         </th:if>
     </div>

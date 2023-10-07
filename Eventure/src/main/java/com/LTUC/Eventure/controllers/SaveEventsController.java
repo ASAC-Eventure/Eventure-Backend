@@ -31,7 +31,7 @@ public class SaveEventsController {
     private AddEventJPARepository addEventJPARepository;
 
     @Autowired
-    public SaveEventsController(AppUserJPARepository userJPARepo, EventsJPARepository eventsJPARepo, AddressCountryJPARepository addressCountryJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository,AddEventJPARepository addEventJPARepository) {
+    public SaveEventsController(AppUserJPARepository userJPARepo, EventsJPARepository eventsJPARepo, AddressCountryJPARepository addressCountryJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository, AddEventJPARepository addEventJPARepository) {
         this.userJPARepo = userJPARepo;
         this.eventsJPARepo = eventsJPARepo;
         this.addressCountryJPARepository = addressCountryJPARepository;
@@ -46,7 +46,7 @@ public class SaveEventsController {
         if (username != null) {
             AppUserEntity user = userJPARepo.findByUsername(username);
             List<Event> userEvents = user.getBookedEvents();
-            List<AddEventEntity> addedEvents =user.getNewEvents();
+            List<AddEventEntity> addedEvents = user.getNewEvents();
             model.addAttribute("userEvents", userEvents);
             model.addAttribute("addedEvents", addedEvents);
         }
@@ -109,15 +109,6 @@ public class SaveEventsController {
         return new RedirectView("/myEvents");
     }
 
-    @PutMapping("/unbook-AdminEvent/{id}")
-    public RedirectView deleteAdminEventById(@PathVariable Long id) {
-        AddEventEntity newEvent=addEventJPARepository.findById(id).orElse(null);
-        newEvent.setBooked(false);
-        newEvent.setPaymentStatus("Unpaid");
-        addEventJPARepository.save(newEvent);
-        return new RedirectView("/myEvents");
-    }
-
     @GetMapping("/payment")
     public String paymentPage(@RequestParam Long eventId, Model model) {
         model.addAttribute("eventId", eventId);
@@ -133,20 +124,5 @@ public class SaveEventsController {
         }
         return new RedirectView("/myEvents");
     }
-
-    @GetMapping("/adminPayment")
-    public String adminPaymentPage(@RequestParam Long eventId, Model model) {
-        model.addAttribute("eventId", eventId);
-        return "adminPaymentPage.html";
-    }
-
-    @PostMapping("/adminPayment")
-    public RedirectView paymentMethodForAdmin(@RequestParam(name = "eventId") Long eventId) {
-        AddEventEntity newEvent= addEventJPARepository.findById(eventId).orElse(null);
-        if (newEvent != null && "Unpaid".equals(newEvent.getPaymentStatus())) {
-            newEvent.setPaymentStatus("Pending");
-            addEventJPARepository.save(newEvent);
-        }
-        return new RedirectView("/myEvents");
-    }
 }
+
