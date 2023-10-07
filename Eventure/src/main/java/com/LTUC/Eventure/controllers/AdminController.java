@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -244,9 +245,11 @@ public class AdminController {
     }
 
     @GetMapping("/find-event")
-    public String eventSearch(String eventName, Model model) {
+    public String eventSearch(@RequestParam Long id, String eventName, Model model) {
         if (eventName != null && !eventName.isEmpty()) {
             List<Event> searchedEventList = eventsJPARepository.findByName(eventName);
+//            List<Event> searchedEventUsers = eventsJPARepository.findUserById(id);
+
             model.addAttribute("eventsFromSearch", searchedEventList);
         }
         return "admin-home.html";

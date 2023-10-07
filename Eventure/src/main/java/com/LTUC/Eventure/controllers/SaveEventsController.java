@@ -113,6 +113,7 @@ public class SaveEventsController {
     public RedirectView deleteAdminEventById(@PathVariable Long id) {
         AddEventEntity newEvent=addEventJPARepository.findById(id).orElse(null);
         newEvent.setBooked(false);
+        newEvent.setPaymentStatus("Unpaid");
         addEventJPARepository.save(newEvent);
         return new RedirectView("/myEvents");
     }

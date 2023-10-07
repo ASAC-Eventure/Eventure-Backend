@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -146,12 +147,27 @@ public class EventService {
         Events dateEvents = fetchAndSaveEventsFromApi(apiData);
         return dateEvents;
     }
+//    public List<Event> get10RandomEvents() {
+//        String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey;
+//        Events randomEvents = fetchAndSaveEventsFromApi(apiData);
+//        List<Event> mostRatedEvents = randomEvents.getEvents().stream().limit(10).collect(Collectors.toList());
+//        return mostRatedEvents;
+//    }
+
+
     public List<Event> get10RandomEvents() {
         String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey;
         Events randomEvents = fetchAndSaveEventsFromApi(apiData);
-        List<Event> mostRatedEvents = randomEvents.getEvents().stream().limit(10).collect(Collectors.toList());
-        return mostRatedEvents;
+
+        if (randomEvents != null && randomEvents.getEvents() != null) {
+            List<Event> mostRatedEvents = randomEvents.getEvents().stream().limit(10).collect(Collectors.toList());
+            return mostRatedEvents;
+        } else {
+            // Handle the case where randomEvents or its events property is null
+            return Collections.emptyList(); // or return an appropriate default value
+        }
     }
+
 
     public void save_fromAPI_toDB(Events eventsFromApi) {
         try {
