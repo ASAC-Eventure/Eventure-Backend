@@ -9,148 +9,148 @@
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <img src="/images/logo.png" alt="Logo">
-    <ul>
-      <li>
-        <form action="/total-income" method="get">
-          <input type="submit" value="View Total Incomes">
-        </form>
-        <h1 th:if="${totalIncomes}">Total Incomes: <span th:text="${totalIncomes}"></span></h1>
-      </li>
-      <li>
-        <form action="/booked-events" method="get">
-          <input type="submit" value="View All Booked Events">
-        </form>
-      </li>
-      <li>
-        <form action="/unpaid-events" method="get">
-          <input type="submit" value="View Unpaid Events">
-        </form>
-      </li>
-      <li>
-        <form action="/pending-events" method="get">
-          <input type="submit" value="View Pending Events">
-        </form>
-      </li>
-      <li>
-        <form action="/paid-events" method="get">
-          <input type="submit" value="View Paid Events">
-        </form>
-      </li>
-      <li>
-        <form action="/cancelled-events" method="get">
-          <input type="submit" value="View Cancelled Events">
-        </form>
-      </li>
-      <li>
-        <form action="/requested-events" method="get">
-          <input type="submit" value="View Requested Events">
-        </form>
-      </li>
-      <li>
-        <form action="/events-statics" method="get">
-          <input type="submit" value="View Events Statics">
-        </form>
-      </li>
-      <li>
-        <form action="/users-statics" method="get">
-          <input type="submit" value="View Users Statics">
-        </form>
-      </li>
-      <li><a th:href="@{/perform_logout}">Sign Out</a></li>
-    </ul>
-  </div>
-  <!-- End SideBar-->
-  <div class="content">
+<!-- Sidebar -->
+<div class="sidebar">
+  <img src="/images/logo.png" alt="Logo">
+  <ul>
+    <li>
+      <form action="/total-income" method="get">
+        <input type="submit" value="View Total Incomes">
+      </form>
+      <h1 th:if="${totalIncomes}">Total Incomes: <span th:text="${totalIncomes}"></span></h1>
+    </li>
+    <li>
+      <form action="/booked-events" method="get">
+        <input type="submit" value="View All Booked Events">
+      </form>
+    </li>
+    <li>
+      <form action="/unpaid-events" method="get">
+        <input type="submit" value="View Unpaid Events">
+      </form>
+    </li>
+    <li>
+      <form action="/pending-events" method="get">
+        <input type="submit" value="View Pending Events">
+      </form>
+    </li>
+    <li>
+      <form action="/paid-events" method="get">
+        <input type="submit" value="View Paid Events">
+      </form>
+    </li>
+    <li>
+      <form action="/cancelled-events" method="get">
+        <input type="submit" value="View Cancelled Events">
+      </form>
+    </li>
+    <li>
+      <form action="/requested-events" method="get">
+        <input type="submit" value="View Requested Events">
+      </form>
+    </li>
+    <li>
+      <form action="/events-statics" method="get">
+        <input type="submit" value="View Events Statics">
+      </form>
+    </li>
+    <li>
+      <form action="/users-statics" method="get">
+        <input type="submit" value="View Users Statics">
+      </form>
+    </li>
+    <li><a th:href="@{/perform_logout}">Sign Out</a></li>
+  </ul>
+</div>
+<!-- End SideBar-->
+<div class="content">
   <!-- Search Bars -->
   <div class="searchBars">
-  <!-- User Search Form -->
-  <form class="userForm" action="/find-user">
-    <fieldset>
-      <legend>Find Users</legend>
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username">
-      <input type="submit" value="Search">
-    </fieldset>
-  </form>
+    <!-- User Search Form -->
+    <form class="userForm" action="/find-user">
+      <fieldset>
+        <legend>Find Users</legend>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username">
+        <input type="submit" value="Search">
+      </fieldset>
+    </form>
     <!-- End of User Search Form -->
 
-  <!-- Event Search Form -->
-  <form class="eventForm" action="/find-event">
-    <fieldset>
-      <legend>Find Events</legend>
-      <label for="eventName">Event:</label>
-      <input type="text" name="eventName" id="eventName">
-      <input type="submit" value="Search">
-    </fieldset>
-  </form>
-  <!-- End Of Event Search Form -->
+    <!-- Event Search Form -->
+    <form class="eventForm" action="/find-event">
+      <fieldset>
+        <legend>Find Events</legend>
+        <label for="eventName">Event:</label>
+        <input type="text" name="eventName" id="eventName">
+        <input type="submit" value="Search">
+      </fieldset>
+    </form>
+    <!-- End Of Event Search Form -->
     <!-- End SearchBar-->
 
     <!-- Start Of Dashboard-->
-  <div class="dashboard">
+    <div class="dashboard">
 
-    <!-- Start Of Booked Events Section -->
-    <div class="BookedEventsSection">
-      <h1 th:if="${totalBookedEvents}">Booked Events</h1>
-      <p th:if="${totalBookedEvents}"><strong>Total Booked Events:</strong> <span th:text="${totalBookedEvents}"></span></p>
+      <!-- Start Of Booked Events Section -->
+      <div class="BookedEventsSection">
+        <h1 th:if="${totalBookedEvents}">Booked Events</h1>
+        <p th:if="${totalBookedEvents}"><strong>Total Booked Events:</strong> <span th:text="${totalBookedEvents}"></span></p>
 
-      <div class="card-container">
-        <div class="card" th:each="event, stat : ${bookedEvents}" th:if="${bookedEvents}">
-          <div class="card-img">
-            <img th:src="${event.image}" alt="Event Image">
+        <div class="card-container">
+          <div class="card" th:each="event, stat : ${bookedEvents}" th:if="${bookedEvents}">
+            <div class="card-img">
+              <img th:src="${event.image}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate.substring(0, 10)}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong>
+                <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
+                <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
+          </span>
+              </p>
+              <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+              <form th:action="@{'/update-event-status/' + ${event.id}}" method="post" th:if="${event.paymentStatus == 'Pending'}">
+                <input type="submit" value="Change to Paid" />
+              </form>
+            </div>
           </div>
-          <div class="card-info">
-            <h2 th:text="${event.name}"></h2>
-            <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
-            <p><strong>Start Date:</strong> <span th:text="${event.startDate.substring(0, 10)}"></span></p>
-            <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
-            <p><strong>Time:</strong>
-              <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
-              <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
-              </span>
-            </p>
-            <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
-            <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
-            <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
-            <form th:action="@{'/update-event-status/' + ${event.id}}" method="post" th:if="${event.paymentStatus != 'Paid'}">
-              <input type="submit" value="Change to Paid" />
-            </form>
+
+          <!-- All Admin Booked Events -->
+          <div class="card" th:each="event, stat : ${adminBookedEvents}" th:if="${adminBookedEvents}">
+            <div class="card-img">
+              <img th:src="${event.imageUrl}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <div  th:if="${event.isBooked}">
+                <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
+              </div>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
+              <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+              <form th:action="@{'/update-event-status/' + ${event.id}}" method="post"th:if="${event.paymentStatus == 'Pending'}">
+                <input type="submit" value="Change to Paid" />
+              </form>
+            </div>
           </div>
         </div>
-
-                                     <!-- All Admin Booked Events -->
-        <div class="card" th:each="event, stat : ${adminBookedEvents}" th:if="${adminBookedEvents}">
-          <div class="card-img">
-            <img th:src="${event.imageUrl}" alt="Event Image">
-          </div>
-          <div class="card-info">
-            <h2 th:text="${event.name}"></h2>
-            <div  th:if="${event.isBooked}">
-              <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
-            </div>
-            <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
-            <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
-            <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
-            <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
-            <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
-            <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
-            <form th:action="@{'/update-eventCreated-status/' + ${event.id}}" method="post" th:if="${event.paymentStatus != 'Paid'}">
-              <input type="submit" value="Change to Paid" />
-            </form>
-          </div>
       </div>
-      </div>
-    </div>
-    <!-- End Of Booked Events Section -->
+      <!-- End Of Booked Events Section -->
 
 
-    <!-- Start Of Paid Events Section -->
-    <div class="PaidEventsSection">
-      <h2 th:if="${totalPaidEvents}">Paid Events</h2>
-      <p th:if="${totalPaidEvents}"><strong>Total Paid Events:</strong> <span th:text="${totalPaidEvents}"></span></p>
+      <!-- Start Of Paid Events Section -->
+      <div class="PaidEventsSection">
+        <h2 th:if="${totalPaidEvents}">Paid Events</h2>
+        <p th:if="${totalPaidEvents}"><strong>Total Paid Events:</strong> <span th:text="${totalPaidEvents}"></span></p>
         <div class="card-container">
           <div class="card" th:each="event, stat : ${paidEvents}" th:if="${paidEvents}">
             <div class="card-img">
@@ -169,12 +169,9 @@
               <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
               <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
               <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
-              <form th:unless="${event.paymentStatus != 'Pending'}" th:action="@{'/update-event-status/' + ${event.id}}" method="post">
-                <input type="submit" value="Change to Paid" />
-              </form>
             </div>
           </div>
-                                                <!-- Paid Admin Events-->
+          <!-- Paid Admin Events-->
           <div class="card" th:each="event, stat : ${paidAdminEvents}" th:if="${paidAdminEvents}">
             <div class="card-img">
               <img th:src="${event.imageUrl}" alt="Event Image">
@@ -194,256 +191,257 @@
           </div>
         </div>
       </div>
-    <!-- End Of Paid Event Section -->
+      <!-- End Of Paid Event Section -->
 
-    <!-- Start Of Pending Events Section -->
-        <div class="pendingEvents">
-          <h2 th:if="${totalPendingEvents}">Pending Events</h2>
-          <p th:if="${totalPendingEvents}"><strong>Total Pending Events:</strong> <span th:text="${totalPendingEvents}"></span></p>
-            <div class="card-container">
-              <div class="card" th:each="event, stat : ${pendingEvents}" th:if="${pendingEvents}">
-                <div class="card-img">
-                  <img th:src="${event.image}" alt="Event Image">
-                </div>
-                <div class="card-info">
-                  <h2 th:text="${event.name}"></h2>
-                  <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
-                  <p><strong>Start Date:</strong> <span th:text="${event.startDate.substring(0, 10)}"></span></p>
-                  <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
-                  <p><strong>Time:</strong>
-                    <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
-                    <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
+      <!-- Start Of Pending Events Section -->
+      <div class="pendingEvents">
+        <h2 th:if="${totalPendingEvents}">Pending Events</h2>
+        <p th:if="${totalPendingEvents}"><strong>Total Pending Events:</strong> <span th:text="${totalPendingEvents}"></span></p>
+        <div class="card-container">
+          <div class="card" th:each="event, stat : ${pendingEvents}" th:if="${pendingEvents}">
+            <div class="card-img">
+              <img th:src="${event.image}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate.substring(0, 10)}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong>
+                <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
+                <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
               </span>
-                  </p>
-                  <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
-                  <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
-                  <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
-                  <form th:action="@{'/update-event-status/' + ${event.id}}" method="post" th:if="${event.paymentStatus != 'Paid'}">
-                    <input type="submit" value="Change to Paid" />
-                  </form>
-                </div>
-              </div>
-                                             <!-- Pending Admin Events -->
-              <div class="card" th:each="event, stat : ${pendingAdminEvents}" th:if="${pendingAdminEvents}">
-                <div class="card-img">
-                  <img th:src="${event.imageUrl}" alt="Event Image">
-                </div>
-                <div class="card-info">
-                  <h2 th:text="${event.name}"></h2>
-                  <div  th:if="${event.isBooked == true && event.paymentStatus=='Pending'}">
-                    <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
-                  </div>
-                  <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
-                  <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
-                  <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
-                  <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
-                  <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
-                  <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
-                  <form th:action="@{'//update-eventCreated-status/' + ${event.id}}" method="post" th:if="${event.paymentStatus != 'Paid'}">
-                    <input type="submit" value="Change to Paid" />
-                  </form>
-                </div>
-              </div>
-
+              </p>
+              <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+              <form th:action="@{'/update-event-status/' + ${event.id}}" method="post" th:if="${event.paymentStatus != 'Paid'}">
+                <input type="submit" value="Change to Paid" />
+              </form>
             </div>
           </div>
-    <!-- End Of Pending Events Section -->
-
-    <!-- Start Of UnPaid Events Section -->
-        <div class="unpaidEventsSection">
-          <h2 th:if="${totalUnpaidEvents}">Unpaid Events</h2>
-          <p th:if="${totalUnpaidEvents}"><strong>Total Unpaid Events:</strong> <span th:text="${totalUnpaidEvents}"></span></p>
-            <div class="card-container">
-              <div class="card" th:each="event, stat : ${unpaidEvents}" th:if="${unpaidEvents}">
-                <div class="card-img">
-                  <img th:src="${event.image}" alt="Event Image">
-                </div>
-                <div class="card-info">
-                  <h2 th:text="${event.name}"></h2>
-                  <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
-                  <p><strong>Start Date:</strong> <span th:text="${event.startDate.substring(0, 10)}"></span></p>
-                  <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
-                  <p><strong>Time:</strong>
-                    <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
-                    <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
-              </span>
-                  </p>
-                  <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
-                  <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
-                  <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
-                </div>
+          <!-- Pending Admin Events -->
+          <div class="card" th:each="event, stat : ${pendingAdminEvents}" th:if="${pendingAdminEvents}">
+            <div class="card-img">
+              <img th:src="${event.imageUrl}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <div  th:if="${event.isBooked == true && event.paymentStatus=='Pending'}">
+                <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
               </div>
-                                        <!-- Unpaid Admin Events -->
-              <div class="card" th:each="event, stat : ${unpaidAdminEvents}" th:if="${unpaidAdminEvents}">
-                <div class="card-img">
-                  <img th:src="${event.imageUrl}" alt="Event Image">
-                </div>
-                <div class="card-info">
-                  <h2 th:text="${event.name}"></h2>
-                  <div  th:if="${event.isBooked == true && event.paymentStatus=='Unpaid'}">
-                    <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
-                  </div>
-                  <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
-                  <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
-                  <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
-                  <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
-                  <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
-                  <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
-                </div>
-              </div>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
+              <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+              <form th:action="@{'/update-eventCreated-status/' + ${event.id}}" method="post" th:if="${event.paymentStatus != 'Paid'}">
+                <input type="submit" value="Change to Paid" />
+              </form>
             </div>
           </div>
-    <!-- End Of UnPaid Events Section -->
 
-    <!-- Start Cancelled Events Section -->
-    <div class="cancelledEventsSection">
-      <h2 th:if="${cancelledEvents}">Cancelled Events</h2>
-      <h1 th:if="${cancelledEvents}">Total Cancelled Events: <span th:text="${totalCancelledEvents}"></span></h1>
-      <div class="card-container">
-        <div class="card"  th:each="event : ${cancelledEvents}" th:if="${cancelledEvents}">
-          <div class="card-img">
-            <img th:src="${event.image}" alt="Event Image">
+        </div>
+      </div>
+      <!-- End Of Pending Events Section -->
+
+      <!-- Start Of UnPaid Events Section -->
+      <div class="unpaidEventsSection">
+        <h2 th:if="${totalUnpaidEvents}">Unpaid Events</h2>
+        <p th:if="${totalUnpaidEvents}"><strong>Total Unpaid Events:</strong> <span th:text="${totalUnpaidEvents}"></span></p>
+        <div class="card-container">
+          <div class="card" th:each="event, stat : ${unpaidEvents}" th:if="${unpaidEvents}">
+            <div class="card-img">
+              <img th:src="${event.image}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate.substring(0, 10)}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong>
+                <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
+                <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
+              </span>
+              </p>
+              <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+            </div>
           </div>
+          <!-- Unpaid Admin Events -->
+          <div class="card" th:each="event, stat : ${unpaidAdminEvents}" th:if="${unpaidAdminEvents}">
+            <div class="card-img">
+              <img th:src="${event.imageUrl}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <div  th:if="${event.isBooked == true && event.paymentStatus=='Unpaid'}">
+                <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
+              </div>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
+              <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Of UnPaid Events Section -->
+
+      <!-- Start Cancelled Events Section -->
+      <div class="cancelledEventsSection">
+        <h2 th:if="${cancelledEvents}">Cancelled Events</h2>
+        <p th:if="${cancelledEvents}">Total Cancelled Events: <span th:text="${totalCancelledEvents}"></span></p>
+        <div class="card-container">
+          <div class="card"  th:each="event : ${cancelledEvents}" th:if="${cancelledEvents}">
+            <div class="card-img">
+              <img th:src="${event.image}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate.substring(0, 10)}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong>
+                <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
+                <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
+              </span>
+              </p>
+              <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Of Cancelled Events Section -->
+
+
+      <!-- Start of Events From Search Section -->
+
+      <div class="EventsFromSearchSection" style="text-align: center; display: flex; justify-content: center; align-items: center;">
+        <div  th:if="${eventsFromSearch}" style="text-align: left; background-color: #ffffff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
           <div class="card-info">
-            <h2 th:text="${event.name}"></h2>
-            <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
-            <p><strong>Start Date:</strong> <span th:text="${event.startDate.substring(0, 10)}"></span></p>
-            <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+            <h2><strong>Event Name:</strong><span th:text="${eventsFromSearch.name}"></span></h2>
+            <p><strong>Start Date:</strong> <span th:text="${eventsFromSearch.startDate.substring(0, 10)}"></span></p>
+            <p><strong>End Date:</strong> <span th:text="${eventsFromSearch.endDate}"></span></p>
             <p><strong>Time:</strong>
-              <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
-              <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
+              <span th:if="${#strings.length(eventsFromSearch.startDate) < 16}" th:text="'19:00:00'"></span>
+              <span th:if="${#strings.length(eventsFromSearch.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
               </span>
             </p>
-            <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
-            <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
-            <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+            <p><strong>Location:</strong> <span th:text="${eventsFromSearch.location.name}"></span></p>
+            <p><strong>Price:</strong> <span th:text="${eventsFromSearch.price}"></span>
           </div>
+          <table style="margin: 0 auto; border-collapse: collapse; width: 80%; text-align: left; background-color: #ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
+            <tr style="background-color: #f2f2f2;">
+              <th style="padding: 10px;">UserName</th>
+            </tr>
+            <tr th:each="user : ${eventUsers}">
+              <td style="padding: 10px;" th:text="${user}"></td>
+              </td>
+            </tr>
+          </table>
         </div>
-      </div>
-    </div>
-    <!-- End Of Cancelled Events Section -->
-
-
-    <!-- Start of Events From Search Section -->
-
-    <div class="EventsFromSearchSection" style="text-align: center; display: flex; justify-content: center; align-items: center; height: 100vh;">
-      <div th:if="${eventsFromSearch}" style="text-align: left; background-color: #ffffff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
-        <div class="card-info">
-          <h2><strong>Event Name:</strong><span th:text="${event.name}"></span></h2>
-          <p><strong>Start Date:</strong> <span th:text="${event.startDate.substring(0, 10)}"></span></p>
-          <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
-          <p><strong>Time:</strong>
-            <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
-            <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
-              </span>
-          </p>
-          <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
-          <p><strong>Price:</strong> <span th:text="${event.price}"></span>
-        </div>
-        <table style="margin: 0 auto; border-collapse: collapse; width: 80%; text-align: left; background-color: #ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
-          <tr style="background-color: #f2f2f2;">
-            <th style="padding: 10px;">UserName</th>
-          </tr>
-          <tr th:each="event : ${userInfo.bookedEvents}">
-            <td style="padding: 10px;" th:text="${event.user.username}"></td>
-          </tr>
-        </table>
-
-                                            <!-- Admin Searched Events -->
-        <div class="card-info">
-          <h2><strong>Event Name:</strong><span th:text="${event.name}"></span></h2>
-          <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
-          <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
-          <p><strong>Time:</strong><span th:text="${event.endDate}"></span></p>
-          <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
-          <p><strong>Price:</strong> <span th:text="${event.price}"></span>
-        </div>
-        <table style="margin: 0 auto; border-collapse: collapse; width: 80%; text-align: left; background-color: #ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
-          <tr style="background-color: #f2f2f2;">
-            <th style="padding: 10px;">UserName</th>
-          </tr>
-          <tr th:each="event : ${userInfo.bookedEvents}">
-            <td style="padding: 10px;" th:text="${event.user.username}"></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <!-- End Events from Search Section -->
-
-
-    <!-- Start Users from Search Section-->
-
-    <div class="userFromSearchSection" style="text-align: center; display: flex; justify-content: center; align-items: center;">
-      <div th:if="${userInfo}" style="text-align: left; background-color: #ffffff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
-        <div class="card-info">
-          <h2><strong>UserName:</strong> <span th:text="${userInfo.username}"></span></h2>
-          <p><strong>Email:</strong> <span th:text="${userInfo.email}"></span></p>
-          <p><strong>Country:</strong> <span th:text="${userInfo.country}"></span></p>
-          <p><strong>Interests:</strong> <span th:text="${userInfo.interests}"></span></p>
-          <p><strong>Date of Birth:</strong> <span th:text="${userInfo.dateOfBirth}"></span></p>
-        </div>
-      <table style="margin: 0 auto; border-collapse: collapse; width: 80%; text-align: left; background-color: #ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
-        <tr style="background-color: #f2f2f2;">
-          <th style="padding: 10px;">Event Name</th>
-          <th style="padding: 10px;">Payment Status</th>
-          <th style="padding: 10px;">Actions</th>
-        </tr>
-        <tr th:each="event : ${userInfo.bookedEvents}">
-          <td style="padding: 10px;" th:text="${event.name}"></td>
-          <td style="padding: 10px;" th:text="${event.paymentStatus}"></td>
-          <td style="padding: 10px;">
-            <form th:if="${event.paymentStatus == 'Pending'}" th:action="@{'/update-event-status/' + ${event.id}}" method="post">
-              <input type="submit" value="Change to Paid" style="background-color: #4CAF50; color: white; padding: 8px 16px; border: none; cursor: pointer;">
-            </form>
-          </td>
-        </tr>
-        <tr th:each="event : ${userInfo.newEvents}">
-          <td style="padding: 10px;" th:text="${event.name}"></td>
-          <td style="padding: 10px;" th:text="${event.paymentStatus}"></td>
-          <td style="padding: 10px;">
-            <form th:if="${event.paymentStatus == 'Pending'}" th:action="@{'/update-eventCreated-status/' + ${event.id}}" method="post">
-              <input type="submit" value="Change to Paid" style="background-color: #4CAF50; color: white; padding: 8px 16px; border: none; cursor: pointer;">
-            </form>
-          </td>
-        </tr>
-      </table>
-      </div>
-    </div>
-    <!-- End Users from Search Section-->
-
-    <!-- Start Events Requests Section-->
-    <div class="requestedEventsSection">
-      <h2 th:if="${totalRequestedEvents}">Requested Events</h2>
-      <p th:if="${totalRequestedEvents}"><strong>Total Requested Events:</strong> <span th:text="${totalRequestedEvents}"></span></p>
-
-      <div class="card-container">
-        <div class="card" th:each="event, stat : ${requestedEvents}"  th:if="!${event.isApproved}" >
-          <div class="card-img">
-            <img th:src="${event.imageUrl}" alt="Event Image">
-          </div>
+        <!-- Admin Events Search -->
+        <div  th:if="${adminEventsFromSearch}" style="text-align: left; background-color: #ffffff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
           <div class="card-info">
-            <h2 th:text="${event.name}"></h2>
-            <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
-            <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
-            <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
-            <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
-            <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
-            <form style="border-color: white;border-radius: 5px;" th:action="@{'/approve/' + ${event.id}}" method="post">
-              <input type="hidden" name="_method" value="PUT">
-              <button type="submit"  style="background:#83C983" class="btn btn-success">Approve</button>
-            </form>
-            <form style="border-color: white;border-radius: 5px;padding-top: 10px;" th:action="@{'/decline/' + ${event.id}}" method="post">
-              <input type="hidden" name="_method" value="DELETE">
-              <button type="submit"  style="background: #DC7373" class="btn btn-success">Decline</button>
-            </form>
+            <h2><strong>Event Name:</strong><span th:text="${adminEventsFromSearch.name}"></span></h2>
+            <p><strong>Start Date:</strong> <span th:text="${adminEventsFromSearch.startDate}"></span></p>
+            <p><strong>End Date:</strong> <span th:text="${adminEventsFromSearch.endDate}"></span></p>
+            <p><strong>Time:</strong><span th:text="${adminEventsFromSearch.time}"></span></p>
+            <p><strong>Location:</strong> <span th:text="${adminEventsFromSearch.location}"></span></p>
+            <p><strong>Price:</strong> <span th:text="${adminEventsFromSearch.price}"></span>
+          </div>
+          <table style="margin: 0 auto; border-collapse: collapse; width: 80%; text-align: left; background-color: #ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
+            <tr style="background-color: #f2f2f2;">
+              <th style="padding: 10px;">UserName</th>
+            </tr>
+            <tr th:each="user : ${adminEventUsers}">
+              <td style="padding: 10px;" th:text="${user}"></td>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- End Events from Search Section -->
+
+      <!-- Start Users from Search Section-->
+
+      <div class="userFromSearchSection" style="text-align: center; display: flex; justify-content: center; align-items: center;">
+        <div th:if="${userInfo}" style="text-align: left; background-color: #ffffff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
+          <div class="card-info">
+            <h2><strong>UserName:</strong> <span th:text="${userInfo.username}"></span></h2>
+            <p><strong>Email:</strong> <span th:text="${userInfo.email}"></span></p>
+            <p><strong>Country:</strong> <span th:text="${userInfo.country}"></span></p>
+            <p><strong>Interests:</strong> <span th:text="${userInfo.interests}"></span></p>
+            <p><strong>Date of Birth:</strong> <span th:text="${userInfo.dateOfBirth}"></span></p>
+          </div>
+          <table style="margin: 0 auto; border-collapse: collapse; width: 80%; text-align: left; background-color: #ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
+            <tr style="background-color: #f2f2f2;">
+              <th style="padding: 10px;">Event Name</th>
+              <th style="padding: 10px;">Payment Status</th>
+              <th style="padding: 10px;">Actions</th>
+            </tr>
+            <tr th:each="event : ${userInfo.bookedEvents}">
+              <td style="padding: 10px;" th:text="${event.name}"></td>
+              <td style="padding: 10px;" th:text="${event.paymentStatus}"></td>
+              <td style="padding: 10px;">
+                <form th:if="${event.paymentStatus == 'Pending'}" th:action="@{'/update-event-status/' + ${event.id}}" method="post">
+                  <input type="submit" value="Change to Paid" style="background-color: #4CAF50; color: white; padding: 8px 16px; border: none; cursor: pointer;">
+                </form>
+              </td>
+            </tr>
+            <tr th:each="event : ${userInfo.newEvents}">
+              <td style="padding: 10px;" th:text="${event.name}"></td>
+              <td style="padding: 10px;" th:text="${event.paymentStatus}"></td>
+              <td style="padding: 10px;">
+                <form th:if="${event.paymentStatus == 'Pending'}" th:action="@{'/update-eventCreated-status/' + ${event.id}}" method="post">
+                  <input type="submit" value="Change to Paid" style="background-color: #4CAF50; color: white; padding: 8px 16px; border: none; cursor: pointer;">
+                </form>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- End Users from Search Section-->
+
+      <!-- Start Events Requests Section-->
+      <div class="requestedEventsSection">
+        <h2 th:if="${totalRequestedEvents}">Requested Events</h2>
+        <p th:if="${totalRequestedEvents}"><strong>Total Requested Events:</strong> <span th:text="${totalRequestedEvents}"></span></p>
+
+        <div class="card-container">
+          <div class="card" th:each="event, stat : ${requestedEvents}"  th:if="!${event.isApproved}" >
+            <div class="card-img">
+              <img th:src="${event.imageUrl}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
+              <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <form style="border-color: white; border-radius: 5px;" th:action="@{'/approve/' + ${event.id}}" method="post">
+                <input type="hidden" name="_method" value="PUT">
+                <button type="submit"   style="background:#83C983;" class="btn btn-success">Approve</button>
+              </form>
+              <form style="padding-top: 10px;border-color: white; border-radius: 5px;" th:action="@{'/decline/' + ${event.id}}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit"  style="background:#DC7373;" class="btn btn-success">Decline</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- End Events Requests Section-->
+      <!-- End Events Requests Section-->
 
-  </div>
+    </div>
     <!-- End Of DashBoard -->
   </div>
 </div>

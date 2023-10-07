@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService {
                 //// fot the added events
                 List<AddEventEntity> allBookedEvents_added = addEventJPARepository.findAll();
                 if (!allBookedEvents_added.isEmpty()) {
-                    List<AddEventEntity> unpaidEvents_added = allBookedEvents_added.stream().filter(s -> s.getPaymentStatus().equals("Unpaid")).collect(toList());
+                    List<AddEventEntity> unpaidEvents_added = allBookedEvents_added.stream().filter(s -> s.getPaymentStatus()!=null && s.getPaymentStatus().equals("Unpaid")).collect(toList());
                     if (!unpaidEvents_added.isEmpty()) {
                         for (AddEventEntity e : unpaidEvents_added) {
                             LocalDate startDate = e.getStartDate();
@@ -77,7 +77,7 @@ public class AdminServiceImpl implements AdminService {
         // for the added events
         List<AddEventEntity> allBookedEvents_added = addEventJPARepository.findAll();
         if (!allBookedEvents_added.isEmpty()) {
-            List<AddEventEntity> lastEvents = allBookedEvents_added.stream().filter(s -> s.getPaymentStatus().equals("Paid") || s.getPaymentStatus().equals("Cancelled")).collect(toList());
+            List<AddEventEntity> lastEvents = allBookedEvents_added.stream().filter(s -> s.getPaymentStatus()!=null && (s.getPaymentStatus().equals("Paid") || s.getPaymentStatus().equals("Cancelled"))).collect(toList());
             if (!lastEvents.isEmpty()) {
                 for (AddEventEntity e : lastEvents) {
                     LocalDate date= e.getEndDate();
