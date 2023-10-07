@@ -24,12 +24,12 @@
                 <img th:src="${event.image}" class="card-img-top" alt="Event Image">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${event.name}">Event Title</h5>
-                    <h5 class="card-title" th:text="'Price: ' + ${event.price + ' ' + event.priceCurrency}">Event Price</h5>                    <p class="card-text">
+                    <h5 class="card-title" th:text="'Price: ' + ${event.price + ' ' + event.priceCurrency}">Event Price</h5>
+                    <p class="card-text">
                     <span th:text="'Starts from ' + ${event.startDate}">Start Date</span>
                     <br>
                     <span th:text="'Ends in ' + ${event.endDate}">End Date</span>
-
-                </p>
+                    </p>
                     <p class="card-text">
                         Location: <span th:text="${event.location.name}">Location Name</span>
                         <br/>
@@ -67,12 +67,23 @@
         <br>
         <p>End Date : <span th:text="${event.endDate}"></span></p>
         <br>
+        <p>Time : <span th:text="${event.time}"></span></p>
+        <br>
         <p>Price : <span th:text="${event.price}">  </span> <span th:text="${event.priceCurrency}"> </span></p>
         <br>
         <p>Location : <span th:text="${event.location}"></span></p>
         <br>
         <p>Street Name: <span th:text="${event.streetAddress}"></span></p>
 
+        <form th:action="@{'/unbook-AdminEvent/'+ ${event.id}}" method="post">
+            <input type="hidden" name="_method" value="PUT">
+            <button type="submit" class="btn btn-success">Cancel Event</button>
+        </form>
+
+        <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
+        <div th:if="${event.paymentStatus == 'Unpaid'}">
+            <a th:href="@{/adminPayment?(eventId=${event.id})}" class="btn btn-success">Pay Here</a>
+        </div>
         </th:if>
     </div>
 </div>

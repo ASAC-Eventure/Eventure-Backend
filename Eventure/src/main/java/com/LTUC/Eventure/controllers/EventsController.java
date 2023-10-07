@@ -25,11 +25,11 @@ public class EventsController {
     public String showEvents(@RequestParam(name = "countryName", required = false) String countryName,
                              @RequestParam(name = "startDate", required = false)
                              @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate, Model m) {
-        if (countryName.length() > 0 && startDate != null) {
+        if (countryName != null && countryName.length() > 0 && startDate != null) {
             System.out.println("inside both conditions");
             Events country_dateEvents = eventService.getEvents_By_CountryName_and_startDate(countryName, startDate);
             m.addAttribute("events", country_dateEvents.getEvents());
-        } else if (countryName.length() > 0) {
+        } else if (countryName != null && countryName.length() > 0) {
             System.out.println("inside country condition");
             Events countryEvents = eventService.getEvents_By_CountryName(countryName);
             m.addAttribute("events", countryEvents.getEvents());

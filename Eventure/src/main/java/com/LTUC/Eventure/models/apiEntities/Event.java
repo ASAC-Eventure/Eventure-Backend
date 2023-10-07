@@ -39,7 +39,6 @@ public class Event {
 
     private String paymentStatus;
 
-
     public Event(String name, String startDate, String endDate, String url, Location location, int price, String image, AppUserEntity user, String paymentStatus) {
         this.name = name;
         this.startDate = startDate;

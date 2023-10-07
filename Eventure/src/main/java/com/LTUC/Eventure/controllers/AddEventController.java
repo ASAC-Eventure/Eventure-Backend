@@ -43,10 +43,12 @@ public class AddEventController {
                                      @RequestParam String location,
                                      @RequestParam String streetAddress,
                                      @RequestParam int price,
+                                     @RequestParam String time,
                                      RedirectAttributes redir){
-        AddEventEntity newEvent = new AddEventEntity(name,startDate,endDate,eventUrl,location,streetAddress,price,imageUrl,false,false);
+        AddEventEntity newEvent = new AddEventEntity(name,startDate,endDate,eventUrl,location,streetAddress,price,imageUrl,false,false,time);
       newEvent.setApproved(false);
       newEvent.setBooked(false);
+      newEvent.setPaymentStatus("Unpaid");
         AddEventEntity existingEvent = addEventJPARepository.findByName(name);
 
         if (existingEvent == null) {

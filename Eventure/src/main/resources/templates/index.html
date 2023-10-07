@@ -86,7 +86,7 @@
             <div class="col-lg-12 text-center">
             </div>
         </div>
-        <div class="row" th:each="event, stat : ${mostRatedEvents}">
+        <div class="row" th:each="event, stat : ${bookedEvents}">
             <div class="col-lg-6 col-md-6 mb-4">
                 <div class="single_event position-relative">
                     <div class="event_thumb">
@@ -152,6 +152,8 @@
         <p>Start Date : <span th:text="${event.startDate}"></span></p>
         <br>
         <p>End Date : <span th:text="${event.endDate}"></span></p>
+        <br>
+        <p>Time : <span th:text="${event.time}"></span></p>
         <br>
         <p>Price : <span th:text="${event.price}">  </span> <span th:text="${event.priceCurrency}"> </span></p>
         <br>

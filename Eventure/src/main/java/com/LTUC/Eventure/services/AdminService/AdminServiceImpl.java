@@ -5,21 +5,21 @@ import com.LTUC.Eventure.repositories.apiJPARepositories.EventsJPARepository;
 import com.LTUC.Eventure.services.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
 import static java.util.stream.Collectors.toList;
 @Component
 public class AdminServiceImpl implements AdminService {
     private EventsJPARepository eventsJPARepository;
     private EmailSenderService emailSenderService;
+
 @Autowired
     public AdminServiceImpl(EventsJPARepository eventsJPARepository, EmailSenderService emailSenderService) {
-        this.eventsJPARepository = eventsJPARepository;
-        this.emailSenderService=emailSenderService;
-    }
+    this.eventsJPARepository = eventsJPARepository;
+    this.emailSenderService = emailSenderService;
+}
+
 
     @Override
     public void updateStatus_unpaid_toCancelled() {   // this method will make status cancelled for every unpaid status that exceeds allowed days to pay
@@ -32,7 +32,6 @@ public class AdminServiceImpl implements AdminService {
                     if (compareToCurrentDate(subtractTwoDays(eventStartDate))) {
                         e.setPaymentStatus("Cancelled");
                         emailSenderService.sendEmail("Hello, Your Event "+e.getName()+" Payment Status is Cancelled.","Eventure" ,e.getUser().getEmail() );
-
                         eventsJPARepository.save(e);
                     }
                 }

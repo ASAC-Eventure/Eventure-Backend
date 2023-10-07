@@ -52,6 +52,7 @@ public class SaveEventsController {
         }
         return "user-events.html";
     }
+
     @PostMapping("/book-event")
     public RedirectView bookEvent(Principal p, RedirectAttributes redir,
                                   @RequestParam String eventName,
@@ -90,8 +91,7 @@ public class SaveEventsController {
 
 
             Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location, (int) (50 + (Math.random() * (250 - 50))), image, user,"Unpaid");
-             if (!user.getBookedEvents().stream().anyMatch(e -> e.getName().equals(eventName))) {
-
+            if (!user.getBookedEvents().stream().anyMatch(e -> e.getName().equals(eventName))) {
                 eventsJPARepo.save(event);
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
 
@@ -109,6 +109,14 @@ public class SaveEventsController {
         return new RedirectView("/myEvents");
     }
 
+    @PutMapping("/unbook-AdminEvent/{id}")
+    public RedirectView deleteAdminEventById(@PathVariable Long id) {
+        AddEventEntity newEvent=addEventJPARepository.findById(id).orElse(null);
+        newEvent.setBooked(false);
+        addEventJPARepository.save(newEvent);
+        return new RedirectView("/myEvents");
+    }
+
     @GetMapping("/payment")
     public String paymentPage(@RequestParam Long eventId, Model model) {
         model.addAttribute("eventId", eventId);
@@ -121,6 +129,22 @@ public class SaveEventsController {
         if (event != null && "Unpaid".equals(event.getPaymentStatus())) {
             event.setPaymentStatus("Pending");
             eventsJPARepo.save(event);
+        }
+        return new RedirectView("/myEvents");
+    }
+
+    @GetMapping("/adminPayment")
+    public String adminPaymentPage(@RequestParam Long eventId, Model model) {
+        model.addAttribute("eventId", eventId);
+        return "adminPaymentPage.html";
+    }
+
+    @PostMapping("/adminPayment")
+    public RedirectView paymentMethodForAdmin(@RequestParam(name = "eventId") Long eventId) {
+        AddEventEntity newEvent= addEventJPARepository.findById(eventId).orElse(null);
+        if (newEvent != null && "Unpaid".equals(newEvent.getPaymentStatus())) {
+            newEvent.setPaymentStatus("Pending");
+            addEventJPARepository.save(newEvent);
         }
         return new RedirectView("/myEvents");
     }
