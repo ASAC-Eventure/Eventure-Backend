@@ -5,7 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/C:/Users/Saify/IdeaProjects/Eventure-Backend/Eventure/src/main/resources/saif.json.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/8.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/JS/aboutUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/JS/aboutUs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/JS/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/JS/editProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/JS/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/JS/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/T&amp;C.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/T&amp;C.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/aboutUs.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/aboutUs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/eventDetails.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/eventDetails.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/events.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/events.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/searchbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/searchbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/signUpAndLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/signUpAndLogin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/cssOriginal/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/editProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/editProfile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/indexOriginal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,12 +50,7 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Eventure" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -59,16 +79,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Luminos/MidProject/Eventure-Backend&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "blqmerge-aws-template",
+    "last_opened_file_path": "C:/Users/User/Luminos/MidProject/Eventure-Backend"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Luminos\MidProject\Eventure-Backend\Eventure\src\main\resources\static\images" />
