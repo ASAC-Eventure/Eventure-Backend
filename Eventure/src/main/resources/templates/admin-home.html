@@ -14,10 +14,13 @@
   <img src="/images/logo.png" alt="Logo">
   <ul>
     <li>
-      <form action="/total-income" method="get">
+      <form th:action="@{/total-income}" method="get">
         <input type="submit" value="View Total Incomes">
       </form>
       <h1 th:if="${totalIncomes}">Total Incomes: <span th:text="${totalIncomes}"></span></h1>
+      <div th:if="${errorMessageTotalIncome}">
+        <span th:text="${errorMessageTotalIncome}"></span>
+      </div>
     </li>
     <li>
       <form action="/booked-events" method="get">
@@ -96,6 +99,9 @@
       <div class="BookedEventsSection">
         <h2 th:if="${totalBookedEvents}">Booked Events</h2>
         <p th:if="${totalBookedEvents}"><strong>Total Booked Events:</strong> <span th:text="${totalBookedEvents}"></span></p>
+        <div th:if="${errorMessageBookedEvents}">
+          <span th:text="${errorMessageBookedEvents}"></span>
+        </div>
 
         <div class="card-container">
           <div class="card" th:each="event, stat : ${bookedEvents}" th:if="${bookedEvents}">
@@ -367,11 +373,11 @@
             </tr>
           </table>
         </div>
+        <div th:if="${errorMessageEventInfo}" th:text="${errorMessageEventInfo}"></div>
       </div>
       <!-- End Events from Search Section -->
 
       <!-- Start Users from Search Section-->
-
       <div class="userFromSearchSection" style="text-align: center; display: flex; justify-content: center; align-items: center;">
         <div th:if="${userInfo}" style="text-align: left; background-color: #ffffff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
           <div class="card-info">
@@ -407,6 +413,7 @@
             </tr>
           </table>
         </div>
+        <div th:if="${errorMessageUserInfo}" th:text="${errorMessageUserInfo}"></div>
       </div>
       <!-- End Users from Search Section-->
 

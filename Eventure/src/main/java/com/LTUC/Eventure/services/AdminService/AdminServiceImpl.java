@@ -25,6 +25,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void updateStatus_unpaid_toCancelled() {   // this method will make status cancelled for every unpaid status that exceeds allowed days to pay
+        System.out.println("raeched update to cancell");
         List<Event> allBookedEvents = eventsJPARepository.findAll();
         if (!allBookedEvents.isEmpty()) {
             List<Event> unpaidEvents = allBookedEvents.stream().filter(s -> s.getPaymentStatus().equals("Unpaid")).collect(toList());
@@ -32,8 +33,9 @@ public class AdminServiceImpl implements AdminService {
                 for (Event e : unpaidEvents) {
                     String eventStartDate = e.getStartDate().split("T")[0];
                     if (compareToCurrentDate(subtractTwoDays(eventStartDate))) {
+                        System.out.println("cancel from db1");
                         e.setPaymentStatus("Cancelled");
-                        emailSenderService.sendEmail("Hello, Your Event " + e.getName() + " Payment Status is Cancelled.", "Eventure", e.getUser().getEmail());
+                        emailSenderService.sendEmail("We hope this message finds you well. We would like to inform you of an important update regarding your event, We regret to inform you that the payment status for this event has been cancelled. Event:"+ e.getName() , "Eventure", e.getUser().getEmail());
 
                         eventsJPARepository.save(e);
                     }
@@ -47,8 +49,9 @@ public class AdminServiceImpl implements AdminService {
                             LocalDate startDate = e.getStartDate();
                             String eventStartDate = startDate.toString();
                             if (compareToCurrentDate(subtractTwoDays(eventStartDate))) {
+                                System.out.println("cancel from db2");
                                 e.setPaymentStatus("Cancelled");
-                                emailSenderService.sendEmail("Hello, Your Event " + e.getName() + " Payment Status is Cancelled.", "Eventure", e.getUser().getEmail());
+                                emailSenderService.sendEmail("We hope this message finds you well. We would like to inform you of an important update regarding your event, We regret to inform you that the payment status for this event has been cancelled. Event:"+ e.getName(), "Eventure", e.getUser().getEmail());
                                 addEventJPARepository.save(e);
                             }
                         }

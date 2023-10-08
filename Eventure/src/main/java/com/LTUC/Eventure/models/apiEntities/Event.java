@@ -54,14 +54,19 @@ public class Event {
 //    public Event(String eventName, String eventStartDate, String eventEndDate, String eventUrl, Location location, int i, String image, AppUserEntity user, String unpaid) {
 //    }
 
-    @Override
-    public String toString() {
-        return "Event{" +
-                "name='" + name + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                ", url='" + url + '\'' +
-                ", location=" + location +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Event{" +
+//                "name='" + name + '\'' +
+//                ", startDate='" + startDate + '\'' +
+//                ", endDate='" + endDate + '\'' +
+//                ", url='" + url + '\'' +
+//                ", location=" + location +
+//                ", price=" + price +
+//                ", priceCurrency='" + priceCurrency + '\'' +
+//                ", image='" + image + '\'' +
+//                ", user=" + user +
+//                ", paymentStatus='" + paymentStatus + '\'' +
+//                '}';
+//    }
 }

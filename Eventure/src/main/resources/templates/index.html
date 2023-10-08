@@ -88,8 +88,9 @@
             <div class="card__content--container | flow">
                 <h2 class="card__title" th:text="${event.name}"></h2>
                 <p class="card__description">
-                    <span th:text="${event.startDate.substring(8, 10)}"></span>/
-                    <span th:text="${event.startDate.substring(5, 7)}"></span> |
+                    <span th:text="${event.startDate.substring(0, 4)}"></span>-
+                    <span th:text="${event.startDate.substring(5, 10)}"></span> |
+
                     <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
                     <span th:if="${#strings.length(event.startDate) >= 16}"
                           th:text="${event.startDate.split('T')[1]}"></span>
@@ -98,8 +99,8 @@
                     Location: <span th:text="${event.location.name}">Location Name</span>
                     Address: <span th:text="${event.location.address.streetAddress}">Street Address</span>,
                     <span th:text="${event.location.address.addressLocality}">Locality</span>,
-                    <span th:text="${event.location.address.addressCountry.name}">Country</span>,
-                    Price: <span th:text="${event.price}">Country</span>
+                    <span th:text="${event.location.address.addressCountry.name}">Country</span><br>
+                    Price: <span th:text="${event.price}">Price</span>
                 </p>
 
             </div>
@@ -163,7 +164,7 @@
             <input type="hidden" name="price" th:value="${event.price}">
             <input type="hidden" name="address" th:value="${event.streetAddress}">
             <input type="hidden" name="url" th:value="${event.eventUrl}">
-            <button th:if="${isUsernameFound == 'yes'}" type="submit" class="btn btn-success">Book Event</button>
+            <input th:if="${isUsernameFound == 'yes'}" type="submit" class="btn btn-success">Book Event</input>
         </form>
         <p th:if="${isUsernameFound == 'no'}">Login to book this event</p>
         </th:if>

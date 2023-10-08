@@ -46,22 +46,28 @@ public class EventsController {
             }
 
             if (countryName != null && !countryName.isEmpty() && startDate != null) {
+                System.out.println("reached both");
                 Events countryDateEvents = eventService.getEvents_By_CountryName_and_startDate(countryName, startDate);
                 if (countryDateEvents != null) {
+                    System.out.println("finded all");
                     m.addAttribute("events", countryDateEvents.getEvents());
                 } else {
                     m.addAttribute("noEventsMessage", "No events found for the specified country and date.");
                 }
             } else if (countryName != null && !countryName.isEmpty()) {
+                System.out.println("reached country");
                 Events countryEvents = eventService.getEvents_By_CountryName(countryName);
                 if (countryEvents != null) {
+                    System.out.println("finded country");
                     m.addAttribute("events", countryEvents.getEvents());
                 } else {
                     m.addAttribute("noEventsMessage", "No events found for the specified country.");
                 }
             } else if (startDate != null) {
+                System.out.println("reached start date");
                 Events dateEvents = eventService.getEvents_By_startDate(startDate);
                 if (dateEvents != null) {
+                    System.out.println("finded start date");
                     m.addAttribute("events", dateEvents.getEvents());
                 } else {
                     m.addAttribute("noEventsMessage", "No events found for the specified date.");

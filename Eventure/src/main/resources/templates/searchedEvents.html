@@ -64,8 +64,8 @@
                     <div class="card__content--container | flow">
                         <h2 class="card__title" th:text="${event.name}"></h2>
                         <p class="card__description">
-                            <span th:text="${event.startDate.substring(8, 10)}"></span>/
-                            <span th:text="${event.startDate.substring(5, 7)}"></span> |
+                            <span th:text="${event.startDate.substring(0, 4)}"></span>-
+                            <span th:text="${event.startDate.substring(5, 10)}"></span> |
                             <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
                             <span th:if="${#strings.length(event.startDate) >= 16}"
                                   th:text="${event.startDate.split('T')[1]}"></span> |

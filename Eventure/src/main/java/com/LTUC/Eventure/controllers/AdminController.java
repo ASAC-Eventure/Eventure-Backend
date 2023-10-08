@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -66,10 +67,14 @@ public class AdminController {
         }
 
         int total=allAdminBookedEvents.size()+allBookedEvents.size();
-
-        m.addAttribute("adminBookedEvents", allAdminBookedEvents);
-        m.addAttribute("bookedEvents", allBookedEvents);
-        m.addAttribute("totalBookedEvents", total);
+        if (total == 0) {
+            m.addAttribute("errorMessageBookedEvents", "There is booked events yet!");
+            return "admin-home.html";
+        } else {
+            m.addAttribute("adminBookedEvents", allAdminBookedEvents);
+            m.addAttribute("bookedEvents", allBookedEvents);
+            m.addAttribute("totalBookedEvents", total);
+        }
         return "admin-home.html";
     }
 
@@ -165,7 +170,7 @@ public class AdminController {
             Optional<Event> event = eventsJPARepository.findById(eventId);
             if (event.isPresent()) {
                 eventRetrieved = event.get();
-                emailSenderService.sendEmail("Hello, Your Event "+eventRetrieved.getName()+" Payment Status is Paid.","Eventure" ,eventRetrieved.getUser().getEmail() );
+                emailSenderService.sendEmail("We hope this message finds you well. We would like to inform you of an important update regarding your event, the payment status for this event has been changed to Paid. Event:"+ eventRetrieved.getName(),"Eventure" ,eventRetrieved.getUser().getEmail() );
                 eventRetrieved.setPaymentStatus("Paid");
                 eventsJPARepository.save(eventRetrieved);
             } else {
@@ -178,8 +183,7 @@ public class AdminController {
         return new RedirectView("/pending-events");
 
     }
-
-
+    
     @PostMapping("/update-eventCreated-status/{eventId}")
     public RedirectView updateStatus_pending_toPaid_created(@PathVariable Long eventId) {
         try {
@@ -187,7 +191,7 @@ public class AdminController {
             Optional<AddEventEntity> event = addEventJPARepository.findById(eventId);
             if (event.isPresent()) {
                 eventRetrieved = event.get();
-                emailSenderService.sendEmail("Hello, Your Event "+eventRetrieved.getName()+" Payment Status is Paid.","Eventure" ,eventRetrieved.getUser().getEmail() );
+                emailSenderService.sendEmail("We hope this message finds you well. We would like to inform you of an important update regarding your event, the payment status for this event has been changed to Paid. Event:"+ eventRetrieved.getName(),"Eventure" ,eventRetrieved.getUser().getEmail() );
                 eventRetrieved.setPaymentStatus("Paid");
                 addEventJPARepository.save(eventRetrieved);
             } else {
@@ -244,19 +248,25 @@ public class AdminController {
 
         int totalIncomes = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Paid")).collect(summingInt(e -> e.getPrice()));
         int adminTotalIncomes = allAdminBookedEvents.stream().filter(e ->e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Paid")).collect(summingInt(e -> e.getPrice()));
-
         int total= totalIncomes+adminTotalIncomes;
-        m.addAttribute("totalIncomes", total);
+        if (total == 0) {
+            m.addAttribute("errorMessageTotalIncome", "There is no income yet!");
+            return "admin-home.html";
+        } else {
+            m.addAttribute("totalIncomes", total);
+        }
         return "admin-home.html";
     }
+
 
     @GetMapping("/find-user")
     public String userSearch(String username, Model model) {
         if (username != null && !username.isEmpty()) {
             AppUserEntity user = appUserJPARepository.findByUsername(username);
-            if (user != null) {
-                model.addAttribute("userInfo", user);
-            }
+            if (user == null) {
+                model.addAttribute("errorMessageUserInfo", "User not found!");
+                return "admin-home.html";
+            }else model.addAttribute("userInfo", user);
         }
         return "admin-home.html";
     }
