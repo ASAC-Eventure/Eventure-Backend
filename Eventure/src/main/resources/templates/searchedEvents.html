@@ -45,15 +45,6 @@
     </div>
 </div>
 <div>
-
-    <div th:if="${successMessageBookedEvent}" class="alert alert-success">
-        <span th:text="${successMessageBookedEvent}"></span>
-    </div>
-    <div th:if="${errorMessageBookedEvent}" class="alert alert-danger">
-        <span th:text="${errorMessageBookedEvent}"></span>
-    </div>
-
-
     <div class="card-container">
         <h2 style="color: black; text-align: center;
     font-size: xxx-large;
@@ -103,14 +94,11 @@
                             <input name="eventAddressLocality" th:value="${event.location.address.addressLocality}"
                                    type="hidden"/>
                             <!-- AddressCountry -->
-                            <input name="eventAddressCountryName"
-                                   th:value="${event.location.address.addressCountry.name}"
-                                   type="hidden"/>
+                            <input name="eventAddressCountryName" th:value="${event.location.address.addressCountry.name}" type="hidden"/>
                             <button class="card__button" type="submit">Book Event</button>
                         </form>
                     </div>
-                    <a href="/signup" th:unless="${isUsernameFound == 'yes'}">Login to book this event</a>
-
+                    <a href="/signup" th:unless="${isUsernameFound == 'yes'}">Login to book this event</a><a th:href="${event.url}" >Find out more</a>
                 </div>
             </article>
         </div>

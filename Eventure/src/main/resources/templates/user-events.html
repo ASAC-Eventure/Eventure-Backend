@@ -50,6 +50,12 @@
     <h2 style="color: black; text-align: center;
     font-size: xxx-large;
     text-decoration: underline">My Events</h2>
+    <div th:if="${successMessageBookedEvent}" class="alert alert-success">
+        <span th:text="${successMessageBookedEvent}"></span>
+    </div>
+    <div th:if="${errorMessageBookedEvent}" class="alert alert-danger">
+        <span th:text="${errorMessageBookedEvent}"></span>
+    </div>
     <div th:each="event, stat : ${userEvents}">
         <article class="card">
             <img alt="" class="card__background" height="2193" th:src="${event.image}" width="1920"/>

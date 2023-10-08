@@ -98,7 +98,8 @@
                     Location: <span th:text="${event.location.name}">Location Name</span>
                     Address: <span th:text="${event.location.address.streetAddress}">Street Address</span>,
                     <span th:text="${event.location.address.addressLocality}">Locality</span>,
-                    <span th:text="${event.location.address.addressCountry.name}">Country</span>
+                    <span th:text="${event.location.address.addressCountry.name}">Country</span>,
+                    Price: <span th:text="${event.price}">Country</span>
                 </p>
 
             </div>
@@ -122,7 +123,6 @@
                 </form>
             </div>
             <a href="/signup" th:unless="${isUsernameFound == 'yes'}">Login to book this event</a><a th:href="${event.url}" >Find out more</a>
-
         </div>
     </article>
 </div>
