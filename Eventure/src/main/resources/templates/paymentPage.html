@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Page</title>
+</head>
+<body>
+<p>Cash On Site</p>
+<p>Must pay before two days from the event </p>
+<p>After that your reservation will be canceled </p>
+<form action="/payment" method="post">
+  <input type="hidden" name="eventId" th:value="${eventId}">
+  <button type="submit" class="btn btn-success">Confirm</button>
+</form>
+<form action="/myEvents" method="get">
+  <button type="submit" class="btn btn-danger">Cancel</button>
+</form>
+</div>
+</body>
+</html>

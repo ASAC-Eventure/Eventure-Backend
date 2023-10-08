@@ -1,7 +1,9 @@
 package com.LTUC.Eventure.controllers;
 
+import com.LTUC.Eventure.models.AddEventEntity;
 import com.LTUC.Eventure.models.apiEntities.Event;
 import com.LTUC.Eventure.models.apiEntities.Events;
+import com.LTUC.Eventure.repositories.AddEventJPARepository;
 import com.LTUC.Eventure.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +25,8 @@ public class GeneralControllers {
     @Value("${apiSecretKey}")
     String myKey;
 
+    @Autowired
+    AddEventJPARepository addEventJPARepository;
     @GetMapping("/")
     public String Home(Model m) {
         // Switching navbar based on authentication
@@ -33,12 +37,15 @@ public class GeneralControllers {
         } else {
             m.addAttribute("isUsernameFound", "yes");
         }
-        // Generate Random 10 Events
-        String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey;
-        Events randomEvents = eventService.fetchAndSaveEventsFromApi(apiData);
-        //List<Event> events = eventsJPARepository.findAll();
-        List<Event> mostRatedEvents = randomEvents.getEvents().stream().limit(10).collect(Collectors.toList());
+
+        List<Event> mostRatedEvents= eventService.get10RandomEvents();
         m.addAttribute("mostRatedEvents", mostRatedEvents);
+
+        List<AddEventEntity> approvedEvents = addEventJPARepository.findAll();
+//        List<AddEventEntity> approvedEvents = addEventJPARepository.findAllByApprovedTrue();
+        m.addAttribute("approvedEvents", approvedEvents);
+
+
         return "index";
     }
 
