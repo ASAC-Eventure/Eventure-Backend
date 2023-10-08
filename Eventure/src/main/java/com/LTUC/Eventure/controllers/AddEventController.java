@@ -1,10 +1,12 @@
 package com.LTUC.Eventure.controllers;
 
 import com.LTUC.Eventure.models.AddEventEntity;
+import com.LTUC.Eventure.models.AppUserEntity;
 import com.LTUC.Eventure.models.apiEntities.Address;
 import com.LTUC.Eventure.models.apiEntities.AddressCountry;
 import com.LTUC.Eventure.models.apiEntities.Location;
 import com.LTUC.Eventure.repositories.AddEventJPARepository;
+import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.AddressCountryJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.AddressJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.LocationJPARepository;
@@ -24,18 +26,13 @@ import java.util.List;
 public class AddEventController {
 
     public AddEventJPARepository addEventJPARepository;
-
-    public LocationJPARepository locationJPARepository;
-    public AddressJPARepository addressJPARepository;
-    public AddressCountryJPARepository addressCountryJPARepository;
+    public AppUserJPARepository appUserJPARepository;
 
 
-    public AddEventController(AddEventJPARepository addEventJPARepository) {
+    public AddEventController(AddEventJPARepository addEventJPARepository, AppUserJPARepository appUserJPARepository) {
         this.addEventJPARepository = addEventJPARepository;
+        this.appUserJPARepository = appUserJPARepository;
     }
-
-
-
 
     @PostMapping("/addNewEvent")
     public RedirectView addEventData(@RequestParam String name,
@@ -65,21 +62,21 @@ public class AddEventController {
 
     @PutMapping("/book/{id}")
     public RedirectView BookingAddedNewEvent(@PathVariable("id") Long eventId, Principal p, RedirectAttributes redir){
-        AddEventEntity event = addEventJPARepository.findById(eventId).orElseThrow();
-
-          if(p!=null) {
+            AddEventEntity event = addEventJPARepository.findById(eventId).orElseThrow();
+        String username = p.getName();
+        if(username!=null){
+           AppUserEntity userBooking = appUserJPARepository.findByUsername(username);
                 if (event.isBooked() == false) {
 
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
                 event.setBooked(true);
             } else {
                 redir.addFlashAttribute("errorMessageBookedEvent", "Event Already Booked!");
-
             }
-        }
 
+         event.setUser(userBooking);
         addEventJPARepository.save(event);
-
+        }
 
         return new RedirectView("/myEvents");
 
@@ -88,20 +85,21 @@ public class AddEventController {
 
 
     @PutMapping("/approve/{id}")
-    public RedirectView approveAddingNewEvent(@PathVariable("id") Long eventId){
+    public RedirectView approveAddingNewEvent(@PathVariable("id") Long eventId, RedirectAttributes redir){
         AddEventEntity event = addEventJPARepository.findById(eventId).orElseThrow();
 
         if (event != null) {
             event.setApproved(true);
-
+            redir.addFlashAttribute("successMessageBookedEvent", "Event Approved!");
         }
             addEventJPARepository.save(event);
         return new RedirectView("/adminHome");
 
     }
     @DeleteMapping("/decline/{id}")
-    public RedirectView declineEvent(@PathVariable("id") Long id) {
+    public RedirectView declineEvent(@PathVariable("id") Long id,RedirectAttributes redir) {
         addEventJPARepository.deleteById(id);
+        redir.addFlashAttribute("successMessageBookedEvent", "Event Declined!");
         return new RedirectView("/adminHome");
     }
 

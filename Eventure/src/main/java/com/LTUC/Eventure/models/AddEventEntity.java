@@ -42,6 +42,9 @@ public class AddEventEntity {
 
     private boolean isBooked;
 
+    @ManyToOne
+    AppUserEntity user;
+
     public AddEventEntity(String name, LocalDate startDate, LocalDate endDate, String eventUrl, String location, String streetAddress, int price, String imageUrl, boolean isApproved, boolean isBooked) {
         this.name = name;
         this.startDate = startDate;
@@ -53,5 +56,18 @@ public class AddEventEntity {
         this.imageUrl = imageUrl;
         this.isApproved = isApproved;
         this.isBooked = isBooked;
+    }
+    public AddEventEntity(String name, LocalDate startDate, LocalDate endDate, String eventUrl, String location, String streetAddress, int price, String imageUrl, boolean isApproved, boolean isBooked, AppUserEntity user) {
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.eventUrl = eventUrl;
+        this.location = location;
+        this.streetAddress = streetAddress;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.isApproved = isApproved;
+        this.isBooked = isBooked;
+        this.user = user;
     }
 }

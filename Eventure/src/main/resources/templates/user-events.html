@@ -56,7 +56,7 @@
 
 
 
-<div th:each="event : ${approvedEvents}" >
+<div th:each="event : ${addedEvents}" >
     <div  th:if="${event.isBooked}" class="event-card" >
 
         <img th:src="${event.imageUrl}" alt="Event Image" />

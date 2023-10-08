@@ -53,6 +53,7 @@
 </head>
 <body>
 <h1>Welcome, Admin</h1>
+<a th:href="@{/perform_logout}">Sign Out</a>
 <h2>Event List</h2>
 <div th:each="event : ${events}" >
 <div  th:if="!${event.isApproved}" class="event-card" >

@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -34,7 +35,10 @@ public class AdminController {
 
 
 
-
+    @GetMapping("/admin-logout")
+    public RedirectView logOut() {
+        return new RedirectView("/");
+    }
 
 
 }
