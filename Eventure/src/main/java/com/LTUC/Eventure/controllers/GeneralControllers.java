@@ -23,29 +23,25 @@ public class GeneralControllers {
     @Value("${apiSecretKey}")
     String myKey;
 
+
     @GetMapping("/")
-    public String Home(){
+    public String Home(Model m) {
+        // Switching navbar based on authentication
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        if (username.equals("anonymousUser")) {
+            m.addAttribute("isUsernameFound", "no");
+        } else {
+            m.addAttribute("isUsernameFound", "yes");
+        }
+        // Generate Random 10 Events
+        String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey;
+        Events randomEvents = eventService.fetchAndSaveEventsFromApi(apiData);
+        //List<Event> events = eventsJPARepository.findAll();
+        List<Event> mostRatedEvents = randomEvents.getEvents().stream().limit(10).collect(Collectors.toList());
+        m.addAttribute("mostRatedEvents", mostRatedEvents);
         return "index.html";
     }
-
-//    @GetMapping("/")
-//    public String Home(Model m) {
-//        // Switching navbar based on authentication
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String username = authentication.getName();
-//        if (username.equals("anonymousUser")) {
-//            m.addAttribute("isUsernameFound", "no");
-//        } else {
-//            m.addAttribute("isUsernameFound", "yes");
-//        }
-//        // Generate Random 10 Events
-//        String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey;
-//        Events randomEvents = eventService.fetchAndSaveEventsFromApi(apiData);
-//        //List<Event> events = eventsJPARepository.findAll();
-//        List<Event> mostRatedEvents = randomEvents.getEvents().stream().limit(10).collect(Collectors.toList());
-//        m.addAttribute("mostRatedEvents", mostRatedEvents);
-//        return "index.html";
-//    }
 
     @GetMapping("/aboutUs")
     public String aboutUs(Model model) {
@@ -62,7 +58,7 @@ public class GeneralControllers {
 
     @GetMapping("/terms-conditions")
     public String termsAndCondintions() {
-        return "gallery.html";
+        return "T&C.html";
     }
 
     @GetMapping("/logout")

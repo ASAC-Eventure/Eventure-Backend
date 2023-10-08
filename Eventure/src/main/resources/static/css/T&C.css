@@ -1,0 +1,9 @@
+#terms-and-conditions .terms-and-conditions-section {
+	 margin: 10px 0;
+}
+ #terms-and-conditions .terms-and-conditions-section.grey {
+	 background-color: grey;
+}
+ #terms-and-conditions .terms-and-conditions-section .section-title {
+	 color: grey;
+}

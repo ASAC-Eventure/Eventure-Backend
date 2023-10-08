@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section  class="container">
+    <a th:href="@{/events}" class="back-button"><i class="fas fa-arrow-left"></i> Back</a>
+    <h1>Event Details</h1>
+    <div class="row">
+        <article class="card fl-left mx-auto my-5">
+            <section class="date">
+                <time>
+                    <span th:text="${event.startDate.substring(0, 10)}"></span>
+                    <span th:text="to"></span>
+                    <span th:text="${event.endDate}"></span>
+                </time>
+            </section>
+            <section class="card-cont">
+                <h3 th:text="${event.name}"></h3>
+                <div class="even-date">
+                    <i class="fa fa-calendar"></i>
+                    <time>
+                        <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
+                        <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}"></span>
+                    </time>
+                </div>
+                <div class="even-info">
+                    <i class="fa fa-map-marker"></i>
+                    <p>
+                        Address: <span th:text="${event.location.address.streetAddress}">Street Name:</span>,
+                        <span th:text="${event.location.address.addressLocality}">Location</span>,
+                        <span th:text="${event.location.address.addressCountry.name}">Country</span>
+                    </p>
+                </div>
+                <a href="#">book Now</a>
+            </section>
+        </article>
+    </div>
+</section>
+</body>
+</html>

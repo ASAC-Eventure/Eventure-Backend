@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<body>
+<div class="container">
+    <h1>My Events</h1>
+
+    <div th:if="${successMessageBookedEvent}" class="alert alert-success">
+        <span th:text="${successMessageBookedEvent}"></span>
+    </div>
+    <div th:if="${errorMessageBookedEvent}" class="alert alert-danger">
+        <span th:text="${errorMessageBookedEvent}"></span>
+    </div>
+
+    <div class="row">
+        <div th:each="event : ${userEvents}" class="col-md-3">
+            <div class="card mb-3">
+                <img th:src="${event.image}" class="card-img-top" alt="Event Image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${event.name}">Event Title</h5>
+                    <h5 class="card-title" th:text="'Price: ' + ${event.price + ' ' + event.priceCurrency}">Event Price</h5> <p class="card-text">
+                    <span th:text="'Starts from ' + ${event.startDate}">Start Date</span>
+                    <br>
+                    <span th:text="'Ends in ' + ${event.endDate}">End Date</span>
+
+                </p>
+                    <p class="card-text">
+                        Location: <span th:text="${event.location.name}">Location Name</span>
+                        <br/>
+                        Address: <span th:text="${event.location.address.streetAddress}">Street Address</span>,
+                        <span th:text="${event.location.address.addressLocality}">Locality</span>,
+                        <span th:text="${event.location.address.addressCountry.name}">Country</span>
+                    </p>
+                    <a th:href="${event.url}" class="btn btn-primary">Go somewhere</a>
+
+                    <form th:action="@{'/unbook-event/'+ ${event.id}}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-success">Cancel Event</button>
+                    </form>
+
+                    <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
+                    <div th:if="${event.paymentStatus == 'Unpaid'}">
+                        <a id="openPaymentModal" th:href="@{/payment?(eventId=${event.id})}" class="btn btn-success">Pay Here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
