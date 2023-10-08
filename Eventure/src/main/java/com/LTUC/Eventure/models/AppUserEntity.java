@@ -56,7 +56,9 @@ public class AppUserEntity implements UserDetails {
     @JoinColumn(name = "role_id")
     private RoleEntity roles;
 
-
+    @OneToMany(mappedBy = "user")
+    @Column(name = "events_approved_byAdmin_booked_byUser" )
+    List<AddEventEntity> newEvents;
     public AppUserEntity(String username, String email, String password, String country, String interests, LocalDate dateOfBirth) {
         this.username = username;
         this.email = email;

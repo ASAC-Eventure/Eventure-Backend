@@ -1,19 +1,23 @@
 package com.LTUC.Eventure.controllers;
 
+import com.LTUC.Eventure.models.AddEventEntity;
 import com.LTUC.Eventure.models.AppUserEntity;
 import com.LTUC.Eventure.models.apiEntities.*;
+import com.LTUC.Eventure.repositories.AddEventJPARepository;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.AddressCountryJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.AddressJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.EventsJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.LocationJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -24,14 +28,16 @@ public class SaveEventsController {
     private AddressCountryJPARepository addressCountryJPARepository;
     private LocationJPARepository locationJPARepository;
     private AddressJPARepository addressJPARepository;
+    private AddEventJPARepository addEventJPARepository;
 
     @Autowired
-    public SaveEventsController(AppUserJPARepository userJPARepo, EventsJPARepository eventsJPARepo, AddressCountryJPARepository addressCountryJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository) {
+    public SaveEventsController(AppUserJPARepository userJPARepo, EventsJPARepository eventsJPARepo, AddressCountryJPARepository addressCountryJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository,AddEventJPARepository addEventJPARepository) {
         this.userJPARepo = userJPARepo;
         this.eventsJPARepo = eventsJPARepo;
         this.addressCountryJPARepository = addressCountryJPARepository;
         this.locationJPARepository = locationJPARepository;
         this.addressJPARepository = addressJPARepository;
+        this.addEventJPARepository = addEventJPARepository;
     }
 
     @GetMapping("/myEvents")
@@ -40,12 +46,12 @@ public class SaveEventsController {
         if (username != null) {
             AppUserEntity user = userJPARepo.findByUsername(username);
             List<Event> userEvents = user.getBookedEvents();
-//            System.out.println(userEvents);
+            List<AddEventEntity> addedEvents =user.getNewEvents();
             model.addAttribute("userEvents", userEvents);
+            model.addAttribute("addedEvents", addedEvents);
         }
         return "user-events.html";
     }
-
     @PostMapping("/book-event")
     public RedirectView bookEvent(Principal p, RedirectAttributes redir,
                                   @RequestParam String eventName,
@@ -85,6 +91,7 @@ public class SaveEventsController {
 
             Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location, (int) (50 + (Math.random() * (250 - 50))), image, user,"Unpaid");
              if (!user.getBookedEvents().stream().anyMatch(e -> e.getName().equals(eventName))) {
+
                 eventsJPARepo.save(event);
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
 
@@ -94,6 +101,7 @@ public class SaveEventsController {
         }
         return new RedirectView("/myEvents");
     }
+
 
     @DeleteMapping("/unbook-event/{id}")
     public RedirectView deleteEventById(@PathVariable Long id) {

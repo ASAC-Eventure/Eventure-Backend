@@ -3,6 +3,8 @@ package com.LTUC.Eventure.controllers;
 
 import com.LTUC.Eventure.models.AppUserEntity;
 import com.LTUC.Eventure.models.apiEntities.Event;
+import com.LTUC.Eventure.models.AddEventEntity;
+import com.LTUC.Eventure.repositories.AddEventJPARepository;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.EventsJPARepository;
 import com.LTUC.Eventure.services.AdminService.AdminService;
@@ -21,6 +23,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.List;
 
 import static java.util.stream.Collectors.*;
 
@@ -29,32 +37,33 @@ public class AdminController {
     private AppUserJPARepository appUserJPARepository;
 
     private EmailSenderService emailSenderService;
-    private PasswordEncoder passwordEncoder;
-
-    HttpServletRequest request;
 
     private EventsJPARepository eventsJPARepository;
 
     private AdminService adminService;
+    AddEventJPARepository addEventJPARepository;
 
-    @Autowired
-    public AdminController(AppUserJPARepository appUserJPARepository, EventsJPARepository eventsJPARepository, AdminService adminService,EmailSenderService emailSenderService) {
+
+    public AdminController(AddEventJPARepository addEventJPARepository,AppUserJPARepository appUserJPARepository, EventsJPARepository eventsJPARepository, AdminService adminService,EmailSenderService emailSenderService) {
         this.appUserJPARepository = appUserJPARepository;
         this.eventsJPARepository = eventsJPARepository;
         this.adminService = adminService;
         this.emailSenderService=emailSenderService;
+        this.addEventJPARepository=addEventJPARepository;
     }
 
-    public void authWithHttpServletRequest(String adminUsername, String adminPassword) {
-        try {
-            request.login(adminUsername, adminPassword);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+/*HAYA work*/
+//    @GetMapping("/adminHome")
+//    public String retrieveEventsRequests(Principal principal , Model model){
+//      List<AddEventEntity> newEvents = addEventJPARepository.findAll();
+//        model.addAttribute("events", newEvents);
+//        return "adminHome.html";}
+
 
     @GetMapping("/adminHome")
-    public String retrieveAdminHome() {
+    public String retrieveAdminHome(Model model) {
+        List<AddEventEntity> newEvents = addEventJPARepository.findAll();
+        model.addAttribute("events", newEvents);
         adminService.updateStatus_unpaid_toCancelled();
         adminService.clearFinishedEvents();
         return "admin-home.html";
@@ -203,5 +212,9 @@ public class AdminController {
             model.addAttribute("eventsFromSearch", searchedEventList);
         }
         return "admin-home.html";
+    }
+    @GetMapping("/admin-logout")
+    public RedirectView logOut() {
+        return new RedirectView("/");
     }
 }
