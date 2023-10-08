@@ -5,11 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.6/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.6/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="/css/aboutUs.css">
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link rel="stylesheet" th:href="@{/css/searchbar.css}" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" />
     <title>About Us</title>
+
+    <style>
+
+
+        .form-container {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        input[type="number"],
+        input[type="url"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,6 +88,53 @@
         </div>
     </div>
 </section>
+
+
+
+<!-- Add event form -->
+<div class="form-container">
+    <h1>Add Event</h1>
+    <form id="add-event-form" action="/addNewEvent" method="POST" >
+        <label for="name">Event name:</label>
+        <input type="text" name="name" id="name" required/>
+        <br><br>
+        <label for="startDate">Start Date:</label>
+        <input type="date" name="startDate" id="startDate" required/>
+        <br><br>
+        <label for="endDate">Start Date:</label>
+        <input type="date" name="endDate" id="endDate" required/>
+        <br><br>
+        <label for="eventUrl">Event URL:</label>
+        <input type="text" name="eventUrl" id="eventUrl" required/>
+        <br><br>
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" required/>
+        <br><br>
+        <label for="streetAddress">Street name:</label>
+        <input type="text" name="streetAddress" id="streetAddress" required/>
+        <br><br>
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price" required/>
+        <br><br>
+        <label for="priceCurrency">Price Currency:</label>
+        <input type="text" name="priceCurrency" id="priceCurrency" value="USD" readonly/>
+        <br><br>
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" name="imageUrl" id="imageUrl" required/>
+        <br><br>
+        <button >Add</button>
+    </form>
+    <div style="color:green;margin-left:8pc;margin-top:10px" th:if="${successMessageBookedEvent}" class="alert alert-success">
+        <span th:text="${successMessageBookedEvent}"></span>
+    </div>
+    <div style="color:red;margin-left:7pc;margin-top:10px" th:if="${errorMessageBookedEvent}" class="alert alert-danger">
+        <span th:text="${errorMessageBookedEvent}"></span>
+    </div>
+
+</div>
+
+
+
 
 
 <section class="team">

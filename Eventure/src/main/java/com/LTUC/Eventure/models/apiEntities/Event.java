@@ -2,8 +2,10 @@ package com.LTUC.Eventure.models.apiEntities;
 
 import com.LTUC.Eventure.models.AppUserEntity;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 
 @Entity
@@ -35,7 +37,10 @@ public class Event {
     @ManyToOne
     private AppUserEntity user;
 
-    public Event(String name, String startDate, String endDate, String url, Location location, int price, String image, AppUserEntity user) {
+    private String paymentStatus;
+
+
+    public Event(String name, String startDate, String endDate, String url, Location location, int price, String image, AppUserEntity user, String paymentStatus) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -44,7 +49,11 @@ public class Event {
         this.price = price;
         this.image = image;
         this.user = user;
+        this.paymentStatus=paymentStatus;
     }
+
+//    public Event(String eventName, String eventStartDate, String eventEndDate, String eventUrl, Location location, int i, String image, AppUserEntity user, String unpaid) {
+//    }
 
     @Override
     public String toString() {
