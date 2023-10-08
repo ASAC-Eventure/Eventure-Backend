@@ -302,6 +302,9 @@
       <div class="cancelledEventsSection">
         <h2 th:if="${cancelledEvents}">Cancelled Events</h2>
         <p th:if="${cancelledEvents}">Total Cancelled Events: <span th:text="${totalCancelledEvents}"></span></p>
+        <div th:if="${errorMessageCancelledEvents}">
+          <span th:text="${errorMessageCancelledEvents}"></span>
+        </div>
         <div class="card-container">
           <div class="card"  th:each="event : ${cancelledEvents}" th:if="${cancelledEvents}">
             <div class="card-img">
@@ -318,6 +321,24 @@
               </span>
               </p>
               <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+            </div>
+          </div>
+                                            <!-- Admin Cancelled Events -->
+          <div class="card" th:each="event, stat : ${adminCancelledEvents}" th:if="${adminCancelledEvents}">
+            <div class="card-img">
+              <img th:src="${event.imageUrl}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <div  th:if="${event.isBooked == true && event.paymentStatus=='Unpaid'}">
+                <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
+              </div>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
+              <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
               <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
               <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
             </div>

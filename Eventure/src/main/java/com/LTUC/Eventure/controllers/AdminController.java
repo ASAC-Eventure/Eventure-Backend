@@ -139,13 +139,21 @@ public class AdminController {
     @GetMapping("/cancelled-events")                // all Cancelled events + count
     public String getCancelledEvents(Model m) {
         List<Event> allBookedEvents = eventsJPARepository.findAll();
+        List<AddEventEntity> allAdminBookedEvents=addEventJPARepository.findAll();
         if (allBookedEvents == null) {
             System.out.println("No  events");
             return "admin-home.html";
         }
         List<Event> cancelledEvents = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Cancelled")).collect(toList());
+        List<AddEventEntity> adminCancelledEvents = allAdminBookedEvents.stream().filter(e ->  e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Cancelled")).collect(toList());
+        int total= cancelledEvents.size()+adminCancelledEvents.size();
+        if(total==0){
+            m.addAttribute("errorMessageCancelledEvents","There is no cancelled events available");
+            return "admin-home.html";
+        }else
+        m.addAttribute("adminCancelledEvents", adminCancelledEvents);
         m.addAttribute("cancelledEvents", cancelledEvents);
-        m.addAttribute("totalCancelledEvents", cancelledEvents.size());
+        m.addAttribute("totalCancelledEvents", total);
         return "admin-home.html";
     }
 
@@ -277,6 +285,11 @@ public class AdminController {
             List<Event> searchedEventList = eventsJPARepository.findByName(eventName);
             List<AddEventEntity> searchedAdminEventsList = addEventJPARepository.findAdminEventByName(eventName).stream().filter(e->e.getUser()!=null).collect(toList());
             List<String> users= new ArrayList<>();
+            if(searchedAdminEventsList.size() == 0 && searchedEventList.size()==0 ){
+                model.addAttribute("errorMessageEventInfo","Event not found!");
+                return "admin-home.html";
+            }
+
             if (!searchedEventList.isEmpty()){
                 for (Event e: searchedEventList) {
                     users.add(e.getUser().getUsername());
