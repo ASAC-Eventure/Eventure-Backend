@@ -33,11 +33,8 @@ public class GeneralControllers {
         } else {
             m.addAttribute("isUsernameFound", "yes");
         }
-        // Generate Random 10 Events
-        String apiData = "https://www.jambase.com/jb-api/v1/events?apikey=" + myKey;
-        Events randomEvents = eventService.fetchAndSaveEventsFromApi(apiData);
-        //List<Event> events = eventsJPARepository.findAll();
-        List<Event> mostRatedEvents = randomEvents.getEvents().stream().limit(10).collect(Collectors.toList());
+
+        List<Event> mostRatedEvents= eventService.get10RandomEvents();
         m.addAttribute("mostRatedEvents", mostRatedEvents);
         return "index";
     }
