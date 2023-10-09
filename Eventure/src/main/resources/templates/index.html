@@ -157,10 +157,19 @@
         <br>
         <p>Location : <span th:text="${event.location}"></span></p>
         <br>
+        p> URL : <span th:text="${event.eventUrl}"></span></p>
+        <br>
         <p>Street Name: <span th:text="${event.streetAddress}"></span></p>
 
-        <form th:action="@{'/book/' + ${event.id}}" method="post">
-            <input type="hidden" name="_method" value="PUT">
+        <form action="/bookCreatedEvent" method="post">
+            <input type="hidden" name="name" th:value="${event.name}">
+            <input type="hidden" name="image" th:value="${event.imageUrl}">
+            <input type="hidden" name="startDate" th:value="${event.startDate}">
+            <input type="hidden" name="endDate" th:value="${event.endDate}">
+            <input type="hidden" name="location" th:value="${event.location}">
+            <input type="hidden" name="price" th:value="${event.price}">
+            <input type="hidden" name="address" th:value="${event.streetAddress}">
+            <input type="hidden" name="url" th:value="${event.eventUrl}">
             <button th:if="${isUsernameFound == 'yes'}" type="submit" class="btn btn-success">Book Event</button>
         </form>
         <p th:if="${isUsernameFound == 'no'}">Login to book this event</p>
