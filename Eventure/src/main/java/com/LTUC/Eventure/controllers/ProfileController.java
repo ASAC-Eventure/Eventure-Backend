@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.security.Principal;
 
@@ -26,7 +29,30 @@ ProfileController {
         return "profile.html";
     }
 
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        AppUserEntity user = appUserJPARepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
+        model.addAttribute("user", user);
+        return "editProfile";
+    }
+
+    @PutMapping("/edit/{id}")
+    public String updateUser(@PathVariable Long id, @ModelAttribute("user") AppUserEntity updatedUser) {
+        AppUserEntity user = appUserJPARepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+
+//        user.setUsername(updatedUser.getUsername());
+        user.setEmail(updatedUser.getEmail());
+        user.setCountry(updatedUser.getCountry());
+        String interests = String.join(", ", updatedUser.getInterests());
+        user.setInterests(interests);
+        user.setDateOfBirth(updatedUser.getDateOfBirth());
+
+        appUserJPARepository.save(user);
+        return "redirect:/profile";
+    }
 
 //    @GetMapping("/updatep")
 //    public String editProfilePage(Principal p, Model m) {

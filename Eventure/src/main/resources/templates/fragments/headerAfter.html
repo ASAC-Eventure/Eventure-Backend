@@ -1,5 +1,5 @@
 <!-- header -->
-<header>
+<header xmlns:th="http://www.w3.org/1999/xhtml">
     <!-- header inner -->
     <div class="header-top">
         <div class="header">
@@ -24,9 +24,8 @@
                                         <li> <a href="/aboutUs">About</a></li>
                                         <li> <a href="/events">Events</a></li>
                                         <li> <a href="/myEvents">My Events</a> </li>
-                                        <li> <a href="/profile"><i class="fa-thin fa-user fa-beat-fade fa-sm" style="color: #6e9ef2;"></i></a> <a href="/logout">Logout</a></li>
-                                        <li> <a  class="last_manu" href="/events"><img src="/images/search_icon.png" alt="#" /></a> </li>
-
+                                        <li> <a href="/profile">Profile</a></li>
+                                        <li><a th:href="@{/perform_logout}">Logout</a></li>
                                     </ul>
                                 </nav>
 
@@ -52,9 +51,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="text-bg">
-                                            <span>The Best</span>
-                                            <h1>PLACE TO BOOK YOUR EVENT</h1>
-                                            <a href="/events">SEARCH EVENTS</a>
+                                            <span>Eventure</span>
+                                            <h1>Is Where We Bring You Closer To Your Rhythm</h1>
+                                            <form class="search-box" action="/events" method="GET">
+                                                <fieldset>
+                                                    <legend>Explore Events</legend>
+                                                    <label for="searchCriteria">Search:</label>
+                                                    <input type="text" name="searchCriteria" id="searchCriteria" placeholder="Enter Country or Date (YYYY-MM-DD)">
+                                                    <input type="submit" value="Search">
+                                                </fieldset>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -66,4 +72,3 @@
         </section>
     </div>
 </header>
-</html>

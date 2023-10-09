@@ -1,6 +1,7 @@
 /*--------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
 /*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
  @import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
+ @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
  @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 /*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
  2) font-family: 'Poppins', sans-serif;
@@ -24,12 +25,12 @@
      color: #666666;
      font-size: 14px;
      font-family: 'Poppins', sans-serif;
-     line-height: 1.80857;
+     line-height: 1;
      font-weight: normal;
      overflow-x: hidden;
 }
  a {
-     color: #1f1f1f;
+     color: whitesmoke;
      text-decoration: none !important;
      outline: none !important;
      -webkit-transition: all .3s ease-in-out;
@@ -45,7 +46,7 @@
      padding: 0 0 10px 0;
      font-weight: normal;
      line-height: normal;
-     color: #111111;
+     color: whitesmoke;
      margin: 0 
 }
  h1 {
@@ -72,7 +73,7 @@
      box-sizing: border-box;
 }
  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-     color: #212121;
+     color: whitesmoke;
      text-decoration: none!important;
      opacity: 1 
 }
@@ -89,9 +90,10 @@
      font-weight: 300;
      font-size: 15px;
      line-height: 24px;
+     color:whitesmoke;
 }
  a {
-     color: #222222;
+     color: whitesmoke;
      text-decoration: none;
      outline: none !important;
 }
@@ -1641,3 +1643,69 @@ font-size: 60px;
 line-height: 60px;
 padding: 45px 0;
 text-align: center;}
+
+
+
+
+.search-box {
+  font-size: 20px;
+  border: solid 0.3em #000000;
+  display: inline-block;
+  position: relative;
+  border-radius: 2.5em;
+ /* margin-right:200px; */
+}
+.search-box input[type="text"] {
+  font-family: inherit;
+  font-weight: bold;
+  width: 5px;
+  padding: 0.3em 1.7em 0.2em 0.1em;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 2.5em;
+  transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 150ms;
+  padding-left: 20px;
+  }
+.search-box input[type=text]:focus {
+  outline: none;
+}
+.search-box input[type=text]:focus, .search-box input[type=text]:not(:placeholder-shown) {
+  width: 18em;
+  transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.search-box input[type=text]:focus + button[type=reset], .search-box input[type=text]:not(:placeholder-shown) + button[type=reset] {
+  transform: rotate(-45deg) translateY(0);
+  transition: transform 150ms ease-out 800ms;
+}
+.search-box input[type=text]:focus + button[type=reset]:after, .search-box input[type=text]:not(:placeholder-shown) + button[type=reset]:after {
+  opacity: 1;
+  transition: top 150ms ease-out 950ms, right 150ms ease-out 950ms, opacity 150ms ease 950ms;
+}
+.search-box button[type=reset] {
+   background-color: transparent;
+   width: 1.4em;
+   height: 1.0em;
+   border: 0;
+   padding: 0;
+   outline: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   top: 0.58em;
+   right: 0.59em;
+   transform: rotate(-45deg) translateY(2.2em);
+   transition: transform 150ms ease-out 150ms;
+}
+.search-box button[type=reset]:before, .search-box button[type=reset]:after {
+  content: "";
+  background-color: #000000;
+  width: 0.3em;
+  height: 1.4em;
+  position: absolute;
+}
+.search-box button[type=reset]:after {
+  transform: rotate(90deg);
+  opacity: 0;
+  transition: transform 150ms ease-out, opacity 150ms ease-out;
+}
