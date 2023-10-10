@@ -14,30 +14,38 @@
   <img src="/images/logo.png" alt="Logo">
   <ul>
     <li>
-      <form action="/total-income" method="get">
+      <form th:action="@{/total-income}" method="get">
         <input type="submit" value="View Total Incomes">
       </form>
       <h1 th:if="${totalIncomes}">Total Incomes: <span th:text="${totalIncomes}"></span></h1>
+      <div style="color: #ff3a35 ;margin-left: 20px;margin-top: 5px;" th:if="${errorMessageTotalIncome}">
+        <span th:text="${errorMessageTotalIncome}"></span>
+      </div>
     </li>
     <li>
       <form action="/booked-events" method="get">
         <input type="submit" value="View All Booked Events">
       </form>
+
     </li>
+
     <li>
       <form action="/unpaid-events" method="get">
         <input type="submit" value="View Unpaid Events">
       </form>
+
     </li>
     <li>
       <form action="/pending-events" method="get">
         <input type="submit" value="View Pending Events">
       </form>
+
     </li>
     <li>
       <form action="/paid-events" method="get">
         <input type="submit" value="View Paid Events">
       </form>
+
     </li>
     <li>
       <form action="/cancelled-events" method="get">
@@ -48,6 +56,7 @@
       <form action="/requested-events" method="get">
         <input type="submit" value="View Requested Events">
       </form>
+
     </li>
     <li>
       <form action="/events-statics" method="get">
@@ -95,6 +104,9 @@
       <!-- Start Of Booked Events Section -->
       <div class="BookedEventsSection">
         <h1 th:if="${totalBookedEvents}">Booked Events</h1>
+        <div style ="font-weight: 800;color: red" th:if="${totalBookedEvents == 0}" >
+          <span th:text="${errorMessageBookedEvents}"></span>
+        </div>
         <p th:if="${totalBookedEvents}"><strong>Total Booked Events:</strong> <span th:text="${totalBookedEvents}"></span></p>
 
         <div class="card-container">
@@ -150,6 +162,9 @@
       <!-- Start Of Paid Events Section -->
       <div class="PaidEventsSection">
         <h2 th:if="${totalPaidEvents}">Paid Events</h2>
+        <div style ="font-weight: 800;color: red"  th:if="${totalPaidEvents == 0}" >
+          <span th:text="${errorMessagePaidEvents}"></span>
+        </div>
         <p th:if="${totalPaidEvents}"><strong>Total Paid Events:</strong> <span th:text="${totalPaidEvents}"></span></p>
         <div class="card-container">
           <div class="card" th:each="event, stat : ${paidEvents}" th:if="${paidEvents}">
@@ -196,6 +211,9 @@
       <!-- Start Of Pending Events Section -->
       <div class="pendingEvents">
         <h2 th:if="${totalPendingEvents}">Pending Events</h2>
+        <div style ="font-weight: 800;color: red"  th:if="${totalPendingEvents == 0}" >
+          <span th:text="${errorMessagePendingEvents}"></span>
+        </div>
         <p th:if="${totalPendingEvents}"><strong>Total Pending Events:</strong> <span th:text="${totalPendingEvents}"></span></p>
         <div class="card-container">
           <div class="card" th:each="event, stat : ${pendingEvents}" th:if="${pendingEvents}">
@@ -249,6 +267,9 @@
       <!-- Start Of UnPaid Events Section -->
       <div class="unpaidEventsSection">
         <h2 th:if="${totalUnpaidEvents}">Unpaid Events</h2>
+        <div style ="font-weight: 800;color: red"  th:if="${totalUnpaidEvents == 0}" >
+          <span th:text="${errorMessageUnpaidEvents}"></span>
+        </div>
         <p th:if="${totalUnpaidEvents}"><strong>Total Unpaid Events:</strong> <span th:text="${totalUnpaidEvents}"></span></p>
         <div class="card-container">
           <div class="card" th:each="event, stat : ${unpaidEvents}" th:if="${unpaidEvents}">
@@ -296,6 +317,9 @@
       <div class="cancelledEventsSection">
         <h2 th:if="${cancelledEvents}">Cancelled Events</h2>
         <p th:if="${cancelledEvents}">Total Cancelled Events: <span th:text="${totalCancelledEvents}"></span></p>
+        <div style ="font-weight: 800;color: red"  th:if="${errorMessageCancelledEvents}">
+          <span th:text="${errorMessageCancelledEvents}"></span>
+        </div>
         <div class="card-container">
           <div class="card"  th:each="event : ${cancelledEvents}" th:if="${cancelledEvents}">
             <div class="card-img">
@@ -309,9 +333,27 @@
               <p><strong>Time:</strong>
                 <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
                 <span th:if="${#strings.length(event.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
-              </span>
+        </span>
               </p>
               <p><strong>Location:</strong> <span th:text="${event.location.name}"></span></p>
+              <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
+              <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
+            </div>
+          </div>
+          <!-- Admin Cancelled Events -->
+          <div class="card" th:each="event, stat : ${adminCancelledEvents}" th:if="${adminCancelledEvents}">
+            <div class="card-img">
+              <img th:src="${event.imageUrl}" alt="Event Image">
+            </div>
+            <div class="card-info">
+              <h2 th:text="${event.name}"></h2>
+              <div  th:if="${event.isBooked == true && event.paymentStatus=='Unpaid'}">
+                <p><strong>Booked by:</strong> <span th:text="${event.user.username}"></span></p>
+              </div>
+              <p><strong>Start Date:</strong> <span th:text="${event.startDate}"></span></p>
+              <p><strong>End Date:</strong> <span th:text="${event.endDate}"></span></p>
+              <p><strong>Time:</strong><span th:text="${event.time}"></span></p>
+              <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
               <p><strong>Price:</strong> <span th:text="${event.price}"></span> <span th:text="${event.priceCurrency}"></span></p>
               <p><strong>Payment Status:</strong> <span th:text="${event.paymentStatus}"></span></p>
             </div>
@@ -332,7 +374,7 @@
             <p><strong>Time:</strong>
               <span th:if="${#strings.length(eventsFromSearch.startDate) < 16}" th:text="'19:00:00'"></span>
               <span th:if="${#strings.length(eventsFromSearch.startDate) >= 16}" th:text="${event.startDate.split('T')[1]}">
-              </span>
+        </span>
             </p>
             <p><strong>Location:</strong> <span th:text="${eventsFromSearch.location.name}"></span></p>
             <p><strong>Price:</strong> <span th:text="${eventsFromSearch.price}"></span>
@@ -367,11 +409,12 @@
             </tr>
           </table>
         </div>
+        <div style ="font-weight: 800;color: red"  th:if="${errorMessageEventInfo}" th:text="${errorMessageEventInfo}"></div>
       </div>
       <!-- End Events from Search Section -->
 
-      <!-- Start Users from Search Section-->
 
+      <!-- Start Users from Search Section-->
       <div class="userFromSearchSection" style="text-align: center; display: flex; justify-content: center; align-items: center;">
         <div th:if="${userInfo}" style="text-align: left; background-color: #ffffff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
           <div class="card-info">
@@ -407,14 +450,16 @@
             </tr>
           </table>
         </div>
+        <div style ="font-weight: 800;color: red"  th:if="${errorMessageUserInfo}" th:text="${errorMessageUserInfo}"></div>
       </div>
       <!-- End Users from Search Section-->
-
       <!-- Start Events Requests Section-->
       <div class="requestedEventsSection">
         <h2 th:if="${totalRequestedEvents}">Requested Events</h2>
         <p th:if="${totalRequestedEvents}"><strong>Total Requested Events:</strong> <span th:text="${totalRequestedEvents}"></span></p>
-
+        <div style ="font-weight: 800;color: red"  th:if="${totalRequestedEvents == 0}" >
+          <span th:text="${errorMessageRequestedEvents}"></span>
+        </div>
         <div class="card-container">
           <div class="card" th:each="event, stat : ${requestedEvents}"  th:if="!${event.isApproved}" >
             <div class="card-img">

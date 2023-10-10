@@ -1,0 +1,2 @@
+INSERT INTO eventure_users (id,user_name,email,password,country,interests,image,date_Of_Birth, role_id ) VALUES
+(-1,'eventureAdmin','eventure@gmail.com','$2a$12$l2jsiAxHsEw5X/0CmB.G1uYHz3Wm8cKOblcPqWc6DjEDDhmRvenUe','Jordan','','','2023-10-02',1);
