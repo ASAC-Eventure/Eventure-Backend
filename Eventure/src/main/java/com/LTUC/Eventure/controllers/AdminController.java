@@ -165,7 +165,7 @@ public class AdminController {
             Optional<Event> event = eventsJPARepository.findById(eventId);
             if (event.isPresent()) {
                 eventRetrieved = event.get();
-                emailSenderService.sendEmail("Hello, Your Event "+eventRetrieved.getName()+" Payment Status is Paid.","Eventure" ,eventRetrieved.getUser().getEmail() );
+                emailSenderService.sendEmail("We hope this message finds you well. We would like to inform you of an important update regarding your event, the payment status for this event has been changed to Paid. Event:"+ eventRetrieved.getName(),"Eventure" ,eventRetrieved.getUser().getEmail() );
                 eventRetrieved.setPaymentStatus("Paid");
                 eventsJPARepository.save(eventRetrieved);
             } else {
@@ -178,8 +178,7 @@ public class AdminController {
         return new RedirectView("/pending-events");
 
     }
-
-
+    
     @PostMapping("/update-eventCreated-status/{eventId}")
     public RedirectView updateStatus_pending_toPaid_created(@PathVariable Long eventId) {
         try {
@@ -187,7 +186,7 @@ public class AdminController {
             Optional<AddEventEntity> event = addEventJPARepository.findById(eventId);
             if (event.isPresent()) {
                 eventRetrieved = event.get();
-                emailSenderService.sendEmail("Hello, Your Event "+eventRetrieved.getName()+" Payment Status is Paid.","Eventure" ,eventRetrieved.getUser().getEmail() );
+                emailSenderService.sendEmail("We hope this message finds you well. We would like to inform you of an important update regarding your event, the payment status for this event has been changed to Paid. Event:"+ eventRetrieved.getName(),"Eventure" ,eventRetrieved.getUser().getEmail() );
                 eventRetrieved.setPaymentStatus("Paid");
                 addEventJPARepository.save(eventRetrieved);
             } else {

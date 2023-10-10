@@ -29,10 +29,11 @@ public class Location {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Location{" +
-                "address=" + address +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Location{" +
+//                "name='" + name + '\'' +
+//                ", address=" + address +
+//                '}';
+//    }
 }

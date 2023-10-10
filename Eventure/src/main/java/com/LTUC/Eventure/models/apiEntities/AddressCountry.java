@@ -26,4 +26,10 @@ public class AddressCountry {
         this.name = name;
     }
 
+//    @Override
+//    public String toString() {
+//        return "AddressCountry{" +
+//                "name='" + name + '\'' +
+//                '}';
+//    }
 }
