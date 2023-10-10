@@ -40,14 +40,11 @@
     <div th:replace="fragments/navbarAfter :: header"></div>
 
 
-
 </div>
 
 
-
-
-
 <div class="card-container">
+
     <div th:if="${successMessageBookedEvent}" class="alert success">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <span th:text="${successMessageBookedEvent}"></span>
@@ -73,12 +70,14 @@
                         <span th:text="${event.location.address.streetAddress}">Street Address</span>,
                         <span th:text="${event.location.address.addressLocality}">Locality</span>,
                         <span th:text="${event.location.address.addressCountry.name}">Country</span>
-                    </p>
-                    <a th:href="${event.url}">Find out more</a>
+                    </p><br>
+                    <a th:href="${event.url}">Find out more</a><br>
                     <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
                     <div th:if="${event.paymentStatus == 'Unpaid'}">
                         <form th:action="@{/payment?(eventId=${event.id})}" method="post">
-                            <button class="card__button" type="submit" onclick="return confirm('Are you sure you want to pay?')">Pay </button>
+                            <button class="card__button" type="submit"
+                                    onclick="return confirm('Be Sure To Pay Before Two Days From The Events,In The Nearest Ticket Center Or Your Event Will Be Canceled !!')">Pay
+                            </button><br>
                         </form>
                     </div>
                 </div>
@@ -88,9 +87,10 @@
                 </form>
             </div>
         </article>
-
+    </div>
+    <div>
         <div th:each="event : ${addedEvents}">
-            <article class="card" th:if="${event.isBooked}" >
+            <article class="card" th:if="${event.isBooked}">
                 <img alt="" class="card__background" height="2193" th:src="${event.imageUrl}" width="1920"/>
                 <div class="card__content | flow">
                     <div class="card__content--container | flow">
@@ -107,16 +107,18 @@
                         </p>
                         <a th:href="${event.eventUrl}">Find out more</a>
                     </div>
-                    <form th:method="delete" th:action="@{'/unbook-event/' + ${event.id}}" method="post">
-                        <input name="_method" type="hidden" value="DELETE">
-                        <button class="card__button" type="submit">Cancel Event</button>
-                    </form>
-                    <p style="text-decoration: underline;"><strong>Payment Status:</strong><span  th:text="${event.paymentStatus}"></span></p>
+                    <p style="text-decoration: underline;"><strong>Payment Status:</strong><span
+                            th:text="${event.paymentStatus}"></span></p>
                     <div th:if="${event.paymentStatus == 'Unpaid'}">
                         <form th:action="@{/paymentCreated?(eventId=${event.id})}" method="post">
-                            <button type="submit" onclick="return confirm('Are you sure you want to pay?')">Pay</button>
+                            <button class="card__button" type="submit" onclick="return confirm('Be Sure To Pay Before Two Days From The Events,In The Nearest Ticket Center Or Your Event Will Be Canceled !!')">Pay</button>
                         </form>
                     </div>
+
+                    <form th:action="@{'/unbook-eventCreated/'+ ${event.id}}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="card__button">Cancel Event</button>
+                    </form>
                 </div>
             </article>
         </div>

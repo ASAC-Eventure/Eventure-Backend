@@ -1,28 +1,29 @@
-#terms-and-conditions .terms-and-conditions-section {
-	 margin: 10px 0;
-}
- #terms-and-conditions .terms-and-conditions-section.grey {
-	 background-color: grey;
-}
- #terms-and-conditions .terms-and-conditions-section .section-title {
-	 color: black;
-}
+.terms-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
 
-.t&c-container{
-    background-color: whitesmoke;
-}
-.t&c-container h1, h2, h3, h4, h5, h6 {
- color: whitesmoke;
-}
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
 
-.t&c-container p{
-    color: whitesmoke;
-}
+        .heading {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
 
-.t&c-container a{
-    color: whitesmoke;
-}
+        .section-title {
+            color: #333;
+            margin-top: 20px;
+        }
 
-.t&c-container h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    color: black;
-}
+        .content {
+            margin-top: 20px;
+        }
+
+        .content p {
+            line-height: 1.6;
+        }

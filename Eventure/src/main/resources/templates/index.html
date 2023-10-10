@@ -92,8 +92,6 @@
                     <h2 class="card__title" th:text="${event.name}"></h2>
                     <p class="card__description">
                         <span th:text="${event.startDate.substring(0, 10)}"></span>/
-                        <!--                    <span th:text="${event.startDate.substring(5, 7)}"></span> |-->
-
                         <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
                         <span th:if="${#strings.length(event.startDate) >= 16}"
                               th:text="${event.startDate.split('T')[1]}"></span>
@@ -104,8 +102,8 @@
                         <span th:text="${event.location.address.streetAddress}">Street Address</span>,
                         <span th:text="${event.location.address.addressLocality}">Locality</span>,
                         <span th:text="${event.location.address.addressCountry.name}">Country</span><br>
-                    </p>
-                    <a th:href="${event.url}"><strong>Find out more</strong></a>
+                    </p><br>
+                    <a th:href="${event.url}"><strong>Find out more</strong></a><br>
                     <div th:if="${isUsernameFound == 'yes'}">
                         <form action="/book-event" method="post">
                             <input name="eventName" th:value="${event.name}" type="hidden"/>

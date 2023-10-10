@@ -1737,3 +1737,7 @@ text-align: center;}
 .closebtn:hover {
   color: black;
 }
+
+.material-symbols-outlined {
+  vertical-align: middle;
+}

@@ -38,155 +38,155 @@
 
 <body>
 <div class="main-layout container_page">
-<!-- loader  -->
-<div class="loader_bg">
-    <div class="loader"><img alt="#" src="images/loading.gif"/></div>
-</div>
-<!-- end loader -->
-<!-- header -->
-<div th:if="${isUsernameFound == 'yes'}">
-    <div th:replace="fragments/headerAfter :: header"></div>
-</div>
-<div th:if="${isUsernameFound == 'no'}">
-    <div th:replace="fragments/headerBefore :: header"></div>
-</div>
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img alt="#" src="images/loading.gif"/></div>
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <div th:if="${isUsernameFound == 'yes'}">
+        <div th:replace="fragments/headerAfter :: header"></div>
+    </div>
+    <div th:if="${isUsernameFound == 'no'}">
+        <div th:replace="fragments/headerBefore :: header"></div>
+    </div>
 
-<!-- about  -->
-<div class="about" id="about">
-    <div class="container">
-        <div class="row display_boxflex">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                <div class="about-box">
-                    <h2>About Us</h2>
-                    <p>Welcome to our event booking platform, your one-stop destination for discovering and reserving
-                        exciting events! With our user-friendly website,
-                        you can effortlessly explore a wide range of events, from concerts to festivals. We offer a
-                        seamless and convenient experience,
-                        allowing you to browse event details, view dates, and access ticketing information with ease.
-                        Whether you're a music enthusiast,
-                        a party animal, or someone looking to expand their horizons, our platform has something for
-                        everyone. Discover unforgettable experiences,
-                        connect with like-minded individuals, and secure your spot at your favorite events hassle-free.
-                        Join us today and embark on a journey of exploration
-                        and entertainment, all at your fingertips!</p>
+    <!-- about  -->
+    <div class="about" id="about">
+        <div class="container">
+            <div class="row display_boxflex">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="about-box">
+                        <h2>About Us</h2>
+                        <p>Welcome to our event booking platform, your one-stop destination for discovering and reserving
+                            exciting events! With our user-friendly website,
+                            you can effortlessly explore a wide range of events, from concerts to festivals. We offer a
+                            seamless and convenient experience,
+                            allowing you to browse event details, view dates, and access ticketing information with ease.
+                            Whether you're a music enthusiast,
+                            a party animal, or someone looking to expand their horizons, our platform has something for
+                            everyone. Discover unforgettable experiences,
+                            connect with like-minded individuals, and secure your spot at your favorite events hassle-free.
+                            Join us today and embark on a journey of exploration
+                            and entertainment, all at your fingertips!</p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="about-box">
+                        <figure><img alt="#" src="images/about.png" style="radius"/></figure>
+                    </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                <div class="about-box">
-                    <figure><img alt="#" src="images/about.png" style="radius"/></figure>
-                </div>
+        </div>
+
+        <div class="container">
+            <div class="row display_boxflex">
+                <section class="team">
+                    <h1 style="color: black;">Meet <span class="our-team">Our Team</span></h1>
+                    <div class="team-cards">
+
+                        <!-- Card 1 -->
+                        <div class="card">
+                            <div class="card-img">
+                                <img alt="Reneh's Picture" src="/images/reneh.jpg">
+                            </div>
+                            <div class="card-info">
+                                <h2 class="card-name" style="color:black;">Reneh Al-Madanat</h2>
+                                <p class="card-role">Java Developer</p>
+                                <p class="card-email">renehm2001@gmail.com</p>
+                                <div class="social-icons-container">
+                                    <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
+                                    <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="card">
+                            <div class="card-img">
+                                <img alt="Aws's Picture" src="/images/aws.jpg">
+                            </div>
+                            <div class="card-info">
+                                <h2 class="card-name" style="color:black;">Aws Al-Omari</h2>
+                                <p class="card-role">Java Developer</p>
+                                <p class="card-email">awsalomari11469@gmail.com</p>
+                                <div class="social-icons-container">
+                                    <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
+                                    <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="card">
+                            <div class="card-img">
+                                <img alt="Balqees's Picture" src="/images/balqees.jpeg">
+                            </div>
+                            <div class="card-info">
+                                <h2 class="card-name" style="color:black;">Balqees Al-Qudah</h2>
+                                <p class="card-role">Java Developer</p>
+                                <p class="card-email">Balqeesalqudah97@gmail.com</p>
+                                <div class="social-icons-container">
+                                    <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
+                                    <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="card">
+                            <div class="card-img">
+                                <img alt="Saif's Picture" src="/images/saif.jpeg">
+                            </div>
+                            <div class="card-info">
+                                <h2 class="card-name" style="color:black;">Saif Yahya</h2>
+                                <p class="card-role">Java Developer</p>
+                                <p class="card-email">saifbarakat991@gmail.com</p>
+                                <div class="social-icons-container">
+                                    <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
+                                    <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="card">
+                            <div class="card-img">
+                                <img alt="Haya's Picture" src="/images/haya.jpg">
+                            </div>
+                            <div class="card-info">
+                                <h2 class="card-name" style="color:black;">Haya Hasan</h2>
+                                <p class="card-role">Java Developer</p>
+                                <p class="card-email">haya.nael01@gmail.com</p>
+                                <div class="social-icons-container">
+                                    <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
+                                    <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row display_boxflex">
-            <section class="team">
-                <h1 style="color: black;">Meet <span class="our-team">Our Team</span></h1>
-                <div class="team-cards">
-
-                    <!-- Card 1 -->
-                    <div class="card">
-                        <div class="card-img">
-                            <img alt="Reneh's Picture" src="/images/reneh.jpg">
-                        </div>
-                        <div class="card-info">
-                            <h2 class="card-name">Reneh Al-Madanat</h2>
-                            <p class="card-role">Java Developer</p>
-                            <p class="card-email">renehm2001@gmail.com</p>
-                            <div class="social-icons-container">
-                                <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
-                                <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="card">
-                        <div class="card-img">
-                            <img alt="Aws's Picture" src="/images/aws.jpg">
-                        </div>
-                        <div class="card-info">
-                            <h2 class="card-name">Aws Al-Omari</h2>
-                            <p class="card-role">Java Developer</p>
-                            <p class="card-email">awsalomari11469@gmail.com</p>
-                            <div class="social-icons-container">
-                                <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
-                                <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="card">
-                        <div class="card-img">
-                            <img alt="Balqees's Picture" src="/images/balqees.jpeg">
-                        </div>
-                        <div class="card-info">
-                            <h2 class="card-name">Balqees Al-Qudah</h2>
-                            <p class="card-role">Java Developer</p>
-                            <p class="card-email">Balqeesalqudah97@gmail.com</p>
-                            <div class="social-icons-container">
-                                <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
-                                <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="card">
-                        <div class="card-img">
-                            <img alt="Saif's Picture" src="/images/saif.jpeg">
-                        </div>
-                        <div class="card-info">
-                            <h2 class="card-name">Saif Yahya</h2>
-                            <p class="card-role">Java Developer</p>
-                            <p class="card-email">saifbarakat991@gmail.com</p>
-                            <div class="social-icons-container">
-                                <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
-                                <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="card">
-                        <div class="card-img">
-                            <img alt="Haya's Picture" src="/images/haya.jpg">
-                        </div>
-                        <div class="card-info">
-                            <h2 class="card-name">Haya Hasan</h2>
-                            <p class="card-role">Java Developer</p>
-                            <p class="card-email">haya.nael01@gmail.com</p>
-                            <div class="social-icons-container">
-                                <a class="social-icon github-icon" href="#"><i class="fab fa-github"></i></a>
-                                <a class="social-icon linkedin-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
 </div>
 
+<div class="main-layout">
+    <div th:replace="fragments/footer :: footer"></div>
 </div>
 
-    <div class="main-layout">
-        <div th:replace="fragments/footer :: footer"></div>
-    </div>
 
-
-    <!-- Javascript files-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <script src="/css/js/aboutUs.js"></script>
+<!-- Javascript files-->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/plugin.js"></script>
+<!-- sidebar -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<script src="/css/js/aboutUs.js"></script>
 
 
 </body>

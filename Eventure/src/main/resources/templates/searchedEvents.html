@@ -30,7 +30,7 @@
 
 <body>
 
-<div class="main-layout">
+<div class="main-layout contineer_page">
     <!-- loader  -->
     <div class="loader_bg">
         <div class="loader"><img src="/images/loading.gif"/></div>
@@ -47,20 +47,16 @@
 </div>
 
 
-
-
-
-<h2 style="color: black; text-align: center;
-    font-size: xxx-large;
-    text-decoration: underline">Events</h2>
-<form class="search-box" action="/events" method="GET">
-    <fieldset>
-        <label for="searchCriteria"></label>
-        <input type="text" name="searchCriteria" id="searchCriteria" placeholder="Enter Country or Date (YYYY-MM-DD)">
-        <button type="reset"></button>
-    </fieldset>
-</form>
 <div class="card-container">
+    <legend style="position: absolute;">Explore Events</legend>
+    <form action="/events" class="search-box" method="GET" style="position: absolute;">
+        <fieldset>
+            <label for="searchCriteria"></label>
+            <input id="searchCriteria" name="searchCriteria" placeholder="Enter Country or Date (YYYY-MM-DD)"
+                   type="text">
+            <button type="reset"></button>
+        </fieldset>
+    </form>
     <div th:each="event, stat : ${events}">
         <article class="card">
             <img alt="" class="card__background" height="2193" th:src="${event.image}" width="1920"/>
@@ -80,8 +76,9 @@
                         Address: <span th:text="${event.location.address.streetAddress}">Street Address</span>,
                         <span th:text="${event.location.address.addressLocality}">Locality</span>,
                         <span th:text="${event.location.address.addressCountry.name}">Country</span>
-                    </p>
-                    <a th:href="${event.url}">Find out more</a>
+                    </p><br>
+                    <a th:href="${event.url}">Find out more <span
+                            class="material-symbols-outlined">arrow_right_alt</span></a><br>
                 </div>
                 <div th:if="${isUsernameFound == 'yes'}">
                     <form action="/book-event" method="post">
@@ -104,13 +101,12 @@
                         <button class="card__button" type="submit">Book Event</button>
                     </form>
                 </div>
-                <a href="/signup" th:unless="${isUsernameFound == 'yes'}"
-                   style="margin-top:5px; margin-bottom:10px;"><strong>Login to book this event</strong></a>
+                <a href="/signup" style="margin-top:5px; margin-bottom:10px;"
+                   th:unless="${isUsernameFound == 'yes'}"><strong>Login to book this event</strong></a>
 
             </div>
         </article>
     </div>
-</div>
 </div>
 
 
