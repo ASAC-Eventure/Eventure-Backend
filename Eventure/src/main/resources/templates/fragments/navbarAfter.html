@@ -1,6 +1,5 @@
-<header xmlns:th="http://www.w3.org/1999/xhtml">
+<header>
     <!-- header inner -->
-
     <div class="header">
         <div class="container">
             <div class="row">
@@ -14,28 +13,15 @@
                     </div>
                 </div>
                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-9">
-
                     <div class="menu-area">
                         <div class="limit-box">
                             <nav class="main-menu ">
                                 <ul class="menu-area-main">
-                                    <li > <a href="/">Home</a> </li>
-                                    <li> <a href="/aboutUs">About</a> </li>
-                                    <li> <a href="/events">Events </a> </li>
-                                    <li><a href="/myEvents">My Events </a></li>
-                                    <li><a href="/profile">Profile</a> </li>
-                                    <li > <a th:href="@{/perform_logout}">logout</a> </li>
-                                    <li > <form id="search-form" action="/events" method="GET">
-                                        <fieldset>
-                                            <label for="countryName">Country:</label>
-                                            <input type="text" name="countryName" id="countryName">
-                                            <label for="startDate">Start Date:</label>
-                                            <input type="date" name="startDate" id="startDate">
-                                            <input type="submit" value="Search">
-                                        </fieldset>
-                                    </form>
-                                    </li>
-
+                                    <li class="active"> <a href="/">Home</a></li>
+                                    <li class="active"> <a href="/aboutUs">About</a></li>
+                                    <li> <a href="/events">Events</a></li>
+                                    <li><a href="/myEvents">My Events</a> </li>
+                                    <li > <a href="/logout">Logout</a></li>
                                 </ul>
                             </nav>
 
@@ -48,6 +34,5 @@
     <!-- end header inner -->
 
     <!-- end header -->
-
 
 </header>

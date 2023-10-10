@@ -4,6 +4,9 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 5%;
+    background-image: url("/images/p3.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 :root {
   /* Colors */

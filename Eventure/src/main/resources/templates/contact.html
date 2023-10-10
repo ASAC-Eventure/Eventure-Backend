@@ -19,6 +19,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- style css -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/contact.css" rel="stylesheet">
+    <link href="css/contact-background.css" rel="stylesheet">
+
     <!-- Responsive-->
     <link href="css/responsive.css" rel="stylesheet">
     <!-- Scrollbar Custom CSS -->
@@ -38,9 +41,13 @@
 <div class="loader_bg">
     <div class="loader"><img alt="#" src="images/loading.gif"/></div>
 </div>
-<!-- end loader -->
-<!-- header -->
-<div th:replace="fragments/navbarBefore :: header"></div>
+
+<div th:if="${isUsernameFound == 'yes'}">
+    <div th:replace="fragments/navbarAfter :: header"></div>
+</div>
+<div th:if="${isUsernameFound == 'no'}">
+    <div th:replace="fragments/navbarBefore :: header"></div>
+</div>
 
 
 <div class="backgro_mh">
@@ -49,89 +56,86 @@
             <div class="col-md-12">
                 <div class="heding">
                     <h2>Contact us</h2>
-                    <h3>Welcome to our event submission page! We're thrilled that you want to share your event with our
-                        community. To add your event to our website, please fill out the form below with all the
-                        necessary details. Once you submit the information, our team will review it, and if it meets our
-                        guidelines, your event will be published on our website for others to discover.</h3>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<form action="/addNewEvent" class="contact_bg" id="add-event-form" method="POST">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-12">
-                <input class="contactus" id="name" name="name" placeholder="Event Name" required
-                       type="text"/>
-            </div>
+<h3 style="  font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;font-family: 'Poppins',sans-serif;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: 40px;
+  font-size: 25px;
+  border-radius:10px;
+  background-color: #f7f7f7;
+  margin-bottom: 30px; font-weight: bold; padding: 10px 20px; box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);">Welcome to our
+    event submission page! We're thrilled
+    that you want to share your event with our
+    community. To add your event to our website, please fill out the form below with all the
+    necessary details. Once you submit the information, our team will review it, and if it meets our
+    guidelines, your event will be published on our website for others to discover.</h3>
 
-            <div class="col-md-12">
-                <input class="contactus" id="startDate" name="startDate" placeholder="Start Date"
-                       required type="date"/>
-            </div>
+<div class="form-container" style="margin-left: 35%;
+  margin-top: 40px;">
+    <form th:action="@{/addNewEvent}" method="POST">
+        <fieldset>
+            <legend style="margin-bottom:50px; font-size: 24px;
+    font-weight: bold;
+    color: #78a8db;
+    background-color: #f7f7f7;
+    padding: 10px 20px;
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.3); ">Add your Event details
+            </legend>
+            <label for="name"><strong>Event Name</strong></label>
+            <input type="text" id="name" name="name" placeholder="Event Name" required/><br/>
+            <label for="startDate"><strong>Start Date</strong></label>
+            <input type="date" id="startDate" name="startDate" placeholder="Start Date" required/><br/>
+            <label for="endDate"><strong>End Date</strong></label>
+            <input type="date" id="endDate" name="endDate" placeholder="End Date" required/><br/>
 
-            <div class="col-md-12">
-                <input class="contactus" id="endDate" name="endDate" placeholder="End Date" required
-                       type="date"/>
-            </div>
+            <label for="time"><strong>Time</strong></label>
+            <input type="time" id="time" name="time" placeholder="Time" required/><br/>
 
-            <div class="col-md-12">
-                <input class="text" id="time" name="time" placeholder="Time" required type="time"/>
-            </div>
+            <label for="eventUrl"><strong>Event Url</strong></label>
+            <input type="text" id="eventUrl" name="eventUrl" placeholder="Url of the event" required/><br/>
 
+            <label for="location"><strong>Location</strong></label>
+            <input type="text" id="location" name="location" placeholder="Location" required/><br/>
 
-            <div class="col-md-12">
-                <input class="text" id="eventUrl" name="eventUrl" placeholder="Url of the event"
-                       required type="text"/>
-            </div>
+            <label for="streetAddress"><strong>Street Address</strong></label>
+            <input placeholder="Street Address" name="streetAddress" type="text" id="streetAddress" required/>
 
-            <div class="col-md-12">
-                <input class="text" id="location" name="location" placeholder="Location" required
-                       type="text"/>
-            </div>
-            <div class="col-md-12">
-                <input class="text" id="streetAddress" name="streetAddress" placeholder="Street Address"
-                       required type="text"/>
-            </div>
+            <label for="price"><strong>Price</strong></label>
+            <input placeholder="Price" type="number" name="price" id="price" required min="0"/>
 
+            <label for="priceCurrency"><strong>Price Currency</strong> </label>
+            <input placeholder="Price Currency" value="USD" type="text" name="priceCurrency" id="priceCurrency"
+                   readonly/>
 
-            <div class="col-md-12">
-                <input class="text" id="price" name="price" placeholder="Price" required type="number"/>
-            </div>
+            <label for="imageUrl"><strong>Image of the event</strong></label>
+            <input placeholder="Image Url" type="text" name="imageUrl" id="imageUrl" required/>
 
-
-            <div class="col-md-12">
-                <input class="text" id="priceCurrency" name="priceCurrency" placeholder="Price Currency"
-                       readonly type="text" value="USD"/>
-            </div>
-
-            <div class="col-md-12">
-                <input class="text" id="imageUrl" name="imageUrl" placeholder="Image Url" readonly
-                       type="text"/>
-            </div>
-
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                <button class="send">Add</button>
-                <div style="color:green;margin-left:8pc;margin-top:10px">
-                    <nav style="color: red;font-size:17px;" th:fragment="event-error"
-                         th:if="${errorMessageBookedEvent}" th:text="${errorMessageBookedEvent}"></nav>
+            <div>
+                <button type="submit" class="styled-button">Add</button>
+                <div style="color:green;margin-top:10px">
+                    <nav th:if="${errorMessageBookedEvent}" th:fragment="event-error"
+                         th:text="${errorMessageBookedEvent}"
+                         style="color: red;font-size:17px;"></nav>
                 </div>
 
-                <div style="color:red;margin-left:7pc;margin-top:10px">
-                    <nav style="color: blue;font-size:17px;" th:fragment="event-success"
-                         th:if="${successMessageBookedEvent}"
-                         th:text="${successMessageBookedEvent}"></nav>
-                    Your event has been submitted and is awaiting admin approval. Thank you for sharing!
+                <div style="color:red;margin-top:10px">
+                    <nav th:if="${successMessageBookedEvent}" th:fragment="event-success"
+                         th:text="${successMessageBookedEvent}" style="color: blue;font-size:17px;"></nav>
                 </div>
             </div>
-        </div>
-    </div>
-</form>
 
+        </fieldset>
 
+    </form>
+</div>
 
 <div th:replace="/fragments/footer :: footer"></div>
 <!-- end footer -->

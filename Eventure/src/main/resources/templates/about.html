@@ -37,6 +37,7 @@
 <!-- body -->
 
 <body class="main-layout contineer_page">
+
 <!-- loader  -->
 <div class="loader_bg">
     <div class="loader"><img alt="#" src="images/loading.gif"/></div>
@@ -49,6 +50,7 @@
 <div th:if="${isUsernameFound == 'no'}">
     <div th:replace="fragments/navbarBefore :: header"></div>
 </div>
+
 <!-- about  -->
 <div class="about" id="about">
     <div class="container">
@@ -165,31 +167,6 @@
             </section>
         </div>
     </div>
-
-    <form class="contact_bg">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="titlepage">
-                    <h2 style="color:black;">Contact us</h2>
-                </div>
-                <div class="col-md-12">
-                    <input class="contactus" name="Your Name" placeholder="Your Name" type="text">
-                </div>
-                <div class="col-md-12">
-                    <input class="contactus" name="Your Email" placeholder="Your Email" type="text">
-                </div>
-                <div class="col-md-12">
-                    <input class="contactus" name="Your Phone" placeholder="Your Phone" type="text">
-                </div>
-                <div class="col-md-12">
-                    <textarea class="textarea" name="Message" placeholder="Message" type="text"></textarea>
-                </div>
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <button class="send">Send</button>
-                </div>
-            </div>
-        </div>
-    </form>
 
     <div th:replace="fragments/footer :: footer"></div>
     <!-- end footer -->
