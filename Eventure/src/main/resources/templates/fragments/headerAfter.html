@@ -19,11 +19,11 @@
                             <div class="limit-box">
                                 <nav class="main-menu ">
                                     <ul class="menu-area-main">
-                                        <li class="active"> <a href="/">Home</a> </li>
-                                        <li> <a href="/aboutUs">About</a></li>
-                                        <li> <a href="/events">Events</a></li>
-                                        <li> <a href="/myEvents">My Events</a> </li>
-                                        <li> <a href="/profile">Profile</a></li>
+                                        <li class="active"><a href="/">Home</a></li>
+                                        <li><a href="/aboutUs">About</a></li>
+<!--                                        <li><a href="/events">Events</a></li>-->
+                                        <li><a href="/myEvents">My Events</a></li>
+                                        <li><a href="/profile">Profile</a></li>
                                         <li><a th:href="@{/perform_logout}">Logout</a></li>
                                     </ul>
                                 </nav>
@@ -52,14 +52,15 @@
                                         <div class="text-bg">
                                             <span>Eventure</span>
                                             <h1>Is Where We Bring You Closer To Your Rhythm</h1>
+                                            <legend>Explore Events</legend>
                                             <form class="search-box" action="/events" method="GET">
                                                 <fieldset>
-                                                    <legend>Explore Events</legend>
-                                                    <label for="searchCriteria">Search:</label>
-                                                    <input type="text" name="searchCriteria" id="searchCriteria" placeholder="Enter Country or Date (YYYY-MM-DD)">
-                                                    <input type="submit" value="Search">
+                                                    <input type="text" name="searchCriteria" id="searchCriteria"
+                                                           placeholder="Enter Country or Date (YYYY-MM-DD)">
+                                                    <button type="reset"></button>
                                                 </fieldset>
                                             </form>
+                                            <input type="submit" value="Search" style="border-radius: 7px;">
                                         </div>
                                     </div>
                                 </div>

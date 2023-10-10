@@ -35,86 +35,84 @@
     <div class="loader_bg">
         <div class="loader"><img src="/images/loading.gif"/></div>
     </div>
-    <!-- end loader -->
-    <!-- header -->
+
     <div th:if="${isUsernameFound == 'yes'}">
         <div th:replace="fragments/navbarAfter :: header"></div>
     </div>
+
     <div th:if="${isUsernameFound == 'no'}">
         <div th:replace="fragments/navbarBefore :: header"></div>
     </div>
+
 </div>
-<div>
-
-    <div th:if="${successMessageBookedEvent}" class="alert alert-success">
-        <span th:text="${successMessageBookedEvent}"></span>
-    </div>
-    <div th:if="${errorMessageBookedEvent}" class="alert alert-danger">
-        <span th:text="${errorMessageBookedEvent}"></span>
-    </div>
 
 
-    <div class="card-container">
-        <h2 style="color: black; text-align: center;
+
+
+<!--<form action="/events" class="search-box" method="GET" style="margin-left: 40%">-->
+<!--    <fieldset>-->
+<!--        <label for="searchCriteria"></label>-->
+<!--        <input id="searchCriteria" name="searchCriteria" placeholder="Enter Country or Date (YYYY-MM-DD)"-->
+<!--               type="text">-->
+<!--        <button type="reset"></button>-->
+<!--    </fieldset>-->
+<!--</form>-->
+
+<div class="card-container">
+    <h2 style="color: black; text-align: center;
     font-size: xxx-large;
     text-decoration: underline">Events</h2>
-        <form action="/events" class="search-box" method="GET" style="margin-left: 40%">
-            <fieldset>
-                <label for="searchCriteria"></label>
-                <input id="searchCriteria" name="searchCriteria" placeholder="Enter Country or Date (YYYY-MM-DD)"
-                       type="text">
-                <button type="reset"></button>
-            </fieldset>
-        </form>
-        <div th:each="event, stat : ${events}">
-            <article class="card">
-                <img alt="" class="card__background" height="2193" th:src="${event.image}" width="1920"/>
-                <div class="card__content | flow">
-                    <div class="card__content--container | flow">
-                        <h2 class="card__title" th:text="${event.name}"></h2>
-                        <p class="card__description">
-                            <span th:text="${event.startDate.substring(0, 4)}"></span>-
-                            <span th:text="${event.startDate.substring(5, 10)}"></span> |
-                            <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
-                            <span th:if="${#strings.length(event.startDate) >= 16}"
-                                  th:text="${event.startDate.split('T')[1]}"></span> |
-                            <span th:text="'Price: ' + ${event.price + ' ' + event.priceCurrency}"></span>
-                        </p>
-                        <p class="card-text">
-                            Location: <span th:text="${event.location.name}">Location Name</span>
-                            Address: <span th:text="${event.location.address.streetAddress}">Street Address</span>,
-                            <span th:text="${event.location.address.addressLocality}">Locality</span>,
-                            <span th:text="${event.location.address.addressCountry.name}">Country</span>
-                        </p>
-                        <a th:href="${event.url}">Find out more</a>
-                    </div>
-                    <div th:if="${isUsernameFound == 'yes'}">
-                        <form action="/book-event" method="post">
-                            <input name="eventName" th:value="${event.name}" type="hidden"/>
-                            <input name="image" th:value="${event.image}" type="hidden"/>
-                            <input name="eventStartDate" th:value="${event.startDate}" type="hidden"/>
-                            <input name="eventEndDate" th:value="${event.endDate}" type="hidden"/>
-                            <input name="eventUrl" th:value="${event.url}" type="hidden"/>
-                            <!-- Location -->
-                            <input name="eventLocationName" th:value="${event.location.name}" type="hidden"/>
-                            <!-- Address -->
-                            <input name="eventAddressStreet" th:value="${event.location.address.streetAddress}"
-                                   type="hidden"/>
-                            <input name="eventAddressLocality" th:value="${event.location.address.addressLocality}"
-                                   type="hidden"/>
-                            <!-- AddressCountry -->
-                            <input name="eventAddressCountryName"
-                                   th:value="${event.location.address.addressCountry.name}"
-                                   type="hidden"/>
-                            <button class="card__button" type="submit">Book Event</button>
-                        </form>
-                    </div>
-                    <a href="/signup" th:unless="${isUsernameFound == 'yes'}">Login to book this event</a>
 
+    <div th:each="event, stat : ${events}">
+        <article class="card">
+            <img alt="" class="card__background" height="2193" th:src="${event.image}" width="1920"/>
+            <div class="card__content | flow">
+                <div class="card__content--container | flow">
+                    <h2 class="card__title" th:text="${event.name}"></h2>
+                    <p class="card__description">
+                        <span th:text="${event.startDate.substring(0, 4)}"></span>-
+                        <span th:text="${event.startDate.substring(5, 10)}"></span> |
+                        <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
+                        <span th:if="${#strings.length(event.startDate) >= 16}"
+                              th:text="${event.startDate.split('T')[1]}"></span> |
+                        <span th:text="'Price: ' + ${event.price + ' ' + event.priceCurrency}"></span>
+                    </p>
+                    <p class="card-text">
+                        Location: <span th:text="${event.location.name}">Location Name</span>
+                        Address: <span th:text="${event.location.address.streetAddress}">Street Address</span>,
+                        <span th:text="${event.location.address.addressLocality}">Locality</span>,
+                        <span th:text="${event.location.address.addressCountry.name}">Country</span>
+                    </p>
+                    <a th:href="${event.url}">Find out more</a>
                 </div>
-            </article>
-        </div>
+                <div th:if="${isUsernameFound == 'yes'}">
+                    <form action="/book-event" method="post">
+                        <input name="eventName" th:value="${event.name}" type="hidden"/>
+                        <input name="image" th:value="${event.image}" type="hidden"/>
+                        <input name="eventStartDate" th:value="${event.startDate}" type="hidden"/>
+                        <input name="eventEndDate" th:value="${event.endDate}" type="hidden"/>
+                        <input name="eventUrl" th:value="${event.url}" type="hidden"/>
+                        <!-- Location -->
+                        <input name="eventLocationName" th:value="${event.location.name}" type="hidden"/>
+                        <!-- Address -->
+                        <input name="eventAddressStreet" th:value="${event.location.address.streetAddress}"
+                               type="hidden"/>
+                        <input name="eventAddressLocality" th:value="${event.location.address.addressLocality}"
+                               type="hidden"/>
+                        <!-- AddressCountry -->
+                        <input name="eventAddressCountryName"
+                               th:value="${event.location.address.addressCountry.name}"
+                               type="hidden"/>
+                        <button class="card__button" type="submit">Book Event</button>
+                    </form>
+                    <a href="/signup" th:unless="${isUsernameFound == 'yes'}">Login to book this event</a>
+                </div>
+                <!--                    <a href="/signup" th:unless="${isUsernameFound == 'yes'}">Login to book this event</a>-->
+
+            </div>
+        </article>
     </div>
+</div>
 </div>
 
 

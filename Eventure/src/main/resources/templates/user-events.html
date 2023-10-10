@@ -36,15 +36,17 @@
     <div class="loader_bg">
         <div class="loader"><img src="/images/loading.gif"/></div>
     </div>
-    <!-- end loader -->
-    <!-- header -->
 
     <div th:replace="fragments/navbarAfter :: header"></div>
 
-
-    <!-- end header -->
 </div>
 
+<div th:if="${successMessageBookedEvent}" class="alert alert-success">
+    <span th:text="${successMessageBookedEvent}"></span>
+</div>
+<div th:if="${errorMessageBookedEvent}" class="alert alert-danger">
+    <span th:text="${errorMessageBookedEvent}"></span>
+</div>
 
 <div class="card-container">
     <h2 style="color: black; text-align: center;
@@ -73,50 +75,50 @@
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="card__button" type="submit">Cancel Event</button>
                 </form>
-                <!--                <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>-->
-                <!--                <div th:if="${event.paymentStatus == 'Unpaid'}">-->
-                <!--                    <a class="btn btn-success" id="openPaymentModal" th:href="@{/payment?(eventId=${event.id})}">Pay-->
-                <!--                        Here</a>-->
-                <!--                </div>-->
-
-
+                <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
+                <div th:if="${event.paymentStatus == 'Unpaid'}">
+                    <!--                    <a id="openPaymentModal1" th:href="@{/payment?(eventId=${event.id})}" class="btn btn-success">Pay Here</a>-->
+                    <form th:action="@{/payment?(eventId=${event.id})}" method="post">
+                        <button type="submit" onclick="return confirm('Are you sure you want to pay?')">Pay rapid
+                        </button>
+                    </form>
+                </div>
             </div>
         </article>
-    </div>
 
-    <!-- Events from form -->
-
-    <div th:each="event : ${addedEvents}" >
-        <div  th:if="${event.isBooked}" class="event-card" >
-
-            <img th:src="${event.imageUrl}" alt="Event Image" />
-
-            <h3 th:text="${event.name}"></h3>
-            <br>
-            <p>Start Date : <span th:text="${event.startDate}"></span></p>
-            <br>
-            <p>End Date : <span th:text="${event.endDate}"></span></p>
-            <br>
-            <p>Time : <span th:text="${event.time}"></span></p>
-            <br>
-            <p>Price : <span th:text="${event.price}">  </span> <span th:text="${event.priceCurrency}"> </span></p>
-            <br>
-            <p>Location : <span th:text="${event.location}"></span></p>
-            <br>
-            <p>Street Name: <span th:text="${event.streetAddress}"></span></p>
-            <form th:action="@{'/unbook-eventCreated/'+ ${event.id}}" method="post">
-                <input type="hidden" name="_method" value="DELETE">
-                <button type="submit" class="btn btn-success">Cancel Event</button>
-            </form>
-            <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
-            <div th:if="${event.paymentStatus == 'Unpaid'}">
-                <a id="openPaymentModal2" th:href="@{/paymentCreated?(eventId=${event.id})}" class="btn btn-success">Pay Here</a>
-            </div>
-            </th:if>
+        <div th:each="event : ${addedEvents}">
+            <article class="card" th:if="${event.isBooked}" class="event-card">
+                <img alt="" class="card__background" height="2193" th:src="${event.imageUrl}" width="1920"/>
+                <div class="card__content | flow">
+                    <div class="card__content--container | flow">
+                        <h2 class="card__title" th:text="${event.name}"></h2>
+                        <p class="card__description">
+                            <span th:text="'Starts from ' + ${event.startDate}"></span>/
+                            <span th:text="'Ends in ' + ${event.endDate}"></span> |
+                            <span th:text="${event.time}"></span>
+                            <span th:text="'Price: ' + ${event.price + ' ' + event.priceCurrency}"></span>
+                        </p>
+                        <p class="card-text">
+                            Location: <span th:text="${event.location}">Location Name</span>
+                            <span th:text="${event.streetAddress}">Street Address</span>,
+                        </p>
+                        <a th:href="${event.url}">Find out more</a>
+                    </div>
+                    <form th:method="delete" th:action="@{'/unbook-event/' + ${event.id}}" method="post">
+                        <input name="_method" type="hidden" value="DELETE">
+                        <button class="card__button" type="submit">Cancel Event</button>
+                    </form>
+                    <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
+                    <div th:if="${event.paymentStatus == 'Unpaid'}">
+                        <form th:action="@{/paymentCreated?(eventId=${event.id})}" method="post">
+                            <button type="submit" onclick="return confirm('Are you sure you want to pay?')">Pay</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
         </div>
     </div>
 </div>
-
 
 <div class="main-layout">
     <!--  footer -->
