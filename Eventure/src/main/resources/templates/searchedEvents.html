@@ -49,20 +49,18 @@
 
 
 
-<!--<form action="/events" class="search-box" method="GET" style="margin-left: 40%">-->
-<!--    <fieldset>-->
-<!--        <label for="searchCriteria"></label>-->
-<!--        <input id="searchCriteria" name="searchCriteria" placeholder="Enter Country or Date (YYYY-MM-DD)"-->
-<!--               type="text">-->
-<!--        <button type="reset"></button>-->
-<!--    </fieldset>-->
-<!--</form>-->
 
-<div class="card-container">
-    <h2 style="color: black; text-align: center;
+<h2 style="color: black; text-align: center;
     font-size: xxx-large;
     text-decoration: underline">Events</h2>
-
+<form class="search-box" action="/events" method="GET">
+    <fieldset>
+        <label for="searchCriteria"></label>
+        <input type="text" name="searchCriteria" id="searchCriteria" placeholder="Enter Country or Date (YYYY-MM-DD)">
+        <button type="reset"></button>
+    </fieldset>
+</form>
+<div class="card-container">
     <div th:each="event, stat : ${events}">
         <article class="card">
             <img alt="" class="card__background" height="2193" th:src="${event.image}" width="1920"/>
@@ -105,9 +103,9 @@
                                type="hidden"/>
                         <button class="card__button" type="submit">Book Event</button>
                     </form>
-                    <a href="/signup" th:unless="${isUsernameFound == 'yes'}">Login to book this event</a>
                 </div>
-                <!--                    <a href="/signup" th:unless="${isUsernameFound == 'yes'}">Login to book this event</a>-->
+                <a href="/signup" th:unless="${isUsernameFound == 'yes'}"
+                   style="margin-top:5px; margin-bottom:10px;"><strong>Login to book this event</strong></a>
 
             </div>
         </article>

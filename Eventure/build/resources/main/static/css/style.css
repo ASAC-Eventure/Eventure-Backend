@@ -1710,3 +1710,30 @@ text-align: center;}
   opacity: 0;
   transition: transform 150ms ease-out, opacity 150ms ease-out;
 }
+
+
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  width: 30%;
+  font-size: large;
+  font-weight: 500;
+}
+.alert.success {background-color: #04AA6D;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}

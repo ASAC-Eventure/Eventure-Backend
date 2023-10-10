@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <!-- basic -->
@@ -36,8 +36,8 @@
 </head>
 <!-- body -->
 
-<body class="main-layout contineer_page">
-
+<body>
+<div class="main-layout container_page">
 <!-- loader  -->
 <div class="loader_bg">
     <div class="loader"><img alt="#" src="images/loading.gif"/></div>
@@ -45,10 +45,10 @@
 <!-- end loader -->
 <!-- header -->
 <div th:if="${isUsernameFound == 'yes'}">
-    <div th:replace="fragments/navbarAfter :: header"></div>
+    <div th:replace="fragments/headerAfter :: header"></div>
 </div>
 <div th:if="${isUsernameFound == 'no'}">
-    <div th:replace="fragments/navbarBefore :: header"></div>
+    <div th:replace="fragments/headerBefore :: header"></div>
 </div>
 
 <!-- about  -->
@@ -82,7 +82,7 @@
     <div class="container">
         <div class="row display_boxflex">
             <section class="team">
-                <h1>Meet <span class="our-team">Our Team</span></h1>
+                <h1 style="color: black;">Meet <span class="our-team">Our Team</span></h1>
                 <div class="team-cards">
 
                     <!-- Card 1 -->
@@ -167,9 +167,15 @@
             </section>
         </div>
     </div>
+</div>
 
-    <div th:replace="fragments/footer :: footer"></div>
-    <!-- end footer -->
+</div>
+
+    <div class="main-layout">
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+
+
     <!-- Javascript files-->
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -182,7 +188,7 @@
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="/css/js/aboutUs.js"></script>
 
-</div>
+
 </body>
 
 </html>

@@ -97,14 +97,15 @@
                         <span th:if="${#strings.length(event.startDate) < 16}" th:text="'19:00:00'"></span>
                         <span th:if="${#strings.length(event.startDate) >= 16}"
                               th:text="${event.startDate.split('T')[1]}"></span>
+                        <span th:text="'Price: ' + ${event.price + ' ' + event.priceCurrency}"></span>
                     </p>
                     <p class="card-text">
-                        Location: <span th:text="${event.location.name}">Location Name</span>
-                        Address: <span th:text="${event.location.address.streetAddress}">Street Address</span>,
+                        <strong>Location:</strong> <span th:text="${event.location.name}">Location Name</span> /
+                        <span th:text="${event.location.address.streetAddress}">Street Address</span>,
                         <span th:text="${event.location.address.addressLocality}">Locality</span>,
                         <span th:text="${event.location.address.addressCountry.name}">Country</span><br>
-                        Price: <span th:text="${event.price}">Price</span>
                     </p>
+                    <a th:href="${event.url}"><strong>Find out more</strong></a>
                     <div th:if="${isUsernameFound == 'yes'}">
                         <form action="/book-event" method="post">
                             <input name="eventName" th:value="${event.name}" type="hidden"/>
@@ -124,14 +125,11 @@
                     </div>
                     <a href="/signup" th:unless="${isUsernameFound == 'yes'}"
                        style="margin-top:5px; margin-bottom:10px;"><strong>Login to book this event</strong></a>
-                    <br>
-                    <a th:href="${event.url}"><strong>Find out more</strong></a>
                 </div>
             </div>
         </article>
     </div>
         <div th:each="event : ${approvedEvents}">
-            <!--            <div class="event-card">-->
             <article class="card" th:if="${event.isApproved}">
                 <img alt="" class="card__background" height="2193" th:src="${event.imageUrl}" width="1920"/>
                 <div class="card__content | flow">
@@ -142,29 +140,31 @@
                             Time <span th:text="${event.time}"></span>
                         </p>
                         <p class="card-text">
-                            Location: <span th:text="${event.name}">Location Name</span>
-                            Address: <span th:text="${event.streetAddress}">Street Address</span>,
-                            Price: <span th:text="${event.price}">Price <span
+                            <strong>Location:</strong> <span th:text="${event.name}">Location Name</span> /
+                            <span th:text="${event.streetAddress}">Street Address</span>,
+                            <strong>Price:</strong> <span th:text="${event.price}">Price <span
                                 th:text="${event.priceCurrency}"> </span></span>
                         </p>
-
+                        <a th:href="${event.eventUrl}"><strong>Find out more</strong></a><br>
                         <div th:if="${isUsernameFound == 'yes'}">
                             <form action="/bookCreatedEvent" method="post">
                                 <input name="name" th:value="${event.name}" type="hidden"/>
                                 <input name="image" th:value="${event.imageUrl}" type="hidden"/>
                                 <input name="startDate" th:value="${event.startDate}" type="hidden"/>
                                 <input name="endDate" th:value="${event.endDate}" type="hidden"/>
-                                <input name="url" th:value="${event.url}" type="hidden"/>
+                                <input name="url" th:value="${event.eventUrl}" type="hidden"/>
                                 <input name="location" th:value="${event.location}" type="hidden"/>
                                 <input name="address" th:value="${event.streetAddress}"
                                        type="hidden"/>
+                                <input name="price" th:value="${event.price}" type="hidden"/>
+                                <input name="time" th:value="${event.time}" type="hidden"/>
                                 <button class="card__button" type="submit">Book Event</button>
                             </form>
                         </div>
                         <a href="/signup" th:unless="${isUsernameFound == 'yes'}"
                            style="margin-top:5px; margin-bottom:10px;"><strong>Login to book this event</strong></a>
                         <br>
-                        <a th:href="${event.url}"><strong>Find out more</strong></a>
+
                     </div>
                 </div>
             </article>

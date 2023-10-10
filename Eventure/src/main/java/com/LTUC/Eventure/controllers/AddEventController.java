@@ -5,6 +5,8 @@ import com.LTUC.Eventure.models.AppUserEntity;
 import com.LTUC.Eventure.repositories.AddEventJPARepository;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,33 +27,19 @@ public class AddEventController {
         this.addEventJPARepository = addEventJPARepository;
         this.appUserJPARepository = appUserJPARepository;
     }
-@GetMapping("/addNewEvent")
-public String addEventData(){return "contact.html";}
+@GetMapping("/contact")
+public String addEventData(Model m){
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String username = authentication.getName();
 
-//    @PostMapping("/addNewEvent")
-//    public RedirectView addEventData(@RequestParam String name,
-//                                     @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
-//                                     @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
-//                                     @RequestParam String eventUrl,
-//                                     @RequestParam String imageUrl,
-//                                     @RequestParam String location,
-//                                     @RequestParam String streetAddress,
-//                                     @RequestParam int price,
-//                                     @RequestParam String time,
-//                                     RedirectAttributes redir) {
-//        AddEventEntity newEvent = new AddEventEntity(name, startDate, endDate, eventUrl, location, streetAddress, price, imageUrl, false, false,time);
-//        AddEventEntity existingEvent = addEventJPARepository.findByName(name);
-//
-//        if (existingEvent == null) {
-//            redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
-//            addEventJPARepository.save(newEvent);
-//        } else {
-//            redir.addFlashAttribute("errorMessageBookedEvent", "Event Already Saved!");
-//
-//        }
-//        return new RedirectView("/addNewEvent");
-//
-//    }
+    if (username.equals("anonymousUser")) {
+        m.addAttribute("isUsernameFound", "no");
+    } else {
+        m.addAttribute("isUsernameFound", "yes");
+    }
+
+        return "contact.html";
+    }
 
     @PostMapping("/addNewEvent")
     public RedirectView addEventData(@RequestParam String name,
@@ -91,7 +79,7 @@ public String addEventData(){return "contact.html";}
             redir.addFlashAttribute("errorMessageBookedEvent", "Event Already Saved!");
         }
 
-        return new RedirectView("/addNewEvent");
+        return new RedirectView("/contact");
     }
 
     @PostMapping("/bookCreatedEvent")

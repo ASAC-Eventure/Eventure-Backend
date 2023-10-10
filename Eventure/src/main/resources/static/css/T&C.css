@@ -5,5 +5,24 @@
 	 background-color: grey;
 }
  #terms-and-conditions .terms-and-conditions-section .section-title {
-	 color: grey;
+	 color: black;
+}
+
+.t&c-container{
+    background-color: whitesmoke;
+}
+.t&c-container h1, h2, h3, h4, h5, h6 {
+ color: whitesmoke;
+}
+
+.t&c-container p{
+    color: whitesmoke;
+}
+
+.t&c-container a{
+    color: whitesmoke;
+}
+
+.t&c-container h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: black;
 }
