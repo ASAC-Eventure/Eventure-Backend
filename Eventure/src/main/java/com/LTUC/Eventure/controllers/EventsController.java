@@ -77,8 +77,11 @@ public class EventsController {
 
     @GetMapping("/addNewEvent")
     public String addEventData(){
-        return "contact";
+        return "contact.html";
     }
+
+
+
     @PostMapping("/addNewEvent")
     public RedirectView addEventData(@RequestParam String name,
                                      @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
@@ -94,13 +97,12 @@ public class EventsController {
         AddEventEntity existingEvent = addEventJPARepository.findByName(name);
 
         if (existingEvent == null) {
-            redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
-            addEventJPARepository.save(newEvent);
+            redir.addFlashAttribute("successMessageBookedEvent", "Your event has been submitted and is awaiting for admin approval. Thank you for sharing!\n");            addEventJPARepository.save(newEvent);
         } else {
             redir.addFlashAttribute("errorMessageBookedEvent", "Event Already Saved!");
 
         }
-        return new RedirectView("/aboutUs");
+        return new RedirectView("/addNewEvent");
 
     }
 }
