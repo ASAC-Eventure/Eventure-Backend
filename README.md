@@ -5,7 +5,14 @@ Eventure is a user-friendly system that allows users to sign up, log in, create 
 
 ## Prerequisites
 
-Eventure is built using the Java Spring framework, which includes various dependencies, such as Lombok, Spring Data JPA, Hibernate, Flyway Migration, Spring Security, and Thymeleaf for the front end. Ensure you have these dependencies set up before running the project.
+Eventure is built using the Java Spring framework, which includes various dependencies such as:
+  - Lombok,
+  - Spring Data JPA
+  - Hibernate
+  - Flyway Migration
+  - Spring Security
+  - Thymeleaf for the Front-End.
+Ensure you have these dependencies set up before running the project.
 
 ## Configuration
 
@@ -27,6 +34,19 @@ Eventure uses the PostgreSQL database management system and includes eight table
 Relationships:
 - One-to-Many: A user can book many events, one event can have many users, and one user can add many events.
 - One-to-One: Relationships exist between `country`, `address`, and `location`. Each event is added by one user, and a user can have only one role.
+
+## End-Points
+
+- `/` : Home route for all users. 
+- `/signup`: User can sign up and log-in through it. 
+- `/aboutUs`: Brief about Eventure, and Developers who worked on.
+- `/profile`: User can check his/her personal information.
+- `/myEvents`: Shows the Events user has booked.
+- `/contact`: Authenticated user can fill a form to add a new event. 
+- `/events`: Search filter will show events based on the search criteria (Country/Date)
+- `/terms-conditions`: Shows the terms & Conditions of our website. 
+- `/adminHome`: Home route for an admin user. 
+
 
 ## API Documentation
 

@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /AdminInterface.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /BookedEvents.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /CanceledEvents.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /PaidEvents.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /RequestedEvents.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /TotalIncome.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /UI.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /UnpaidEvents.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /pendingEvents.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes /statics.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
