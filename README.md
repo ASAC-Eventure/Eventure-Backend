@@ -59,25 +59,25 @@ Eventure uses Spring validation tools to validate user input. These validations 
 ## Wireframes
 
 ### User Interface
-![wireframeNew.png](Eventure/src/main/resources/static/images/wireframes%20/UI.png)
+![wireframeNew.png](Eventure/src/main/resources/static/images/wireframes/UI.png)
 ### Admin Dashboard
-![image.png](Eventure/src/main/resources/static/images/wireframes%20/AdminInterface.png)
+![image.png](Eventure/src/main/resources/static/images/wireframes/AdminInterface.png)
 ### View Booked Events
-![image (7).png](Eventure/src/main/resources/static/images/wireframes%20/BookedEvents.png)
+![image (7).png](Eventure/src/main/resources/static/images/wireframes/BookedEvents.png)
 ### View Unpaid Events
-![image (6).png](Eventure/src/main/resources/static/images/wireframes%20/UnpaidEvents.png)
+![image (6).png](Eventure/src/main/resources/static/images/wireframes/UnpaidEvents.png)
 ### View Paid Events
-![image (3).png](Eventure/src/main/resources/static/images/wireframes%20/PaidEvents.png)
+![image (3).png](Eventure/src/main/resources/static/images/wireframes/PaidEvents.png)
 ### View Pending Events
-![image (2).png](Eventure/src/main/resources/static/images/wireframes%20/pendingEvents.png)
+![image (2).png](Eventure/src/main/resources/static/images/wireframes/pendingEvents.png)
 ### View Canceled Events
-![image (1).png](Eventure/src/main/resources/static/images/wireframes%20/CanceledEvents.png)
+![image (1).png](Eventure/src/main/resources/static/images/wireframes/CanceledEvents.png)
 ### View Requested Events
-![image (5).png](Eventure/src/main/resources/static/images/wireframes%20/RequestedEvents.png)
+![image (5).png](Eventure/src/main/resources/static/images/wireframes/RequestedEvents.png)
 ### View Statistics
-![image (4).png](Eventure/src/main/resources/static/images/wireframes%20/statics.png)
+![image (4).png](Eventure/src/main/resources/static/images/wireframes/statics.png)
 ### View Total Income
-![image (8).png](Eventure/src/main/resources/static/images/wireframes%20/TotalIncome.png)
+![image (8).png](Eventure/src/main/resources/static/images/wireframes/TotalIncome.png)
 
 
 
