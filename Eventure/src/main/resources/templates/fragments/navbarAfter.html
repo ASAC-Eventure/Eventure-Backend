@@ -1,4 +1,4 @@
-<header>
+<header xmlns:th="http://www.w3.org/1999/xhtml">
     <!-- header inner -->
     <div class="header">
         <div class="container">
@@ -19,9 +19,10 @@
                                 <ul class="menu-area-main">
                                     <li class="active"> <a href="/">Home</a></li>
                                     <li class="active"> <a href="/aboutUs">About</a></li>
-                                    <li> <a href="/events">Events</a></li>
-                                    <li><a href="/myEvents">My Events</a> </li>
-                                    <li > <a href="/logout">Logout</a></li>
+                                    <li class="active"><a href="/contact">Contact Us</a> </li>
+                                    <li class="active"><a href="/myEvents">My Events</a> </li>
+                                    <li class="active"><a href="/profile">Profile</a> </li>
+                                    <li class="active"> <a th:href="@{/perform_logout}">Logout</a></li>
                                 </ul>
                             </nav>
 

@@ -293,7 +293,7 @@ public class AdminController {
             List<AddEventEntity> searchedAdminEventsList = addEventJPARepository.findAdminEventByName(eventName).stream().filter(e->e.getUser()!=null).collect(toList());
             List<String> users= new ArrayList<>();
             if(searchedAdminEventsList.size() == 0 && searchedEventList.size()==0 ){
-                model.addAttribute("errorMessageEventInfo","Event not found !");
+                model.addAttribute("errorMessageEventInfo","Event not found!");
                 return "admin-home.html";
             }
 

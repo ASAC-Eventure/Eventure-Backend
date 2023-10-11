@@ -4,6 +4,8 @@ import com.LTUC.Eventure.models.apiEntities.Events;
 import com.LTUC.Eventure.repositories.AddEventJPARepository;
 import com.LTUC.Eventure.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +27,14 @@ public class EventsController {
 
     @GetMapping("/events")
     public String showEvents(@RequestParam(name = "searchCriteria", required = false) String searchCriteria, Model m) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        if (username.equals("anonymousUser")) {
+            m.addAttribute("isUsernameFound", "no");
+        } else {
+            m.addAttribute("isUsernameFound", "yes");
+        }
+
         if (searchCriteria != null && !searchCriteria.isEmpty()) {
             String[] words = searchCriteria.trim().split("\\s+");
             String countryName = null;

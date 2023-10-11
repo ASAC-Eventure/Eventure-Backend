@@ -61,7 +61,14 @@ public class GeneralControllers {
     }
 
     @GetMapping("/terms-conditions")
-    public String termsAndCondintions() {
+    public String termsAndCondintions(Model m) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        if (username.equals("anonymousUser")) {
+            m.addAttribute("isUsernameFound", "no");
+        } else {
+            m.addAttribute("isUsernameFound", "yes");
+        }
         return "T&C.html";
     }
 
