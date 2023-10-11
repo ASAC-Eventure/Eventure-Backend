@@ -39,25 +39,25 @@ Eventure uses Spring validation tools to validate user input. These validations 
 ## Wireframes
 
 ### User Interface
-![wireframeNew.png](..%2F..%2FDownloads%2FwireframeNew.png)
+![wireframeNew.png](Eventure/src/main/resources/static/images/wireframes%20/UI.png)
 ### Admin Dashboard
-![image.png](..%2F..%2FDownloads%2Fimage.png)
+![image.png](Eventure/src/main/resources/static/images/wireframes%20/AdminInterface.png)
 ### View Booked Events
-![image (7).png](..%2F..%2FDownloads%2Fimage%20%287%29.png)
+![image (7).png](Eventure/src/main/resources/static/images/wireframes%20/BookedEvents.png)
 ### View Unpaid Events
-![image (6).png](..%2F..%2FDownloads%2Fimage%20%286%29.png)
-### View Pending Events
-![image (2).png](..%2F..%2FDownloads%2Fimage%20%282%29.png)
+![image (6).png](Eventure/src/main/resources/static/images/wireframes%20/UnpaidEvents.png)
 ### View Paid Events
-![image (3).png](..%2F..%2FDownloads%2Fimage%20%283%29.png)
-### View Cancelled Events
-![image (1).png](..%2F..%2FDownloads%2Fimage%20%281%29.png)
+![image (3).png](Eventure/src/main/resources/static/images/wireframes%20/PaidEvents.png)
+### View Pending Events
+![image (2).png](Eventure/src/main/resources/static/images/wireframes%20/pendingEvents.png)
+### View Canceled Events
+![image (1).png](Eventure/src/main/resources/static/images/wireframes%20/CanceledEvents.png)
 ### View Requested Events
-![image (5).png](..%2F..%2FDownloads%2Fimage%20%285%29.png)
+![image (5).png](Eventure/src/main/resources/static/images/wireframes%20/RequestedEvents.png)
 ### View Statistics
-![image (4).png](..%2F..%2FDownloads%2Fimage%20%284%29.png)
+![image (4).png](Eventure/src/main/resources/static/images/wireframes%20/statics.png)
 ### View Total Income
-![image (8).png](..%2F..%2FDownloads%2Fimage%20%288%29.png)
+![image (8).png](Eventure/src/main/resources/static/images/wireframes%20/TotalIncome.png)
 
 
 
