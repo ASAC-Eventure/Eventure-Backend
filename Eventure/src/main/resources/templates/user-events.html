@@ -26,6 +26,50 @@
           rel="stylesheet">
 
     <link href="/css/events.css" rel="stylesheet">
+    <style>
+        .custom-dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: brown; /* Set background color to brown */
+            color: white; /* Set text color to white */
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
+    <script>
+        function showCustomDialog1() {
+            document.getElementById("customDialog1").style.display = 'block';
+        }
+
+        function confirmPayment1() {
+            // Submit the payment form
+            document.getElementById('paymentForm1').submit();
+        }
+
+        function cancelPayment1() {
+            document.getElementById('customDialog1').style.display = 'none';
+        }
+
+
+
+            function showCustomDialog2() {
+            document.getElementById('customDialog2').style.display = 'block';
+        }
+
+        function confirmPayment2() {
+            // Submit the payment form
+            document.getElementById('paymentForm2').submit();
+        }
+
+        function cancelPayment2() {
+            document.getElementById('customDialog2').style.display = 'none';
+        }
+    </script>
 
 </head>
 <!-- body -->
@@ -74,10 +118,8 @@
                     <a th:href="${event.url}">Find out more</a><br>
                     <p>Payment Status:<span th:text="${event.paymentStatus}"></span></p>
                     <div th:if="${event.paymentStatus == 'Unpaid'}">
-                        <form th:action="@{/payment?(eventId=${event.id})}" method="post">
-                            <button class="card__button" type="submit"
-                                    onclick="return confirm('Be Sure To Pay Before Two Days From The Events,In The Nearest Ticket Center Or Your Event Will Be Canceled !!')">Pay
-                            </button><br>
+                        <form id="paymentForm2" th:action="@{/payment?(eventId=${event.id})}" method="post">
+                            <button class="card__button" type="button" onclick="showCustomDialog2()">Pay</button>
                         </form>
                     </div>
                 </div>
@@ -88,7 +130,7 @@
             </div>
         </article>
     </div>
-    <div>
+<!--    <div>-->
         <div th:each="event : ${addedEvents}">
             <article class="card" th:if="${event.isBooked}">
                 <img alt="" class="card__background" height="2193" th:src="${event.imageUrl}" width="1920"/>
@@ -110,8 +152,8 @@
                     <p style="text-decoration: underline;"><strong>Payment Status:</strong><span
                             th:text="${event.paymentStatus}"></span></p>
                     <div th:if="${event.paymentStatus == 'Unpaid'}">
-                        <form th:action="@{/paymentCreated?(eventId=${event.id})}" method="post">
-                            <button class="card__button" type="submit" onclick="return confirm('Be Sure To Pay Before Two Days From The Events,In The Nearest Ticket Center Or Your Event Will Be Canceled !!')">Pay</button>
+                        <form id="paymentForm1" th:action="@{/paymentCreated?(eventId=${event.id})}" method="post">
+                            <button class="card__button" type="button" onclick="showCustomDialog1()">Pay</button>
                         </form>
                     </div>
 
@@ -122,7 +164,7 @@
                 </div>
             </article>
         </div>
-    </div>
+<!--    </div>-->
 </div>
 
 <div class="main-layout">
@@ -146,6 +188,19 @@
 <!---->
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+<div id="customDialog1" class="custom-dialog">
+    <h3>Payment Confirmation</h3>
+    <p>Be Sure To Pay Before Two Days From The Event,<br> In The Nearest Ticket Center,<br> Or Your Event Will Be Canceled!!</p>
+    <button id="proceedButton1" onclick="confirmPayment1()">Proceed</button>
+    <button onclick="cancelPayment1()">Cancel</button>
+</div>
+<div id="customDialog2" class="custom-dialog">
+    <h3>Payment Confirmation</h3>
+    <p>Be Sure To Pay Before Two Days From The Event,<br> In The Nearest Ticket Center,<br> Or Your Event Will Be Canceled!!</p>
+    <button id="proceedButton2" onclick="confirmPayment2()">Proceed</button>
+    <button onclick="cancelPayment2()">Cancel</button>
+</div>
 
 </body>
 </html>
