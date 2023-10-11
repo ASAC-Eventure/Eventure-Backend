@@ -7,14 +7,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Collection;
 import javax.persistence.*;
-import java.util.Collections;
+import javax.validation.constraints.*;
 import java.util.List;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -47,6 +46,7 @@ public class AppUserEntity implements UserDetails {
 
     @Column(name = "date_Of_Birth", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past(message = "Date of birth must be in the past")
     private LocalDate dateOfBirth;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

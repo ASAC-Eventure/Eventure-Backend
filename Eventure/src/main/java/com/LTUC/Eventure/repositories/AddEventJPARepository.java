@@ -10,4 +10,7 @@ public interface AddEventJPARepository extends JpaRepository<AddEventEntity,Long
     List<AddEventEntity> findAllByName(String name);
 
     AddEventEntity findByName(String name);
+
+    List<AddEventEntity> findAdminEventByName(String eventName);
 }
+

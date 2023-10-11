@@ -31,7 +31,7 @@ public class SaveEventsController {
     private AddEventJPARepository addEventJPARepository;
 
     @Autowired
-    public SaveEventsController(AppUserJPARepository userJPARepo, EventsJPARepository eventsJPARepo, AddressCountryJPARepository addressCountryJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository,AddEventJPARepository addEventJPARepository) {
+    public SaveEventsController(AppUserJPARepository userJPARepo, EventsJPARepository eventsJPARepo, AddressCountryJPARepository addressCountryJPARepository, LocationJPARepository locationJPARepository, AddressJPARepository addressJPARepository, AddEventJPARepository addEventJPARepository) {
         this.userJPARepo = userJPARepo;
         this.eventsJPARepo = eventsJPARepo;
         this.addressCountryJPARepository = addressCountryJPARepository;
@@ -46,12 +46,13 @@ public class SaveEventsController {
         if (username != null) {
             AppUserEntity user = userJPARepo.findByUsername(username);
             List<Event> userEvents = user.getBookedEvents();
-            List<AddEventEntity> addedEvents =user.getNewEvents();
+            List<AddEventEntity> addedEvents = user.getNewEvents();
             model.addAttribute("userEvents", userEvents);
             model.addAttribute("addedEvents", addedEvents);
         }
         return "user-events.html";
     }
+
     @PostMapping("/book-event")
     public RedirectView bookEvent(Principal p, RedirectAttributes redir,
                                   @RequestParam String eventName,
@@ -90,8 +91,7 @@ public class SaveEventsController {
 
 
             Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location, (int) (50 + (Math.random() * (250 - 50))), image, user,"Unpaid");
-             if (!user.getBookedEvents().stream().anyMatch(e -> e.getName().equals(eventName))) {
-
+            if (!user.getBookedEvents().stream().anyMatch(e -> e.getName().equals(eventName))) {
                 eventsJPARepo.save(event);
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
 
@@ -125,3 +125,4 @@ public class SaveEventsController {
         return new RedirectView("/myEvents");
     }
 }
+

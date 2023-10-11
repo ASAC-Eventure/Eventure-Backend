@@ -29,5 +29,12 @@ public class Address {
         this.addressLocality = addressLocality;
     }
 
-
+//    @Override
+//    public String toString() {
+//        return "Address{" +
+//                "streetAddress='" + streetAddress + '\'' +
+//                ", addressLocality='" + addressLocality + '\'' +
+//                ", addressCountry=" + addressCountry +
+//                '}';
+//    }
 }

@@ -25,7 +25,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.flywaydb:flyway-core'
 	runtimeOnly 'org.postgresql:postgresql'
@@ -38,11 +40,9 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
-//	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13' // Use the latest version available
-//	implementation 'com.squareup.okhttp3:okhttp:4.9.1' // Use the latest version available
+	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13' // Use the latest version available
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
-
-
+	implementation 'commons-io:commons-io:2.11.0'
 }
 
 group = 'com.LTUC'

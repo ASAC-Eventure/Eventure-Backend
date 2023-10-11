@@ -5,7 +5,7 @@ import com.LTUC.Eventure.models.AppUserEntity;
 import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.RoleJPARepository;
-import net.bytebuddy.asm.Advice;
+import com.LTUC.Eventure.services.user.AppUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,7 +24,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.util.Optional;
 
 
@@ -41,7 +41,6 @@ public class SignUpAndLoginController {
 
     @Autowired
     private RoleJPARepository roleJPARepository;
-
 
     @GetMapping("/signup")
     public String signUpPage(){return "signUpAndLogin";}
@@ -92,7 +91,7 @@ public class SignUpAndLoginController {
                 authRegisterWithHttpServletRequest(username, password);
 
             }
-            return new RedirectView("/");
+            return new RedirectView("/signup");
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("errorMessageSignup", "Signup failed due to an internal error.");
@@ -102,10 +101,7 @@ public class SignUpAndLoginController {
 
     //Sign-up authentication
     public void authRegisterWithHttpServletRequest(String username, String password) {
-        // Create an Authentication object with the user's credentials
         Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
-
-        // Set the Authentication object in the SecurityContextHolder to authenticate the user
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
     public void authWithHttpServletRequest(String username, String password){
@@ -159,6 +155,4 @@ public class SignUpAndLoginController {
         Optional<RoleEntity> adminRole = roleJPARepository.findRoleEntityByTitle(Roles.ADMIN.name());
         return userEntity.getRoles().equals(adminRole.orElse(null));
     }
-
-
 }

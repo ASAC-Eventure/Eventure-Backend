@@ -12,6 +12,9 @@
 <nav th:if="${errorMessageBookedEvent}"  th:fragment="event-error" th:text="${errorMessageBookedEvent}" style="color: red;font-size:17px;"></nav>
 <nav th:if="${successMessageBookedEvent}"  th:fragment="event-success" th:text="${successMessageBookedEvent}" style="color: blue;font-size:17px;"></nav>
 <nav th:if="${errorMessageSignup}"  th:fragment="signup-error" th:text="${errorMessageSignup}" style="color: red; margin-top: 20px;"></nav>
-
+                                                                    <!-- Date Validations -->
+<nav th:if="${errorMessageStartDate}"  th:fragment="startDate-error" th:text="${errorMessageStartDate}" style="color: red; margin-top: 20px;"></nav>
+<nav th:if="${errorMessageEndDate}"  th:fragment="endDate-error" th:text="${errorMessageEndDate}" style="color: red; margin-top: 20px;"></nav>
+<nav th:if="${errorMessageEndBeforeStart}"  th:fragment="endBeforeStart-error" th:text="${errorMessageEndBeforeStart}" style="color: red; margin-top: 20px;"></nav>
 </body>
 </html>
