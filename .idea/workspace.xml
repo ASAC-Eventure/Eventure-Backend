@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="" />
+    <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +64,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "finalTestDeleteHistory",
+    "git-widget-placeholder": "final-project-merged",
     "last_opened_file_path": "/home/akmz/Desktop/balqees-dev/Eventure-Backend"
   }
 }]]></component>
