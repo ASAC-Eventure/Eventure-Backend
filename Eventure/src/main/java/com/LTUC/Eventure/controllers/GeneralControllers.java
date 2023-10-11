@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +25,7 @@ public class GeneralControllers {
 
     @Autowired
     AddEventJPARepository addEventJPARepository;
+
     @GetMapping("/")
     public String Home(Model m) {
         // Switching navbar based on authentication
@@ -57,11 +57,18 @@ public class GeneralControllers {
         } else {
             model.addAttribute("isUsernameFound", "yes");
         }
-        return "aboutUs.html";
+        return "about.html";
     }
 
     @GetMapping("/terms-conditions")
-    public String termsAndCondintions() {
+    public String termsAndCondintions(Model m) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        if (username.equals("anonymousUser")) {
+            m.addAttribute("isUsernameFound", "no");
+        } else {
+            m.addAttribute("isUsernameFound", "yes");
+        }
         return "T&C.html";
     }
 

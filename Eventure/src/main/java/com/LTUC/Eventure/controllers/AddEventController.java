@@ -5,6 +5,8 @@ import com.LTUC.Eventure.models.AppUserEntity;
 import com.LTUC.Eventure.repositories.AddEventJPARepository;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,19 @@ public class AddEventController {
         this.addEventJPARepository = addEventJPARepository;
         this.appUserJPARepository = appUserJPARepository;
     }
+@GetMapping("/contact")
+public String addEventData(Model m){
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String username = authentication.getName();
+
+    if (username.equals("anonymousUser")) {
+        m.addAttribute("isUsernameFound", "no");
+    } else {
+        m.addAttribute("isUsernameFound", "yes");
+    }
+
+        return "contact.html";
+    }
 
     @PostMapping("/addNewEvent")
     public RedirectView addEventData(@RequestParam String name,
@@ -35,19 +50,36 @@ public class AddEventController {
                                      @RequestParam String location,
                                      @RequestParam String streetAddress,
                                      @RequestParam int price,
+                                     @RequestParam String time,
                                      RedirectAttributes redir) {
-        AddEventEntity newEvent = new AddEventEntity(name, startDate, endDate, eventUrl, location, streetAddress, price, imageUrl, false, false);
+        LocalDate currentDate = LocalDate.now();
+
+        if (endDate.isBefore(startDate)) {
+            redir.addFlashAttribute("errorMessageEndBeforeStart", "End date cannot be before the start date.");
+            return new RedirectView("/addNewEvent");
+        }
+
+        if (startDate.isBefore(currentDate)) {
+            redir.addFlashAttribute("errorMessageStartDate", "Date cannot be in the past.");
+            return new RedirectView("/addNewEvent");
+        }
+
+        if (endDate.isBefore(currentDate)) {
+            redir.addFlashAttribute("errorMessageEndDate", "Date cannot be in the past.");
+            return new RedirectView("/addNewEvent");
+        }
+
+        AddEventEntity newEvent = new AddEventEntity(name, startDate, endDate, eventUrl, location, streetAddress, price, imageUrl, false, false, time);
         AddEventEntity existingEvent = addEventJPARepository.findByName(name);
 
         if (existingEvent == null) {
-            redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
+            redir.addFlashAttribute("successMessageBookedEvent", "Your event has been submitted and is awaiting admin approval. Thank you for sharing!");
             addEventJPARepository.save(newEvent);
         } else {
             redir.addFlashAttribute("errorMessageBookedEvent", "Event Already Saved!");
-
         }
-        return new RedirectView("/aboutUs");
 
+        return new RedirectView("/contact");
     }
 
     @PostMapping("/bookCreatedEvent")
@@ -59,18 +91,19 @@ public class AddEventController {
                                              @RequestParam String image,
                                              @RequestParam String location,
                                              @RequestParam String address,
-                                             @RequestParam String price
+                                             @RequestParam String price,
+                                             @RequestParam String time
     ) {
         System.out.println("reached booking created event");
         String username = p.getName();
         if (username != null) {
             AppUserEntity userBooking = appUserJPARepository.findByUsername(username);
 
-            AddEventEntity newEvent = new AddEventEntity(name, LocalDate.parse(startDate), LocalDate.parse(endDate), url, location, address, Integer.valueOf(price), image, true, true, userBooking,"Unpaid");
+            AddEventEntity newEvent = new AddEventEntity(name, LocalDate.parse(startDate), LocalDate.parse(endDate), url, location, address, Integer.valueOf(price), image, true, true, userBooking,"Unpaid",time);
 
-            System.out.println("username"+userBooking.getUsername()+"id"+userBooking.getId()+"bookeng events"+userBooking.getBookedEvents());
+          //  System.out.println("username"+userBooking.getUsername()+"id"+userBooking.getId()+"bookeng events"+userBooking.getBookedEvents());
             if (!userBooking.getNewEvents().stream().anyMatch(e -> e.getName().equals(newEvent.getName()))) {
-                System.out.println("raeched booked new created event doesnot exist for this user");
+               // System.out.println("raeched booked new created event doesnot exist for this user");
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
                 addEventJPARepository.save(newEvent);
             } else {
@@ -115,7 +148,7 @@ public class AddEventController {
             redir.addFlashAttribute("successMessageBookedEvent", "Event Approved!");
         }
         addEventJPARepository.save(event);
-        return new RedirectView("/adminHome");
+        return new RedirectView("/requested-events");
 
     }
 
@@ -123,7 +156,7 @@ public class AddEventController {
     public RedirectView declineEvent(@PathVariable("id") Long id, RedirectAttributes redir) {
         addEventJPARepository.deleteById(id);
         redir.addFlashAttribute("successMessageBookedEvent", "Event Declined!");
-        return new RedirectView("/adminHome");
+        return new RedirectView("/requested-events");
     }
 
     @GetMapping("/approve/{eventId}")

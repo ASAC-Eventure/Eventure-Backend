@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/editProfile.css">
+</head>
+<body>
+<div class="form-container">
+<h2>Edit User Details</h2>
+<form th:action="'/edit/' + ${user.id}" th:method="PUT">
+    <fieldset>
+        <legend>Edit User Details</legend>
+        <label for="email">Email</label>
+        <input type="email" th:field="*{user.email}" id="email" placeholder="Email" required/><br/>
+        <select th:field="*{user.country}" name="country" id="country" required>
+            <option value="" disabled selected>Select your country</option>
+            <option value="USA">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="Jordan">Jordan</option>
+            <option value="Europe">Europe</option>
+            <option value="Asia">Asia</option>
+        </select>
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="date" th:field="*{user.dateOfBirth}" id="dateOfBirth" placeholder="Date of Birth" required/><br/>
+        <label >Interests</label>
+        <div class="interests">
+            <input type="checkbox" th:field="*{user.interests}" id="music" value="Music"/> Music
+            <input type="checkbox" th:field="*{user.interests}" id="festivals" value="Festivals"/> Festivals
+            <input type="checkbox" th:field="*{user.interests}" id="parties" value="Parties"/> Parties
+            <input type="checkbox" th:field="*{user.interests}" id="concerts" value="Concerts"/> Concerts
+        </div>
+
+        <input type="submit" value="Update User">
+    </fieldset>
+</form>
+</div>
+<script src="/js/editProfile.js"></script>
+</body>
+</html>
