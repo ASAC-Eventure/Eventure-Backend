@@ -5,7 +5,14 @@ Eventure is a user-friendly system that allows users to sign up, log in, create 
 
 ## Prerequisites
 
-Eventure is built using the Java Spring framework, which includes various dependencies, such as Lombok, Spring Data JPA, Hibernate, Flyway Migration, Spring Security, and Thymeleaf for the front end. Ensure you have these dependencies set up before running the project.
+Eventure is built using the Java Spring framework, which includes various dependencies such as:
+  - Lombok,
+  - Spring Data JPA
+  - Hibernate
+  - Flyway Migration
+  - Spring Security
+  - Thymeleaf for the Front-End.
+Ensure you have these dependencies set up before running the project.
 
 ## Configuration
 
@@ -28,6 +35,20 @@ Relationships:
 - One-to-Many: A user can book many events, one event can have many users, and one user can add many events.
 - One-to-One: Relationships exist between `country`, `address`, and `location`. Each event is added by one user, and a user can have only one role.
 
+## End-Points
+
+- `/` : Home route for all users. 
+- `/signup`: User can sign up and log-in through it. 
+- `/aboutUs`: Brief about Eventure, and Developers who worked on.
+- `/profile`: User can check his/her personal information.
+- `/myEvents`: Shows the Events user has booked.
+- `/contact`: Authenticated user can fill a form to add a new event. 
+- `/events`: Search filter will show events based on the search criteria (Country/Date)
+- `/terms-conditions`: Shows the terms & Conditions of our website. 
+- `/adminHome`: Home route for an admin user. 
+
+
+
 ## API Documentation
 
 Eventure fetches event data from the [Jambase API](https://www.jambase.com/jb-api/v1/events?apikey=357b5a27-55f2-487b-9b1c-83f6ad689c3e) to provide event information. The API is integrated into the Eventure backend via the Event Service, which retrieves necessary data for the system. The Jambase API offers search endpoints for countries and start dates.
@@ -39,25 +60,28 @@ Eventure uses Spring validation tools to validate user input. These validations 
 ## Wireframes
 
 ### User Interface
-![wireframeNew.png](..%2F..%2FDownloads%2FwireframeNew.png)
+
+![wireframeNew.png](Eventure/src/main/resources/static/images/wireframes/UI.png)
 ### Admin Dashboard
-![image.png](..%2F..%2FDownloads%2Fimage.png)
+![image.png](Eventure/src/main/resources/static/images/wireframes/AdminInterface.png)
 ### View Booked Events
-![image (7).png](..%2F..%2FDownloads%2Fimage%20%287%29.png)
+![image (7).png](Eventure/src/main/resources/static/images/wireframes/BookedEvents.png)
 ### View Unpaid Events
-![image (6).png](..%2F..%2FDownloads%2Fimage%20%286%29.png)
-### View Pending Events
-![image (2).png](..%2F..%2FDownloads%2Fimage%20%282%29.png)
+![image (6).png](Eventure/src/main/resources/static/images/wireframes/UnpaidEvents.png)
 ### View Paid Events
-![image (3).png](..%2F..%2FDownloads%2Fimage%20%283%29.png)
-### View Cancelled Events
-![image (1).png](..%2F..%2FDownloads%2Fimage%20%281%29.png)
+![image (3).png](Eventure/src/main/resources/static/images/wireframes/PaidEvents.png)
+### View Pending Events
+![image (2).png](Eventure/src/main/resources/static/images/wireframes/pendingEvents.png)
+### View Canceled Events
+![image (1).png](Eventure/src/main/resources/static/images/wireframes/CanceledEvents.png)
 ### View Requested Events
-![image (5).png](..%2F..%2FDownloads%2Fimage%20%285%29.png)
+![image (5).png](Eventure/src/main/resources/static/images/wireframes/RequestedEvents.png)
 ### View Statistics
-![image (4).png](..%2F..%2FDownloads%2Fimage%20%284%29.png)
+![image (4).png](Eventure/src/main/resources/static/images/wireframes/statics.png)
 ### View Total Income
-![image (8).png](..%2F..%2FDownloads%2Fimage%20%288%29.png)
+![image (8).png](Eventure/src/main/resources/static/images/wireframes/TotalIncome.png)
+
+
 
 
 

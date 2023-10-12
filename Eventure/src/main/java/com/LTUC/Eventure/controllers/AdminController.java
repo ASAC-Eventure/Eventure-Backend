@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -56,16 +57,20 @@ public class AdminController {
     }
 
     @GetMapping("/booked-events")                // all booked events + count
-    public String getAllBookedEvents(Model m) {
+    public String getAllBookedEvents(Model m, RedirectAttributes redir) {
         List<Event> allBookedEvents = eventsJPARepository.findAll();
-        List<AddEventEntity> allAdminBookedEvents= addEventJPARepository.findAll().stream().filter(e->e.getPaymentStatus()!=null).collect(toList());
+        List<AddEventEntity> allAdminBookedEvents= addEventJPARepository.findAll().stream().filter(e->e.getPaymentStatus()!=null && e.getUser()==null ).collect(toList());
 
         if (allBookedEvents == null && allAdminBookedEvents == null) {
-            System.out.println("No  events");
+            System.out.println("No events");
             return "admin-home.html";
         }
 
         int total=allAdminBookedEvents.size()+allBookedEvents.size();
+
+        if(total == 0){
+          m.addAttribute("errorMessageBookedEvents","No Booked Events Available !");
+        }
 
         m.addAttribute("adminBookedEvents", allAdminBookedEvents);
         m.addAttribute("bookedEvents", allBookedEvents);
@@ -85,6 +90,9 @@ public class AdminController {
         List<Event> unpaidEvents = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Unpaid")).collect(toList());
         List<AddEventEntity> unpaidAdminEvents=allAdminBookedEvents.stream().filter(e -> e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Unpaid")).collect(toList());
         int total=unpaidAdminEvents.size()+unpaidEvents.size();
+        if(total == 0){
+            m.addAttribute("errorMessageUnpaidEvents","No Unpaid Events Available !");
+        }
         m.addAttribute("unpaidAdminEvents",unpaidAdminEvents);
         m.addAttribute("unpaidEvents", unpaidEvents);
         m.addAttribute("totalUnpaidEvents", total);
@@ -103,7 +111,9 @@ public class AdminController {
         List<Event> pendingEvents = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Pending")).collect(toList());
         List<AddEventEntity> pendingAdminEvents=allAdminBookedEvents.stream().filter(e ->e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Pending")).collect(toList());
         int total=pendingAdminEvents.size()+pendingEvents.size();
-
+        if(total == 0){
+            m.addAttribute("errorMessagePendingEvents","No Pending Events Available !");
+        }
         m.addAttribute("pendingAdminEvents", pendingAdminEvents);
         m.addAttribute("pendingEvents", pendingEvents);
         m.addAttribute("totalPendingEvents", total);
@@ -124,7 +134,9 @@ public class AdminController {
 
         List<AddEventEntity> paidAdminEvents = allAdminBookedEvents.stream().filter(e -> e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Paid")).collect(toList());
         int total=paidAdminEvents.size()+paidEvents.size();
-
+        if(total == 0){
+            m.addAttribute("errorMessagePaidEvents","No Paid Events Available !");
+        }
         m.addAttribute("paidAdminEvents", paidAdminEvents);
         m.addAttribute("paidEvents", paidEvents);
         m.addAttribute("totalPaidEvents", total);
@@ -134,16 +146,23 @@ public class AdminController {
     @GetMapping("/cancelled-events")                // all Cancelled events + count
     public String getCancelledEvents(Model m) {
         List<Event> allBookedEvents = eventsJPARepository.findAll();
+        List<AddEventEntity> allAdminBookedEvents=addEventJPARepository.findAll();
         if (allBookedEvents == null) {
             System.out.println("No  events");
             return "admin-home.html";
         }
         List<Event> cancelledEvents = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Cancelled")).collect(toList());
+        List<AddEventEntity> adminCancelledEvents = allAdminBookedEvents.stream().filter(e ->  e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Cancelled")).collect(toList());
+        int total= cancelledEvents.size()+adminCancelledEvents.size();
+        if(total==0){
+            m.addAttribute("errorMessageCancelledEvents","No Cancelled Events Available !");
+            return "admin-home.html";
+        }else
+            m.addAttribute("adminCancelledEvents", adminCancelledEvents);
         m.addAttribute("cancelledEvents", cancelledEvents);
-        m.addAttribute("totalCancelledEvents", cancelledEvents.size());
+        m.addAttribute("totalCancelledEvents", total);
         return "admin-home.html";
     }
-
 
     @GetMapping("/requested-events")
     public String getRequestedEvents(Model model){
@@ -152,6 +171,9 @@ public class AdminController {
         if (requestedEvents == null) {
             System.out.println("No  events");
             return "admin-home.html";
+        }
+        if(counter == 0){
+            model.addAttribute("errorMessageRequestedEvents","No Requested Events Available !");
         }
         model.addAttribute("requestedEvents", requestedEvents);
         model.addAttribute("totalRequestedEvents", counter);
@@ -243,19 +265,23 @@ public class AdminController {
 
         int totalIncomes = allBookedEvents.stream().filter(e -> e.getPaymentStatus().equals("Paid")).collect(summingInt(e -> e.getPrice()));
         int adminTotalIncomes = allAdminBookedEvents.stream().filter(e ->e.getPaymentStatus()!=null && e.getPaymentStatus().equals("Paid")).collect(summingInt(e -> e.getPrice()));
-
         int total= totalIncomes+adminTotalIncomes;
-        m.addAttribute("totalIncomes", total);
+        if (total == 0) {
+            m.addAttribute("errorMessageTotalIncome", "There is no Income yet !");
+            return "admin-home.html";
+        } else {
+            m.addAttribute("totalIncomes", total);
+        }
         return "admin-home.html";
     }
-
     @GetMapping("/find-user")
     public String userSearch(String username, Model model) {
         if (username != null && !username.isEmpty()) {
             AppUserEntity user = appUserJPARepository.findByUsername(username);
-            if (user != null) {
-                model.addAttribute("userInfo", user);
-            }
+            if (user == null) {
+                model.addAttribute("errorMessageUserInfo", "User not found !");
+                return "admin-home.html";
+            }else model.addAttribute("userInfo", user);
         }
         return "admin-home.html";
     }
@@ -266,6 +292,11 @@ public class AdminController {
             List<Event> searchedEventList = eventsJPARepository.findByName(eventName);
             List<AddEventEntity> searchedAdminEventsList = addEventJPARepository.findAdminEventByName(eventName).stream().filter(e->e.getUser()!=null).collect(toList());
             List<String> users= new ArrayList<>();
+            if(searchedAdminEventsList.size() == 0 && searchedEventList.size()==0 ){
+                model.addAttribute("errorMessageEventInfo","Event not found!");
+                return "admin-home.html";
+            }
+
             if (!searchedEventList.isEmpty()){
                 for (Event e: searchedEventList) {
                     users.add(e.getUser().getUsername());

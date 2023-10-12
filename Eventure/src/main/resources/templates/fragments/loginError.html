@@ -16,5 +16,8 @@
 <nav th:if="${errorMessageStartDate}"  th:fragment="startDate-error" th:text="${errorMessageStartDate}" style="color: red; margin-top: 20px;"></nav>
 <nav th:if="${errorMessageEndDate}"  th:fragment="endDate-error" th:text="${errorMessageEndDate}" style="color: red; margin-top: 20px;"></nav>
 <nav th:if="${errorMessageEndBeforeStart}"  th:fragment="endBeforeStart-error" th:text="${errorMessageEndBeforeStart}" style="color: red; margin-top: 20px;"></nav>
+<!--Admin fragments -->
+<nav th:if="${errorMessageTotalIncome}"  th:fragment="totalIncome-error" th:text="${errorMessageTotalIncome}" style="color: red; margin-top: 20px;"></nav>
+
 </body>
 </html>

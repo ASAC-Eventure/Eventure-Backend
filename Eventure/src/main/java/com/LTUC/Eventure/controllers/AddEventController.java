@@ -27,6 +27,18 @@ public class AddEventController {
         this.addEventJPARepository = addEventJPARepository;
         this.appUserJPARepository = appUserJPARepository;
     }
+<<<<<<< HEAD
+    @GetMapping("/contact")
+    public String addEventData(Model m){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        if (username.equals("anonymousUser")) {
+            m.addAttribute("isUsernameFound", "no");
+        } else {
+            m.addAttribute("isUsernameFound", "yes");
+        }
+=======
 @GetMapping("/contact")
 public String addEventData(Model m){
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -37,6 +49,7 @@ public String addEventData(Model m){
     } else {
         m.addAttribute("isUsernameFound", "yes");
     }
+>>>>>>> 7ddb02c75aac7b6c060ba4fba3e4e666967fd765
 
         return "contact.html";
     }
@@ -56,17 +69,17 @@ public String addEventData(Model m){
 
         if (endDate.isBefore(startDate)) {
             redir.addFlashAttribute("errorMessageEndBeforeStart", "End date cannot be before the start date.");
-            return new RedirectView("/addNewEvent");
+            return new RedirectView("/contact");
         }
 
         if (startDate.isBefore(currentDate)) {
             redir.addFlashAttribute("errorMessageStartDate", "Date cannot be in the past.");
-            return new RedirectView("/addNewEvent");
+            return new RedirectView("/contact");
         }
 
         if (endDate.isBefore(currentDate)) {
             redir.addFlashAttribute("errorMessageEndDate", "Date cannot be in the past.");
-            return new RedirectView("/addNewEvent");
+            return new RedirectView("/contact");
         }
 
         AddEventEntity newEvent = new AddEventEntity(name, startDate, endDate, eventUrl, location, streetAddress, price, imageUrl, false, false, time);
@@ -81,7 +94,6 @@ public String addEventData(Model m){
 
         return new RedirectView("/contact");
     }
-
     @PostMapping("/bookCreatedEvent")
     public RedirectView BookingAddedNewEvent(Principal p, RedirectAttributes redir,
                                              @RequestParam String name,
