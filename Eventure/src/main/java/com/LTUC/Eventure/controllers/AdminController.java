@@ -32,6 +32,7 @@ public class AdminController {
     private AdminService adminService;
 
     private AddEventJPARepository addEventJPARepository;
+    @Autowired
 
     public AdminController(AppUserJPARepository appUserJPARepository, EmailSenderService emailSenderService, EventsJPARepository eventsJPARepository, AdminService adminService, AddEventJPARepository addEventJPARepository) {
         this.appUserJPARepository = appUserJPARepository;
@@ -39,13 +40,6 @@ public class AdminController {
         this.eventsJPARepository = eventsJPARepository;
         this.adminService = adminService;
         this.addEventJPARepository = addEventJPARepository;
-    }
-
-    @Autowired
-    public AdminController(AppUserJPARepository appUserJPARepository, EventsJPARepository eventsJPARepository, AdminService adminService) {
-        this.appUserJPARepository = appUserJPARepository;
-        this.eventsJPARepository = eventsJPARepository;
-        this.adminService = adminService;
     }
 
     @GetMapping("/adminHome")

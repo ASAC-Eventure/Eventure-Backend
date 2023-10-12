@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AddEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/EventsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/GeneralControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/GeneralControllers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SaveEventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SaveEventsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SignUpAndLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SignUpAndLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/AddressCountry.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/AddressCountry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/RoleJPARepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/RoleJPARepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/services/AdminService/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/services/AdminService/AdminServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/T&amp;C.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/T&amp;C.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/T&amp;C.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/T&amp;C.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/fragments/navbarAfter.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/fragments/navbarAfter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/paymentPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/paymentPageCreated.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/searchedEvents.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/searchedEvents.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/user-events.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/user-events.html" afterDir="false" />
-    </list>
+    <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
