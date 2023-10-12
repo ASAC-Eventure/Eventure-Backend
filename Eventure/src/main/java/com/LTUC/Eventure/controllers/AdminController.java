@@ -21,7 +21,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
@@ -69,7 +68,8 @@ public class AdminController {
         int total=allAdminBookedEvents.size()+allBookedEvents.size();
 
         if(total == 0){
-          m.addAttribute("errorMessageBookedEvents","No Booked Events Available !");
+            m.addAttribute("errorMessageBookedEvents","No Booked Events Available !");
+
         }
 
         m.addAttribute("adminBookedEvents", allAdminBookedEvents);
@@ -200,7 +200,7 @@ public class AdminController {
         return new RedirectView("/pending-events");
 
     }
-    
+
     @PostMapping("/update-eventCreated-status/{eventId}")
     public RedirectView updateStatus_pending_toPaid_created(@PathVariable Long eventId) {
         try {
@@ -293,6 +293,7 @@ public class AdminController {
             List<AddEventEntity> searchedAdminEventsList = addEventJPARepository.findAdminEventByName(eventName).stream().filter(e->e.getUser()!=null).collect(toList());
             List<String> users= new ArrayList<>();
             if(searchedAdminEventsList.size() == 0 && searchedEventList.size()==0 ){
+
                 model.addAttribute("errorMessageEventInfo","Event not found!");
                 return "admin-home.html";
             }
