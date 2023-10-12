@@ -13,14 +13,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import java.security.Principal;
 
 @Controller
-public class
-ProfileController {
+public class ProfileController {
+
+
+    private AppUserJPARepository appUserJPARepository;
 
     @Autowired
-    AppUserJPARepository appUserJPARepository;
+    public ProfileController(AppUserJPARepository appUserJPARepository) {
+        this.appUserJPARepository = appUserJPARepository;
+    }
 
     @GetMapping("/profile")
-    public String myProfile(Principal principal , Model model) {
+    public String myProfile(Principal principal, Model model) {
         if (principal != null) {
             String username = principal.getName();
             AppUserEntity appUserEntity = appUserJPARepository.findByUsername(username);

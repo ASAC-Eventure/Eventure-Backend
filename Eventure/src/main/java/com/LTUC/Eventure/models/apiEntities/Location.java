@@ -1,10 +1,11 @@
 package com.LTUC.Eventure.models.apiEntities;
 
-import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 
 @Entity
@@ -29,11 +30,4 @@ public class Location {
         this.name = name;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Location{" +
-//                "name='" + name + '\'' +
-//                ", address=" + address +
-//                '}';
-//    }
 }

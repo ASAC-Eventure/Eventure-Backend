@@ -5,19 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/error/400.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/error/403.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/error/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/error/500.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AddEventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/EventsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/GeneralControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/GeneralControllers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SaveEventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SaveEventsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SignUpAndLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SignUpAndLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/AddressCountry.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/AddressCountry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/RoleJPARepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/RoleJPARepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/services/AdminService/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/services/AdminService/AdminServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/admin-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/admin-home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/T&amp;C.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/T&amp;C.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/T&amp;C.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/T&amp;C.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/fragments/navbarAfter.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/fragments/navbarAfter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/paymentPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/paymentPageCreated.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/searchedEvents.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/searchedEvents.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/user-events.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/user-events.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +62,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.idea/workspace.xml" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -70,17 +79,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging mainTesting",
-    "last_opened_file_path": "/home/akmz/Desktop/balqees-dev/Eventure-Backend/Eventure/src/main/resources/static/images/wireframes"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging final-project-merged-merged-mainTesting&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/akmz/Desktop/balqees-dev/Eventure-Backend/Eventure/src/main/resources/static/images/wireframes&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Eventure/src/main/resources/static/images/wireframes" />

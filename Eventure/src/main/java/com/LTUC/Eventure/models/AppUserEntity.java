@@ -2,21 +2,21 @@ package com.LTUC.Eventure.models;
 
 import com.LTUC.Eventure.models.apiEntities.Event;
 import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Collection;
+
 import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.util.List;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 
 @Entity
@@ -57,8 +57,9 @@ public class AppUserEntity implements UserDetails {
     private RoleEntity roles;
 
     @OneToMany(mappedBy = "user")
-    @Column(name = "events_approved_byAdmin_booked_byUser" )
+    @Column(name = "events_approved_byAdmin_booked_byUser")
     List<AddEventEntity> newEvents;
+
     public AppUserEntity(String username, String email, String password, String country, String interests, LocalDate dateOfBirth) {
         this.username = username;
         this.email = email;
@@ -102,25 +103,6 @@ public class AppUserEntity implements UserDetails {
 
         return authorities;
     }
-
-
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        RoleEntity role = getRoles();
-//        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-//        authorities.add(new SimpleGrantedAuthority(role.getTitle().name()));
-//        return authorities;
-//    }
-
-//        @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        RoleEntity role = getRoles();
-//        if (role != null) {
-//            return Collections.singletonList(new SimpleGrantedAuthority(role.getTitle().name()));
-//        }
-//        return Collections.emptyList();
-//    }
-
 
     @Override
     public String getPassword() {

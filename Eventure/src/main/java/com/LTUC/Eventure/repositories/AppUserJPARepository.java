@@ -9,11 +9,6 @@ import java.util.Optional;
 
 public interface AppUserJPARepository extends JpaRepository<AppUserEntity, Long> {
     AppUserEntity findByUsername(String username);
-    @Query("SELECT u.username FROM AppUserEntity u WHERE u.id = :userId")
-    String findNameById(@Param("userId") Long userId);
-
-    @Query("SELECT u.id FROM AppUserEntity u WHERE u.username = :username")
-    Long findIdByName(@Param("username") String username);
 
     Optional<AppUserEntity> findByEmail(String email);
 }

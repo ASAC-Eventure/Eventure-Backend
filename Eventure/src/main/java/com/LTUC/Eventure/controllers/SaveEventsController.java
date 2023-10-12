@@ -2,7 +2,10 @@ package com.LTUC.Eventure.controllers;
 
 import com.LTUC.Eventure.models.AddEventEntity;
 import com.LTUC.Eventure.models.AppUserEntity;
-import com.LTUC.Eventure.models.apiEntities.*;
+import com.LTUC.Eventure.models.apiEntities.Address;
+import com.LTUC.Eventure.models.apiEntities.AddressCountry;
+import com.LTUC.Eventure.models.apiEntities.Event;
+import com.LTUC.Eventure.models.apiEntities.Location;
 import com.LTUC.Eventure.repositories.AddEventJPARepository;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.AddressCountryJPARepository;
@@ -10,14 +13,13 @@ import com.LTUC.Eventure.repositories.apiJPARepositories.AddressJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.EventsJPARepository;
 import com.LTUC.Eventure.repositories.apiJPARepositories.LocationJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
 import java.security.Principal;
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -63,6 +65,7 @@ public class SaveEventsController {
                                   @RequestParam String eventLocationName,
                                   @RequestParam String eventAddressStreet,
                                   @RequestParam String eventAddressLocality,
+                                  @RequestParam String price,
                                   @RequestParam String eventAddressCountryName) {
         System.out.println("Reached book-event function");
 
@@ -90,7 +93,7 @@ public class SaveEventsController {
             locationJPARepository.save(location);
 
 
-            Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location, (int) (50 + (Math.random() * (250 - 50))), image, user,"Unpaid");
+            Event event = new Event(eventName, eventStartDate, eventEndDate, eventUrl, location,Integer.valueOf(price), image, user, "Unpaid");
             if (!user.getBookedEvents().stream().anyMatch(e -> e.getName().equals(eventName))) {
                 eventsJPARepo.save(event);
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
@@ -107,12 +110,6 @@ public class SaveEventsController {
     public RedirectView deleteEventById(@PathVariable Long id) {
         eventsJPARepo.deleteById(id);
         return new RedirectView("/myEvents");
-    }
-
-    @GetMapping("/payment")
-    public String paymentPage(@RequestParam Long eventId, Model model) {
-        model.addAttribute("eventId", eventId);
-        return "paymentPage.html";
     }
 
     @PostMapping("/payment")
