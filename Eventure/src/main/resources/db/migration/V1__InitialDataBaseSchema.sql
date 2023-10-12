@@ -13,7 +13,6 @@ CREATE TABLE eventure_users (
                        interests VARCHAR(255),
                        image VARCHAR(255),
                        date_Of_Birth DATE NOT NULL,
-
                        role_id int8 constraint fk_role_id references role_types not null,
                        primary key (id)
 );

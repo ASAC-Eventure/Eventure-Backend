@@ -1,11 +1,12 @@
 package com.LTUC.Eventure.models.apiEntities;
 
 import com.LTUC.Eventure.models.AppUserEntity;
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 
 @Entity
@@ -48,25 +49,8 @@ public class Event {
         this.price = price;
         this.image = image;
         this.user = user;
-        this.paymentStatus=paymentStatus;
+        this.paymentStatus = paymentStatus;
     }
 
-//    public Event(String eventName, String eventStartDate, String eventEndDate, String eventUrl, Location location, int i, String image, AppUserEntity user, String unpaid) {
-//    }
 
-//    @Override
-//    public String toString() {
-//        return "Event{" +
-//                "name='" + name + '\'' +
-//                ", startDate='" + startDate + '\'' +
-//                ", endDate='" + endDate + '\'' +
-//                ", url='" + url + '\'' +
-//                ", location=" + location +
-//                ", price=" + price +
-//                ", priceCurrency='" + priceCurrency + '\'' +
-//                ", image='" + image + '\'' +
-//                ", user=" + user +
-//                ", paymentStatus='" + paymentStatus + '\'' +
-//                '}';
-//    }
 }

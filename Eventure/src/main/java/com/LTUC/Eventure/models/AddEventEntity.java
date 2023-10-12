@@ -1,10 +1,7 @@
 package com.LTUC.Eventure.models;
 
-import com.LTUC.Eventure.models.apiEntities.Location;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -57,10 +54,10 @@ public class AddEventEntity {
         this.imageUrl = imageUrl;
         this.isApproved = isApproved;
         this.isBooked = isBooked;
-        this.time=time;
+        this.time = time;
     }
 
-    public AddEventEntity(String name, LocalDate startDate, LocalDate endDate, String eventUrl, String location, String streetAddress, int price, String imageUrl, boolean isApproved, boolean isBooked, AppUserEntity user,String paymentStatus, String time) {
+    public AddEventEntity(String name, LocalDate startDate, LocalDate endDate, String eventUrl, String location, String streetAddress, int price, String imageUrl, boolean isApproved, boolean isBooked, AppUserEntity user, String paymentStatus, String time) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -72,8 +69,8 @@ public class AddEventEntity {
         this.isApproved = isApproved;
         this.isBooked = isBooked;
         this.user = user;
-        this.paymentStatus=paymentStatus;
-        this.time=time;
+        this.paymentStatus = paymentStatus;
+        this.time = time;
 
     }
 
