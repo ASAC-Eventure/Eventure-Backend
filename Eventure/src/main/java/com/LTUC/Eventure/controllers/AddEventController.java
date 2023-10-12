@@ -37,6 +37,7 @@ public class AddEventController {
         } else {
             m.addAttribute("isUsernameFound", "yes");
         }
+
         return "contact.html";
     }
 
@@ -99,9 +100,9 @@ public class AddEventController {
 
             AddEventEntity newEvent = new AddEventEntity(name, LocalDate.parse(startDate), LocalDate.parse(endDate), url, location, address, Integer.valueOf(price), image, true, true, userBooking,"Unpaid",time);
 
-          //  System.out.println("username"+userBooking.getUsername()+"id"+userBooking.getId()+"bookeng events"+userBooking.getBookedEvents());
+            //  System.out.println("username"+userBooking.getUsername()+"id"+userBooking.getId()+"bookeng events"+userBooking.getBookedEvents());
             if (!userBooking.getNewEvents().stream().anyMatch(e -> e.getName().equals(newEvent.getName()))) {
-               // System.out.println("raeched booked new created event doesnot exist for this user");
+                // System.out.println("raeched booked new created event doesnot exist for this user");
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
                 addEventJPARepository.save(newEvent);
             } else {

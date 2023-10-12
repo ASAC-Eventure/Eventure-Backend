@@ -43,6 +43,7 @@ ProfileController {
         AppUserEntity user = appUserJPARepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
+//        user.setUsername(updatedUser.getUsername());
         user.setEmail(updatedUser.getEmail());
         user.setCountry(updatedUser.getCountry());
         String interests = String.join(", ", updatedUser.getInterests());
@@ -52,7 +53,6 @@ ProfileController {
         appUserJPARepository.save(user);
         return "redirect:/profile";
     }
-
 
 
 }
