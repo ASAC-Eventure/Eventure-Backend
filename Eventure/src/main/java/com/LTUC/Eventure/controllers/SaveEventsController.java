@@ -125,4 +125,3 @@ public class SaveEventsController {
         return new RedirectView("/myEvents");
     }
 }
-

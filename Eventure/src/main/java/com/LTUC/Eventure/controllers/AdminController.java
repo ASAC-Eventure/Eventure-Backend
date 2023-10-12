@@ -69,7 +69,7 @@ public class AdminController {
         int total=allAdminBookedEvents.size()+allBookedEvents.size();
 
         if(total == 0){
-          m.addAttribute("errorMessageBookedEvents","No Booked Events Available !");
+            m.addAttribute("errorMessageBookedEvents","No Booked Events Available !");
         }
 
         m.addAttribute("adminBookedEvents", allAdminBookedEvents);
@@ -200,7 +200,7 @@ public class AdminController {
         return new RedirectView("/pending-events");
 
     }
-    
+
     @PostMapping("/update-eventCreated-status/{eventId}")
     public RedirectView updateStatus_pending_toPaid_created(@PathVariable Long eventId) {
         try {
