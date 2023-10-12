@@ -48,6 +48,7 @@ Relationships:
 - `/adminHome`: Home route for an admin user. 
 
 
+
 ## API Documentation
 
 Eventure fetches event data from the [Jambase API](https://www.jambase.com/jb-api/v1/events?apikey=357b5a27-55f2-487b-9b1c-83f6ad689c3e) to provide event information. The API is integrated into the Eventure backend via the Event Service, which retrieves necessary data for the system. The Jambase API offers search endpoints for countries and start dates.
@@ -59,6 +60,7 @@ Eventure uses Spring validation tools to validate user input. These validations 
 ## Wireframes
 
 ### User Interface
+
 ![wireframeNew.png](Eventure/src/main/resources/static/images/wireframes/UI.png)
 ### Admin Dashboard
 ![image.png](Eventure/src/main/resources/static/images/wireframes/AdminInterface.png)
@@ -78,6 +80,8 @@ Eventure uses Spring validation tools to validate user input. These validations 
 ![image (4).png](Eventure/src/main/resources/static/images/wireframes/statics.png)
 ### View Total Income
 ![image (8).png](Eventure/src/main/resources/static/images/wireframes/TotalIncome.png)
+
+
 
 
 

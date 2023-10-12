@@ -121,11 +121,11 @@
                         <form id="paymentForm2" th:action="@{/payment?(eventId=${event.id})}" method="post">
                             <button class="card__button" type="button" onclick="showCustomDialog2()">Pay</button>
                         </form>
-<!--                        <form th:action="@{/payment?(eventId=${event.id})}" method="post">-->
-<!--                            <button class="card__button" type="submit"-->
-<!--                                    onclick="return confirm('Be Sure To Pay Before Two Days From The Events,In The Nearest Ticket Center Or Your Event Will Be Canceled !!')">Pay-->
-<!--                            </button><br>-->
-<!--                        </form>-->
+                        <!--                        <form th:action="@{/payment?(eventId=${event.id})}" method="post">-->
+                        <!--                            <button class="card__button" type="submit"-->
+                        <!--                                    onclick="return confirm('Be Sure To Pay Before Two Days From The Events,In The Nearest Ticket Center Or Your Event Will Be Canceled !!')">Pay-->
+                        <!--                            </button><br>-->
+                        <!--                        </form>-->
                     </div>
                 </div>
                 <form th:method="delete" th:action="@{'/unbook-event/' + ${event.id}}" method="post">
@@ -160,9 +160,9 @@
                         <form id="paymentForm1" th:action="@{/paymentCreated?(eventId=${event.id})}" method="post">
                             <button class="card__button" type="button" onclick="showCustomDialog1()">Pay</button>
                         </form>
-<!--                        <form th:action="@{/paymentCreated?(eventId=${event.id})}" method="post">-->
-<!--                            <button class="card__button" type="submit" onclick="return confirm('Be Sure To Pay Before Two Days From The Events,In The Nearest Ticket Center Or Your Event Will Be Canceled !!')">Pay</button>-->
-<!--                        </form>-->
+                        <!--                        <form th:action="@{/paymentCreated?(eventId=${event.id})}" method="post">-->
+                        <!--                            <button class="card__button" type="submit" onclick="return confirm('Be Sure To Pay Before Two Days From The Events,In The Nearest Ticket Center Or Your Event Will Be Canceled !!')">Pay</button>-->
+                        <!--                        </form>-->
                     </div>
 
                     <form th:action="@{'/unbook-eventCreated/'+ ${event.id}}" method="post">

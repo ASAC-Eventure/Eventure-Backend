@@ -27,6 +27,7 @@ public class AddEventController {
         this.addEventJPARepository = addEventJPARepository;
         this.appUserJPARepository = appUserJPARepository;
     }
+<<<<<<< HEAD
     @GetMapping("/contact")
     public String addEventData(Model m){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -37,6 +38,18 @@ public class AddEventController {
         } else {
             m.addAttribute("isUsernameFound", "yes");
         }
+=======
+@GetMapping("/contact")
+public String addEventData(Model m){
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String username = authentication.getName();
+
+    if (username.equals("anonymousUser")) {
+        m.addAttribute("isUsernameFound", "no");
+    } else {
+        m.addAttribute("isUsernameFound", "yes");
+    }
+>>>>>>> 7ddb02c75aac7b6c060ba4fba3e4e666967fd765
 
         return "contact.html";
     }
