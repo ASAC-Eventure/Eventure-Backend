@@ -12,19 +12,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.view.RedirectView;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 @Controller
 public class GeneralControllers {
-    @Autowired
-    EventService eventService;
+    private EventService eventService;
     @Value("${apiSecretKey}")
     String myKey;
 
+    private AddEventJPARepository addEventJPARepository;
+
     @Autowired
-    AddEventJPARepository addEventJPARepository;
+    public GeneralControllers(EventService eventService, AddEventJPARepository addEventJPARepository) {
+        this.eventService = eventService;
+        this.addEventJPARepository = addEventJPARepository;
+    }
 
     @GetMapping("/")
     public String Home(Model m) {
@@ -37,11 +42,11 @@ public class GeneralControllers {
             m.addAttribute("isUsernameFound", "yes");
         }
 
-        List<Event> mostRatedEvents= eventService.get10RandomEvents();
+        List<Event> mostRatedEvents = eventService.get10RandomEvents();
         m.addAttribute("mostRatedEvents", mostRatedEvents);
 
-        List<AddEventEntity> approvedEvents = addEventJPARepository.findAll().stream().filter(s->s.isApproved()==true && s.getUser()==null).collect(Collectors.toList());
-        System.out.println("approved e"+approvedEvents.size());
+        List<AddEventEntity> approvedEvents = addEventJPARepository.findAll().stream().filter(s -> s.isApproved() == true && s.getUser() == null).collect(Collectors.toList());
+        System.out.println("approved e" + approvedEvents.size());
 
         m.addAttribute("approvedEvents", approvedEvents);
         return "index";

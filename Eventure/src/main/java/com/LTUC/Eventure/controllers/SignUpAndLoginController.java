@@ -5,7 +5,6 @@ import com.LTUC.Eventure.models.AppUserEntity;
 import com.LTUC.Eventure.models.authenticationEntities.RoleEntity;
 import com.LTUC.Eventure.repositories.AppUserJPARepository;
 import com.LTUC.Eventure.repositories.RoleJPARepository;
-import com.LTUC.Eventure.services.user.AppUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,19 +20,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
-
 import java.util.Optional;
 
 
 @Controller
 public class SignUpAndLoginController {
+    private AppUserJPARepository appUserJPARepository;
     @Autowired
-    AppUserJPARepository appUserJPARepository;
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private HttpServletRequest request;
     @Autowired
@@ -42,11 +40,19 @@ public class SignUpAndLoginController {
     @Autowired
     private RoleJPARepository roleJPARepository;
 
+    @Autowired
+
+    public SignUpAndLoginController(AppUserJPARepository appUserJPARepository) {
+        this.appUserJPARepository = appUserJPARepository;
+    }
+
     @GetMapping("/signup")
-    public String signUpPage(){return "signUpAndLogin";}
+    public String signUpPage() {
+        return "signUpAndLogin";
+    }
 
     @PostMapping("/signup")
-    public RedirectView createUser(Model model, RedirectAttributes redir,String username, String email, String password,String confirmPassword, String country, String interests,  @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth ) {
+    public RedirectView createUser(Model model, RedirectAttributes redir, String username, String email, String password, String confirmPassword, String country, String interests, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth) {
         AppUserEntity existingUser = appUserJPARepository.findByUsername(username);
         try {
             if (existingUser != null && !isPasswordValid(password) && !password.equals(confirmPassword)) {
@@ -104,10 +110,11 @@ public class SignUpAndLoginController {
         Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
-    public void authWithHttpServletRequest(String username, String password){
+
+    public void authWithHttpServletRequest(String username, String password) {
         try {
-            request.login(username,password);
-        }catch (ServletException e){
+            request.login(username, password);
+        } catch (ServletException e) {
             e.printStackTrace();
         }
     }
@@ -130,8 +137,8 @@ public class SignUpAndLoginController {
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
             AppUserEntity userEntity = appUserJPARepository.findByUsername(username);
 
-            if (authentication!=null) {
-                RoleEntity role= userEntity.getRoles();
+            if (authentication != null) {
+                RoleEntity role = userEntity.getRoles();
                 if (role.getTitle() == Roles.USER) {
                     return new RedirectView("/");
                 }

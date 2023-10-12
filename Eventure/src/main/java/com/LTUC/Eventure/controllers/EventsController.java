@@ -1,7 +1,6 @@
 package com.LTUC.Eventure.controllers;
 
 import com.LTUC.Eventure.models.apiEntities.Events;
-import com.LTUC.Eventure.repositories.AddEventJPARepository;
 import com.LTUC.Eventure.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -18,8 +18,6 @@ import java.time.format.DateTimeParseException;
 public class EventsController {
     private EventService eventService;
 
-    @Autowired
-    AddEventJPARepository addEventJPARepository;
     @Autowired
     public EventsController(EventService eventService) {
         this.eventService = eventService;

@@ -20,7 +20,6 @@ public class AddressCountry {
     private Long id;
     private String name;
 
-
     public AddressCountry(String name) {
         this.name = name;
     }

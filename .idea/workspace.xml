@@ -5,26 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6aa9cdc-99df-403b-a8e4-816f7218824c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AddEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/AddEventEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/AddEventEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/AppUserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/AppUserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/EventsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/GeneralControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/GeneralControllers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SaveEventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SaveEventsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SignUpAndLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/controllers/SignUpAndLoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/AddressCountry.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/AddressCountry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/apiEntities/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/authenticationEntities/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/models/authenticationEntities/RoleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/AddEventJPARepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/AddEventJPARepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/AppUserJPARepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/AppUserJPARepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/RoleJPARepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/RoleJPARepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/apiJPARepositories/AddressCountryJPARepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/apiJPARepositories/AddressCountryJPARepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/apiJPARepositories/AddressJPARepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/apiJPARepositories/AddressJPARepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/apiJPARepositories/EventsJPARepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/apiJPARepositories/EventsJPARepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/apiJPARepositories/LocationJPARepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/repositories/apiJPARepositories/LocationJPARepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/services/AdminService/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/services/AdminService/AdminServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/services/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/java/com/LTUC/Eventure/services/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/db/migration/V1__InitialDataBaseSchema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/db/migration/V1__InitialDataBaseSchema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/T&amp;C.css" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/static/css/T&amp;C.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/T&amp;C.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/T&amp;C.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/fragments/navbarAfter.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/fragments/navbarAfter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/paymentPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/paymentPageCreated.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/searchedEvents.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/searchedEvents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eventure/src/main/resources/templates/user-events.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eventure/src/main/resources/templates/user-events.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +61,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.idea/workspace.xml" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

@@ -27,8 +27,9 @@ public class AddEventController {
         this.addEventJPARepository = addEventJPARepository;
         this.appUserJPARepository = appUserJPARepository;
     }
+
     @GetMapping("/contact")
-    public String addEventData(Model m){
+    public String addEventData(Model m) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
 
@@ -37,7 +38,6 @@ public class AddEventController {
         } else {
             m.addAttribute("isUsernameFound", "yes");
         }
-
         return "contact.html";
     }
 
@@ -81,6 +81,7 @@ public class AddEventController {
 
         return new RedirectView("/contact");
     }
+
     @PostMapping("/bookCreatedEvent")
     public RedirectView BookingAddedNewEvent(Principal p, RedirectAttributes redir,
                                              @RequestParam String name,
@@ -98,11 +99,9 @@ public class AddEventController {
         if (username != null) {
             AppUserEntity userBooking = appUserJPARepository.findByUsername(username);
 
-            AddEventEntity newEvent = new AddEventEntity(name, LocalDate.parse(startDate), LocalDate.parse(endDate), url, location, address, Integer.valueOf(price), image, true, true, userBooking,"Unpaid",time);
+            AddEventEntity newEvent = new AddEventEntity(name, LocalDate.parse(startDate), LocalDate.parse(endDate), url, location, address, Integer.valueOf(price), image, true, true, userBooking, "Unpaid", time);
 
-          //  System.out.println("username"+userBooking.getUsername()+"id"+userBooking.getId()+"bookeng events"+userBooking.getBookedEvents());
             if (!userBooking.getNewEvents().stream().anyMatch(e -> e.getName().equals(newEvent.getName()))) {
-               // System.out.println("raeched booked new created event doesnot exist for this user");
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
                 addEventJPARepository.save(newEvent);
             } else {
@@ -110,17 +109,9 @@ public class AddEventController {
             }
 
         }
-
         return new RedirectView("/myEvents");
-
     }
 
-    /*for the added events*/
-    @GetMapping("/paymentCreated")
-    public String paymentPageCreated(@RequestParam Long eventId, Model model) {
-        model.addAttribute("eventId", eventId);
-        return "paymentPageCreated.html";
-    }
 
     @PostMapping("/paymentCreated")
     public RedirectView paymentMethod_forCreated(@RequestParam(name = "eventId") Long eventId) {
@@ -162,4 +153,5 @@ public class AddEventController {
     public String returnAfterApprove() {
         return "adminHome.html";
     }
+
 }
