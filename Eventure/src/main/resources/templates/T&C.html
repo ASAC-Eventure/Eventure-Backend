@@ -36,19 +36,19 @@
 
 <body >
 <div class="main-layout contineer_page">
-<!-- loader  -->
-<div class="loader_bg">
-    <div class="loader"><img alt="#" src="images/loading.gif"/></div>
-</div>
-<!-- end loader -->
-<!-- header -->
-<div th:if="${isUsernameFound == 'yes'}">
-    <div th:replace="fragments/navbarAfter :: header"></div>
-</div>
-<div th:if="${isUsernameFound == 'no'}">
-    <div th:replace="fragments/navbarBefore :: header"></div>
-</div>
-<!---->
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img alt="#" src="images/loading.gif"/></div>
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <div th:if="${isUsernameFound == 'yes'}">
+        <div th:replace="fragments/navbarAfter :: header"></div>
+    </div>
+    <div th:if="${isUsernameFound == 'no'}">
+        <div th:replace="fragments/navbarBefore :: header"></div>
+    </div>
+    <!---->
 </div>
 
 
@@ -136,9 +136,9 @@
     </div>
 </div>
 <div class="main-layout">
-<!--  footer -->
-<div th:replace="/fragments/footer :: footer"></div>
-<!-- end footer -->
+    <!--  footer -->
+    <div th:replace="/fragments/footer :: footer"></div>
+    <!-- end footer -->
 </div>
 
 <!-- Javascript files-->

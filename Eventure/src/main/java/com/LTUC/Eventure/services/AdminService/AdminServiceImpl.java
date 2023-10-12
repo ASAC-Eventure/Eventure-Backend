@@ -39,11 +39,12 @@ public class AdminServiceImpl implements AdminService {
 
                         eventsJPARepository.save(e);
                     }
-                }
+                }}}
                 //// fot the added events
                 List<AddEventEntity> allBookedEvents_added = addEventJPARepository.findAll();
                 if (!allBookedEvents_added.isEmpty()) {
                     List<AddEventEntity> unpaidEvents_added = allBookedEvents_added.stream().filter(s -> s.getPaymentStatus()!=null && s.getPaymentStatus().equals("Unpaid")).collect(toList());
+                    System.out.println("findded to be cancelled"+unpaidEvents_added.size());
                     if (!unpaidEvents_added.isEmpty()) {
                         for (AddEventEntity e : unpaidEvents_added) {
                             LocalDate startDate = e.getStartDate();
@@ -55,13 +56,10 @@ public class AdminServiceImpl implements AdminService {
                                 addEventJPARepository.save(e);
                             }
                         }
-
-
                     }
                 }
             }
-        }
-    }
+
 
     @Override
     public void clearFinishedEvents() {   // this method will delete all events that finished from database

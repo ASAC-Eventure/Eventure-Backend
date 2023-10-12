@@ -27,16 +27,16 @@ public class AddEventController {
         this.addEventJPARepository = addEventJPARepository;
         this.appUserJPARepository = appUserJPARepository;
     }
-@GetMapping("/contact")
-public String addEventData(Model m){
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    String username = authentication.getName();
+    @GetMapping("/contact")
+    public String addEventData(Model m){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
 
-    if (username.equals("anonymousUser")) {
-        m.addAttribute("isUsernameFound", "no");
-    } else {
-        m.addAttribute("isUsernameFound", "yes");
-    }
+        if (username.equals("anonymousUser")) {
+            m.addAttribute("isUsernameFound", "no");
+        } else {
+            m.addAttribute("isUsernameFound", "yes");
+        }
 
         return "contact.html";
     }
@@ -56,17 +56,17 @@ public String addEventData(Model m){
 
         if (endDate.isBefore(startDate)) {
             redir.addFlashAttribute("errorMessageEndBeforeStart", "End date cannot be before the start date.");
-            return new RedirectView("/addNewEvent");
+            return new RedirectView("/contact");
         }
 
         if (startDate.isBefore(currentDate)) {
             redir.addFlashAttribute("errorMessageStartDate", "Date cannot be in the past.");
-            return new RedirectView("/addNewEvent");
+            return new RedirectView("/contact");
         }
 
         if (endDate.isBefore(currentDate)) {
             redir.addFlashAttribute("errorMessageEndDate", "Date cannot be in the past.");
-            return new RedirectView("/addNewEvent");
+            return new RedirectView("/contact");
         }
 
         AddEventEntity newEvent = new AddEventEntity(name, startDate, endDate, eventUrl, location, streetAddress, price, imageUrl, false, false, time);
@@ -81,7 +81,6 @@ public String addEventData(Model m){
 
         return new RedirectView("/contact");
     }
-
     @PostMapping("/bookCreatedEvent")
     public RedirectView BookingAddedNewEvent(Principal p, RedirectAttributes redir,
                                              @RequestParam String name,
@@ -101,9 +100,9 @@ public String addEventData(Model m){
 
             AddEventEntity newEvent = new AddEventEntity(name, LocalDate.parse(startDate), LocalDate.parse(endDate), url, location, address, Integer.valueOf(price), image, true, true, userBooking,"Unpaid",time);
 
-          //  System.out.println("username"+userBooking.getUsername()+"id"+userBooking.getId()+"bookeng events"+userBooking.getBookedEvents());
+            //  System.out.println("username"+userBooking.getUsername()+"id"+userBooking.getId()+"bookeng events"+userBooking.getBookedEvents());
             if (!userBooking.getNewEvents().stream().anyMatch(e -> e.getName().equals(newEvent.getName()))) {
-               // System.out.println("raeched booked new created event doesnot exist for this user");
+                // System.out.println("raeched booked new created event doesnot exist for this user");
                 redir.addFlashAttribute("successMessageBookedEvent", "Added Successfully!");
                 addEventJPARepository.save(newEvent);
             } else {

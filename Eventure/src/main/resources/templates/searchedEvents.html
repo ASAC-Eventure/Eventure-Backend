@@ -77,8 +77,8 @@
                         <span th:text="${event.location.address.addressLocality}">Locality</span>,
                         <span th:text="${event.location.address.addressCountry.name}">Country</span>
                     </p><br>
-                    <a th:href="${event.url}">Find out more <span
-                            class="material-symbols-outlined">arrow_right_alt</span></a><br>
+                    <a th:href="${event.url}">Find out more</a>
+                    <br>
                 </div>
                 <div th:if="${isUsernameFound == 'yes'}">
                     <form action="/book-event" method="post">
